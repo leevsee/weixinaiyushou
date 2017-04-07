@@ -1,0 +1,40 @@
+{
+  "pages":[
+    "pages/purchase/purchase",
+    "pages/commodityList/commodityList",
+    "pages/home/home",
+    
+    "pages/swiperTest/swiperTest",
+    "pages/testParm/testParm",
+    "pages/index/index",
+    "pages/map/map",
+    "pages/dataDetail/dataDetail",    
+    "pages/logs/logs"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "selectedColor":"red",
+    "list": [{
+      "pagePath": "pages/commodityList/commodityList",
+      "text": "提货站",
+      "iconPath":"resources/tihuo.png",
+      "selectedIconPath":"resources/tihuo1.png"
+    }, {
+      "pagePath": "pages/home/home",
+      "text": "爱预售",
+      "iconPath":"resources/home.png",
+      "selectedIconPath":"resources/home1.png"
+    }, {
+      "pagePath": "pages/index/index",
+      "text": "我",
+      "iconPath":"resources/me.png",
+      "selectedIconPath":"resources/me1.png"
+    }]
+  }
+}

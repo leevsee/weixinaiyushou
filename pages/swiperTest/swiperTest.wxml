@@ -1,0 +1,23 @@
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150" bindtap="itemOnClick" data-url="{{item}}"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{content}}">
+    <swiper-item>
+    {{item.wenzhi}}
+      <!--<image src="{{item}}" class="slide-image" width="355" height="150" bindtap="itemOnClick" data-url="{{item}}"/>-->
+    </swiper-item>
+  </block>
+</swiper>
+
+<button bindtap="changeIndicatorDots"> indicator-dots </button>
+<button bindtap="changeAutoplay"> autoplay </button>
+<slider bindchange="intervalChange" show-value min="500" max="2000"/> interval
+<slider bindchange="durationChange" show-value min="1000" max="10000"/> duration

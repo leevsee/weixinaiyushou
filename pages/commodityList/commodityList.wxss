@@ -1,0 +1,118 @@
+.headViewCtrl {
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  margin-left: 3%;
+}
+
+.headViewCtrl-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+.headViewCtrl-textcontent1 {
+  font-size: 36rpx;
+}
+
+.headViewCtrl-textcontent2 {
+  font-size: 34rpx;
+}
+
+.divide {
+  width: 100%;
+  height: 6rpx;
+  background-color: coral;
+  margin-bottom: 3%;
+}
+
+.swiperView {
+  height: 500rpx;
+}
+
+.commodity-name {
+  /*font-size: 36rpx;*/
+  font-weight: bold;
+}
+
+.swiperPic {
+  text-align: center;
+}
+
+.commodity-detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.commodity-detail-pic {
+  display: flex;
+  align-items:center;
+}
+
+.commodity-detail-video {
+  display: flex;
+  align-items:center;
+}
+
+.commodity-detail-price {
+}
+
+.commodity-detail-buy {
+}
+
+.commodity-introduce {
+  /*display: flex;*/
+  margin: 2%;
+  border: 2rpx solid #000;
+  /*float: right;*/
+}
+
+.commodity-introducer {
+  display: flex;
+  justify-content: flex-end;
+  /*float:right;*/
+}
+
+.scroll-view-warp {
+  display: inline-block;
+  width: 100%;
+}
+
+.scroll-view_H {
+  white-space: nowrap;
+  height: 300rpx;
+}
+
+.commodity-transfer {
+  display: flex;
+  /*display: inline-block;*/
+  justify-content: space-around;
+  /*border: 2rpx solid #000;*/
+  align-items: center;
+  margin-bottom: 2%;
+  /*flex-direction: column;*/
+}
+
+.commodity-transfer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*align-items: space-around;*//*align-items: center;*/
+  width: 82%;
+}
+
+.commodity-transfer-price {
+  margin-bottom: 1%;
+}
+
+.commodity-transfer-text {
+  font-size: 28rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

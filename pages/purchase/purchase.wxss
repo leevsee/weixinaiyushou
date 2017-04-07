@@ -1,0 +1,162 @@
+.addrSelcView {
+  display: flex;
+  align-items: center;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.addrSelc-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-left: 2%;
+}
+
+.addrSelc-content-text {
+}
+
+.addrView {
+  /*display: flex;*/
+  align-items: center;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.addr-display {
+  margin-top: 1%;
+  font-size: 34rpx;
+}
+
+.onSale-delivery {
+  /*display: flex;*/
+}
+
+.onSale-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.onSale-delivery {
+  display: flex;
+  /*justify-content: space-around;*/
+  align-items: center;
+}
+
+.onSale-resale {
+  display: flex;
+  /*justify-content: space-around;*/
+  align-items: center;
+  margin-top: 1%;
+}
+
+.onSale-delivery-price {
+  display: flex;
+  justify-content: flex-end;
+  width: 51%;
+}
+
+.onSale-resale-price {
+  display: flex;
+  justify-content: flex-end;
+  width: 51%;
+}
+
+.onSale-price {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.onSale-postage {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 6%;
+}
+
+.onSale-name {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 6%;
+  margin-top: 1%;
+}
+
+.onSale-num {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.onSale-num-buy {
+  display: flex;
+  width: 50%;
+}
+
+.onSale-num-resale {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.onSale-num-price {
+  width: 10%;
+  height: 90%;
+  text-align: center;
+  background-color: antiquewhite;
+  /*margin-right: 2%;
+    margin-left: 2%;*/
+}
+
+.divide {
+  width: 100%;
+  height: 6rpx;
+  background-color: coral;
+  margin-bottom: 3%;
+  margin-top: 5%;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+.message {
+  display: flex;
+  margin-left: 2%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+.message-text {
+  flex: 1;
+}
+
+.message-input {
+  flex: 3;
+}
+
+.onSale-submit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  height: 80rpx;
+  width: 95%;
+}
+
+.onSale-submit-text{
+  margin-right: 5%;
+}
+
+.onSale-submit-button {
+  display: flex;
+  align-items: center;
+}
