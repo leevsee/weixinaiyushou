@@ -1,14 +1,17 @@
+<!-- 收货地址选择 -->
 <view class="addrSelcView">
-  <image src="/resources/add.png" style="width: 100rpx; height: 100rpx;"></image>
+  <image src="/res/add.png" style="width: 100rpx; height: 100rpx;"></image>
   <view class="addrSelc-content">
     <view class="addrSelc-content-text">新增收货地址</view>
-    <image src="/resources/goto.png" style="width: 60rpx; height: 60rpx;"></image>
+    <image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>
   </view>
 </view>
+<!-- 收货地址显示 -->
 <view class="addrView">
   <view class="addr-title">收货地址：</view>
   <view class="addr-display">厢竹打到33好公安小区2号铺</view>
 </view>
+<!-- 选着送货方式 -->
 <radio-group class="onSale-radio-group" bindchange="radioChange">
   <label class="onSale-delivery">
     <radio value="放入提货站待售" checked="ture" />放入提货站待售
@@ -19,6 +22,7 @@
     <view class="onSale-resale-price">建议售价：￥158</view>
   </label>
 </radio-group>
+<!-- 商品价格 -->
 <view class="onSale-price">
   <view class="onSale-postage">
     <view class="onSale-postage-text">送货/提货费</view>
@@ -28,31 +32,36 @@
     <view class="onSale-name-text">【邕宁特色馆】散养土鸡</view>
     <view class="onSale-name-price">￥118</view>
   </view>
+<!-- 商品数量 -->
   <view class="onSale-num">
     <view class="onSale-num-buy">
       <view class="onSale-num-text">购买数量：</view>
-      <image src="/resources/minusnum.png" style="width: 40rpx; height: 40rpx;"></image>
-      <image src="/resources/minusnum.png" style="width: 40rpx; height: 40rpx;" wx:if="{{condition}}"></image>
+      <image src="/res/minusnum.png" style="width: 40rpx; height: 40rpx;"></image>
+      <image src="/res/minusnum.png" style="width: 40rpx; height: 40rpx;" wx:if="{{condition}}"></image>
       <view class="onSale-num-price">2</view>
-      <image src="/resources/addnum.png" style="width: 40rpx; height: 40rpx;"></image>
+      <image src="/res/addnum.png" style="width: 40rpx; height: 40rpx;"></image>
     </view>
     <view class="onSale-num-resale">
       <view class="onSale-num-text">转售：</view>
-      <image src="/resources/minusnum.png" style="width: 40rpx; height: 40rpx;"></image>
+      <image src="/res/minusnum.png" style="width: 40rpx; height: 40rpx;"></image>
       <view class="onSale-num-price">2</view>
-      <image src="/resources/addnum.png" style="width: 40rpx; height: 40rpx;"></image>
+      <image src="/res/addnum.png" style="width: 40rpx; height: 40rpx;"></image>
     </view>
   </view>
 </view>
+<!-- 分割线 -->
 <view class="divide"></view>
+<!-- 总价 -->
 <view class="total">
   <view class="total-text">合计</view>
   <view class="total-price">￥128</view>
 </view>
+<!-- 买家留言 -->
 <view class="message">
   <view class="message-text">买家留言:</view>
   <textarea class="message-input" auto-height placeholder="点击给商家留言" />
 </view>
+<!-- 提交 -->
 <view class="onSale-submit">
   <view class="onSale-submit-text">合计:￥128</view>
   <view class="onSale-submit-button">

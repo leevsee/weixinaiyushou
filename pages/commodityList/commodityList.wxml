@@ -1,6 +1,6 @@
 <!-- 头部信息 -->
 <view class="headViewCtrl">
-  <image src="/resources/location.png" style="width: 100rpx; height: 100rpx;"></image>
+  <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
   <view class="headViewCtrl-text">
     <view class="headViewCtrl-textcontent1">预售选品标准：</view>
     <view class="headViewCtrl-textcontent2">限量、特价，15天内供应上市</view>
@@ -21,11 +21,11 @@
 <!-- 商品图片视频信息 -->
 <view class="commodity-detail">
   <view class="commodity-detail-pic">
-    <image src="/resources/tupian.png" style="width: 40rpx; height: 40rpx;"></image>
+    <image src="/res/tupian.png" style="width: 40rpx; height: 40rpx;"></image>
     <view class="classname">图片(3)</view>
   </view>
   <view class="commodity-detail-video">
-    <image src="/resources/shipin.png" style="width: 40rpx; height: 40rpx;"></image>
+    <image src="/res/shipin.png" style="width: 40rpx; height: 40rpx;"></image>
     <view class="classname">视频(3)</view>
   </view>
   <view class="commodity-detail-price">
@@ -44,14 +44,14 @@
 <scroll-view class="scroll-view_H" scroll-x="true" bindscrolltolower="scrollTest">
   <view class="scroll-view-warp">
     <view class="commodity-transfer">
-      <image src="/resources/touxiang1.jpg" style="width: 80rpx; height: 80rpx;"></image>
+      <image src="/res/touxiang1.jpg" style="width: 80rpx; height: 80rpx;"></image>
       <view class="commodity-transfer-content">
         <view class="commodity-transfer-price">转让1份，158元/份</view>
         <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
       </view>
     </view>
     <view class="commodity-transfer">
-      <image src="/resources/touxiang1.jpg" style="width: 80rpx; height: 80rpx;"></image>
+      <image src="/res/touxiang1.jpg" style="width: 80rpx; height: 80rpx;"></image>
       <view class="commodity-transfer-content">
         <view class="commodity-transfer-price">转让1份，158元/份</view>
         <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
@@ -61,14 +61,14 @@
   
   <view class="scroll-view-warp">
     <view class="commodity-transfer">
-      <image src="/resources/touxiang1.jpg" style="width: 80rpx; height: 80rpx;"></image>
+      <image src="/res/touxiang1.jpg" style="width: 80rpx; height: 80rpx;"></image>
       <view class="commodity-transfer-content">
         <view class="commodity-transfer-price">转让1份，158元/份</view>
         <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
       </view>
     </view>
     <view class="commodity-transfer">
-      <image src="/resources/touxiang1.jpg" style="width: 80rpx; height: 80rpx;"></image>
+      <image src="/res/touxiang1.jpg" style="width: 80rpx; height: 80rpx;"></image>
       <view class="commodity-transfer-content">
         <view class="commodity-transfer-price">转让1份，158元/份</view>
         <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>

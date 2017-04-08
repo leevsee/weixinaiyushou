@@ -1,5 +1,5 @@
 <view class="headViewCtrl">
-  <image src="/resources/location.png" style="width: 100rpx; height: 100rpx;"></image>
+  <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
   <text>发现身边的限量版！</text>
 </view>
 
@@ -13,19 +13,19 @@
 
 <view class="categoryCtrl">
   <view class="categoryBrandView">
-    <image src="/resources/others.png" style="width: 40rpx; height: 40rpx;"></image>
+    <image src="/res/others.png" style="width: 40rpx; height: 40rpx;"></image>
     <text>邕宁特色馆（2）</text>
   </view>
   <view class="categoryBrandView">
-    <image src="/resources/others.png" style="width: 40rpx; height: 40rpx;"></image>
+    <image src="/res/others.png" style="width: 40rpx; height: 40rpx;"></image>
     <text>禾塘鲜生（2）</text>
   </view>
   <view class="categoryBrandView">
-    <image src="/resources/others.png" style="width: 40rpx; height: 40rpx;"></image>
+    <image src="/res/others.png" style="width: 40rpx; height: 40rpx;"></image>
     <text>YOONI·CAKE（2）</text>
   </view>
   <view class="categoryBrandView">
-    <image src="/resources/others.png" style="width: 40rpx; height: 40rpx;"></image>
+    <image src="/res/others.png" style="width: 40rpx; height: 40rpx;"></image>
     <text>红酒兵法（2）</text>
   </view>
 </view>
@@ -34,7 +34,7 @@
 
 <view class="headline">
   <view class="headline-image">
-    <image src="/resources/others.png" style="width: 100rpx; height: 100rpx;"></image>
+    <image src="/res/others.png" style="width: 100rpx; height: 100rpx;"></image>
   </view>
   <view class="headline-content">
     <view class="headline-slider">

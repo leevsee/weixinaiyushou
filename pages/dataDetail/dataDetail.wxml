@@ -1,8 +1,0 @@
-<view  wx:if="{{condition}}">
-  妹纸都不点，点文字，是不是傻？
-  （其实是因为懒。。。这里没写）
-</view>
-
-<view  wx:else>
-  <image class="picView"  mode="aspectFit" src="{{meizhi}}"></image>
-</view>

@@ -1,14 +1,10 @@
 {
   "pages":[
+    "pages/postage/postage",
     "pages/purchase/purchase",
     "pages/commodityList/commodityList",
     "pages/home/home",
-    
-    "pages/swiperTest/swiperTest",
-    "pages/testParm/testParm",
-    "pages/index/index",
-    "pages/map/map",
-    "pages/dataDetail/dataDetail",    
+    "pages/index/index", 
     "pages/logs/logs"
     
   ],
@@ -36,5 +32,6 @@
       "iconPath":"resources/me.png",
       "selectedIconPath":"resources/me1.png"
     }]
-  }
+  },
+  "debug":true
 }

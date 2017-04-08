@@ -1,0 +1,10 @@
+<view class="headViewCtrl">
+  <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
+  <view class="headViewCtrl-text">
+    <view class="headViewCtrl-textcontent1">提货站服务标准：</view>
+    <view class="headViewCtrl-textcontent2">自助提货，小区内免费送货上门</view>
+  </view>
+</view>
+
+<!-- 分割线 -->
+<view class="divide"></view>
