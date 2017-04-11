@@ -1,17 +1,19 @@
 {
   "pages":[
+    "pages/home/home",
+    "pages/index/index", 
     "pages/postage/postage",
     "pages/purchase/purchase",
     "pages/commodityList/commodityList",
-    "pages/home/home",
-    "pages/index/index", 
+    
+    
     "pages/logs/logs"
     
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "爱预售",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
@@ -19,18 +21,18 @@
     "list": [{
       "pagePath": "pages/commodityList/commodityList",
       "text": "提货站",
-      "iconPath":"resources/tihuo.png",
-      "selectedIconPath":"resources/tihuo1.png"
+      "iconPath":"res/tihuo.png",
+      "selectedIconPath":"res/tihuo1.png"
     }, {
       "pagePath": "pages/home/home",
       "text": "爱预售",
-      "iconPath":"resources/home.png",
-      "selectedIconPath":"resources/home1.png"
+      "iconPath":"res/home.png",
+      "selectedIconPath":"res/home1.png"
     }, {
       "pagePath": "pages/index/index",
       "text": "我",
-      "iconPath":"resources/me.png",
-      "selectedIconPath":"resources/me1.png"
+      "iconPath":"res/me.png",
+      "selectedIconPath":"res/me1.png"
     }]
   },
   "debug":true
