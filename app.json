@@ -1,12 +1,10 @@
 {
   "pages":[
-    "pages/home/home",
-    "pages/index/index", 
-    "pages/postage/postage",
     "pages/purchase/purchase",
     "pages/commodityList/commodityList",
-    
-    
+    "pages/home/home",
+    "pages/postage/postage",
+    "pages/index/index", 
     "pages/logs/logs"
     
   ],

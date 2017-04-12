@@ -1,79 +1,111 @@
-.headViewCtrl {
-  display: flex;
-  /*justify-content: center;*/
-  align-items: center;
+@import "../../coommon/animation.wxss";
+@import "../../coommon/coommon.wxss";
+
+.commodity-head {
   margin-top: 1%;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
   margin-left: 3%;
 }
 
-.headViewCtrl-text {
+.commodity-head-text {
   display: flex;
   flex-direction: column;
-  margin-left: 5%;
+  margin-left: 2%;
+  width: 83%;
 }
 
-.headViewCtrl-textcontent1 {
-  font-size: 36rpx;
-}
-
-.headViewCtrl-textcontent2 {
+.commodity-head-textcontent1 {
+  color: #1392e3;
   font-size: 34rpx;
 }
 
-.divide {
-  width: 100%;
-  height: 6rpx;
-  background-color: coral;
-  margin-bottom: 3%;
+.commodity-head-textcontent2 {
+  margin-top: 1%;
+  font-size: 32rpx;
 }
 
-.swiperView {
-  height: 500rpx;
+.commodity-head-divide {
+  height: 1rpx;
+  background-color: #1392e3;
 }
 
 .commodity-name {
-  /*font-size: 36rpx;*/
-  font-weight: bold;
-}
-
-.swiperPic {
-  text-align: center;
+  padding-top: 2%;
+  font-size: 36rpx;
 }
 
 .commodity-detail {
-  display: flex;
   justify-content: space-around;
-  align-items: center;
   margin-top: 2%;
 }
 
-.commodity-detail-pic {
-  display: flex;
-  align-items:center;
+.commodity-detail-width {
+  width: 25%;
+  padding-bottom: 1%;
 }
 
-.commodity-detail-video {
-  display: flex;
-  align-items:center;
+.commodity-detail-text {
+  padding-top: 5%;
+  font-size: 28rpx;
+}
+
+.commodity-detail-discount {
+  padding-top: 5%;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1392e3;
 }
 
 .commodity-detail-price {
+  padding-top: 5%;
+  font-size: 30rpx;
+  /*font-weight: bold;*/
+  text-decoration: line-through;
+  color: #666;
 }
 
 .commodity-detail-buy {
+  padding-bottom: 0;
+}
+
+.commodity-detail-buy-text {
+  line-height: 105rpx;
+  text-align: center;
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: white;
+  background-color: #1392e3;
 }
 
 .commodity-introduce {
-  /*display: flex;*/
-  margin: 2%;
-  border: 2rpx solid #000;
-  /*float: right;*/
+  margin: 3%;
+  /*border: 2rpx solid #000;*/
+}
+
+.commodity-introduce-head {
+  color: #1392e3;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 1%;
+}
+
+.commodity-introduce-divide {
+  /*position: absolute;*/
+  height: 1rpx;
+  background-color: #1392e3;
+  margin-bottom: 2%;
+}
+
+.commodity-introduce-text {
+  font-size: 36rpx;
 }
 
 .commodity-introducer {
   display: flex;
   justify-content: flex-end;
+  margin-top: 1%;
+  font-size: 36rpx;
   /*float:right;*/
 }
 
@@ -84,7 +116,7 @@
 
 .scroll-view_H {
   white-space: nowrap;
-  height: 300rpx;
+  height: 200rpx;
 }
 
 .commodity-transfer {
@@ -105,8 +137,16 @@
   width: 82%;
 }
 
+.commodity-transfer-Avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+}
+
 .commodity-transfer-price {
   margin-bottom: 1%;
+  font-size: 36rpx;
+  color: #1392e3;
 }
 
 .commodity-transfer-text {
@@ -115,4 +155,3 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-

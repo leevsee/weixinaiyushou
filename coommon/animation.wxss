@@ -1,0 +1,29 @@
+@keyframes swiperSlide {
+  0% {
+    margin-top: 0;
+  }
+
+  23% {
+    margin-top: 0;
+  }
+
+  33% {
+    margin-top: -100rpx;
+  }
+
+  56% {
+    margin-top: -100rpx;
+  }
+
+  66% {
+    margin-top: -200rpx;
+  }
+
+  90% {
+    margin-top: -200rpx;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}

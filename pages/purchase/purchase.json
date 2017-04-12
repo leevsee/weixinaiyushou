@@ -1,3 +1,5 @@
 {
-    "navigationBarTitleText": "预售商品下单"
+    "navigationBarBackgroundColor":"#1392e3",
+    "navigationBarTextStyle":"white",
+    "navigationBarTitleText": "确认订单"
 }
