@@ -1,5 +1,5 @@
-@import "../../coommon/animation.wxss";
-@import "../../coommon/coommon.wxss";
+@import "../../common/animation.wxss";
+@import "../../common/common.wxss";
 
 page {
   background: #f1f1f1;
@@ -75,10 +75,6 @@ page {
 .onSale-name-but {
   width: 36rpx;
   height: 36rpx;
-}
-
-.purchase-divide {
-  height: 1rpx;
 }
 
 .onSale-postage {

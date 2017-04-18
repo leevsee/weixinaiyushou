@@ -12,108 +12,231 @@
     </view>
   </view>
 </view>
+<scroll-view class="scroll-view_y" scroll-y="true" bindscrolltolower="scrollTest">
+  
+  <view class="commodity-wrap">
+    <!-- 分割线 -->
+    <view class="divide"></view>
 
-<!-- 分割线 -->
-<view class="divide"></view>
+    <!-- 商品标题 -->
+    <view class="commodity-name">【邕宁特色馆】散养土鸡2.5只/斤</view>
 
-<!-- 商品标题 -->
-<view class="commodity-name">【邕宁特色馆】散养土鸡2.5只/斤</view>
-
-<!-- 商品图片轮播 -->
-<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
-  <block wx:for="{{imgUrls}}">
-    <swiper-item class="swiperPic">
-      <image src="{{item}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" />
-    </swiper-item>
-  </block>
-</swiper>
-
-<!-- 商品图片视频信息 -->
-<view class="rowView commodity-detail">
-  <view class="columnView commodity-detail-width">
-    <image src="/res/commodity_pic.png" style="width: 50rpx; height: 50rpx;"></image>
-    <view class="commodity-detail-text">
-      <text>图片(3)</text>
-    </view>
-  </view>
-  <view class="columnView commodity-detail-width">
-    <image src="/res/commodity_vedio.png" style="width: 50rpx; height: 50rpx;"></image>
-    <view class="commodity-detail-text">
-      <text>视频(3)</text>
-    </view>
-  </view>
-  <view class="columnView commodity-detail-width">
-    <view class="commodity-detail-discount">￥57.99</view>
-    <view class="commodity-detail-price">￥58.00</view>
-  </view>
-  <view class="columnView commodity-detail-width commodity-detail-buy">
-    <view class="commodity-detail-buy-text">
-      <text>立刻购买</text>
+    <!-- 商品图片 -->
+    <view class="commodity-pic">
+      <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" mode="scaleToFill" style="width: 100%; height: 100%;"></image>
     </view>
 
-    <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 立刻购买 </button>-->
-  </view>
-</view>
+    <!-- 商品图片轮播 -->
 
-<!-- 分割线 -->
-<view class="divide"></view>
+    <!--<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item class="swiperPic">
+          <image src="{{item}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" />
+        </swiper-item>
+      </block>
+    </swiper>-->
 
-<!-- 商品选货人说明 -->
-<view class="commodity-introduce">
-  <view class="commodity-introduce-head">
-    <text>商品说明</text>
-  </view>
-  <view class="divide commodity-introduce-divide"></view>
-  <view class="commodity-introduce-text">
-    <text>这批土鸡由邕宁区罗马村贫团户张志海供货，散养了180多天，爱预售公司将统一屠宰真空包装后送货到厢竹大道33号提货站。</text>
-  </view>
-  <view class="commodity-introduce-text">
-    <text>预售截止日期：2017年3月20日。</text>
-  </view>
-  <view class="commodity-introducer">——选品专员小王</view>
-</view>
-
-<!-- 分割线 -->
-<view class="divide"></view>
-
-<!-- 商品转让信息 -->
-<view class="commodity-introduce">
-  <view class="commodity-introduce-head">
-    <text>转让信息</text>
-  </view>
-  <view class="divide commodity-introduce-divide"></view>
-  <scroll-view class="scroll-view_H" scroll-x="true" bindscrolltolower="scrollTest">
-    <view class="scroll-view-warp">
-      <view class="commodity-transfer">
-        <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar" style=""></image>
-        <view class="commodity-transfer-content">
-          <view class="commodity-transfer-price">转让1份，158元/份</view>
-          <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+    <!-- 商品图片视频信息 -->
+    <view class="rowView commodity-detail">
+      <view class="columnView commodity-detail-width">
+        <image src="/res/commodity_pic.png" style="width: 50rpx; height: 50rpx;"></image>
+        <view class="commodity-detail-text">
+          <text>图片</text>
         </view>
       </view>
-      <view class="commodity-transfer">
-        <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
-        <view class="commodity-transfer-content">
-          <view class="commodity-transfer-price">转让1份，158元/份</view>
-          <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+      <view class="columnView commodity-detail-width">
+        <image src="/res/commodity_vedio.png" style="width: 50rpx; height: 50rpx;"></image>
+        <view class="commodity-detail-text">
+          <text>视频</text>
         </view>
+      </view>
+      <view class="columnView commodity-detail-width">
+        <view class="commodity-detail-discount">￥57.99</view>
+        <view class="commodity-detail-price">￥58.00</view>
+      </view>
+      <view class="columnView commodity-detail-width commodity-detail-buy" bindtap="goToPurchase">
+        <view class="commodity-detail-buy-text">
+          <text>立刻购买</text>
+        </view>
+
+        <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 立刻购买 </button>-->
       </view>
     </view>
-    <view class="scroll-view-warp">
-      <view class="commodity-transfer">
-        <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
-        <view class="commodity-transfer-content">
-          <view class="commodity-transfer-price">转让1份，158元/份</view>
-          <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+
+    <!-- 分割线 -->
+    <view class="divide"></view>
+
+    <!-- 商品选说明 -->
+    <view class="commodity-introduce">
+      <view class="commodity-introduce-head">
+        <text>商品说明</text>
+      </view>
+      <view class="divide commodity-introduce-divide"></view>
+      <view class="commodity-introduce-text">
+        <text>这批土鸡由邕宁区罗马村贫团户张志海供货，散养了180多天，爱预售公司将统一屠宰真空包装后送货到厢竹大道33号提货站。</text>
+      </view>
+      <view class="commodity-introduce-text">
+        <text>预售截止日期：2017年3月20日。</text>
+      </view>
+      <view class="commodity-introducer">——选品专员小王</view>
+    </view>
+
+    <!-- 分割线 -->
+    <view class="divide"></view>
+
+    <!-- 商品转让信息 -->
+    <view class="commodity-introduce">
+      <view class="commodity-introduce-head">
+        <text>转让信息</text>
+      </view>
+      <view class="divide commodity-introduce-divide"></view>
+      <scroll-view class="scroll-view_H" scroll-x="true" bindscrolltolower="scrollTest">
+        <view class="scroll-view-warp">
+          <view class="commodity-transfer">
+            <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar" style=""></image>
+            <view class="commodity-transfer-content">
+              <view class="commodity-transfer-price">转让1份，158元/份</view>
+              <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+            </view>
+          </view>
+          <view class="commodity-transfer">
+            <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
+            <view class="commodity-transfer-content">
+              <view class="commodity-transfer-price">转让1份，158元/份</view>
+              <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+            </view>
+          </view>
+        </view>
+        <view class="scroll-view-warp">
+          <view class="commodity-transfer">
+            <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
+            <view class="commodity-transfer-content">
+              <view class="commodity-transfer-price">转让1份，158元/份</view>
+              <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+            </view>
+          </view>
+          <view class="commodity-transfer">
+            <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
+            <view class="commodity-transfer-content">
+              <view class="commodity-transfer-price">转让1份，158元/份</view>
+              <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+    <view class="commodity-wrap">
+    <!-- 分割线 -->
+    <view class="divide"></view>
+
+    <!-- 商品标题 -->
+    <view class="commodity-name">【邕宁特色馆】散养土鸡2.5只/斤</view>
+
+    <!-- 商品图片 -->
+    <view class="commodity-pic">
+      <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" mode="scaleToFill" style="width: 100%; height: 100%;"></image>
+    </view>
+
+    <!-- 商品图片轮播 -->
+
+    <!--<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item class="swiperPic">
+          <image src="{{item}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" />
+        </swiper-item>
+      </block>
+    </swiper>-->
+
+    <!-- 商品图片视频信息 -->
+    <view class="rowView commodity-detail">
+      <view class="columnView commodity-detail-width">
+        <image src="/res/commodity_pic.png" style="width: 50rpx; height: 50rpx;"></image>
+        <view class="commodity-detail-text">
+          <text>图片</text>
         </view>
       </view>
-      <view class="commodity-transfer">
-        <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
-        <view class="commodity-transfer-content">
-          <view class="commodity-transfer-price">转让1份，158元/份</view>
-          <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+      <view class="columnView commodity-detail-width">
+        <image src="/res/commodity_vedio.png" style="width: 50rpx; height: 50rpx;"></image>
+        <view class="commodity-detail-text">
+          <text>视频</text>
         </view>
+      </view>
+      <view class="columnView commodity-detail-width">
+        <view class="commodity-detail-discount">￥57.99</view>
+        <view class="commodity-detail-price">￥58.00</view>
+      </view>
+      <view class="columnView commodity-detail-width commodity-detail-buy" bindtap="goToPurchase">
+        <view class="commodity-detail-buy-text">
+          <text>立刻购买</text>
+        </view>
+
+        <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 立刻购买 </button>-->
       </view>
     </view>
-  </scroll-view>
-</view>
+
+    <!-- 分割线 -->
+    <view class="divide"></view>
+
+    <!-- 商品选说明 -->
+    <view class="commodity-introduce">
+      <view class="commodity-introduce-head">
+        <text>商品说明</text>
+      </view>
+      <view class="divide commodity-introduce-divide"></view>
+      <view class="commodity-introduce-text">
+        <text>这批土鸡由邕宁区罗马村贫团户张志海供货，散养了180多天，爱预售公司将统一屠宰真空包装后送货到厢竹大道33号提货站。</text>
+      </view>
+      <view class="commodity-introduce-text">
+        <text>预售截止日期：2017年3月20日。</text>
+      </view>
+      <view class="commodity-introducer">——选品专员小王</view>
+    </view>
+
+    <!-- 分割线 -->
+    <view class="divide"></view>
+
+    <!-- 商品转让信息 -->
+    <view class="commodity-introduce">
+      <view class="commodity-introduce-head">
+        <text>转让信息</text>
+      </view>
+      <view class="divide commodity-introduce-divide"></view>
+      <scroll-view class="scroll-view_H" scroll-x="true" bindscrolltolower="scrollTest">
+        <view class="scroll-view-warp">
+          <view class="commodity-transfer">
+            <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar" style=""></image>
+            <view class="commodity-transfer-content">
+              <view class="commodity-transfer-price">转让1份，158元/份</view>
+              <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+            </view>
+          </view>
+          <view class="commodity-transfer">
+            <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
+            <view class="commodity-transfer-content">
+              <view class="commodity-transfer-price">转让1份，158元/份</view>
+              <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+            </view>
+          </view>
+        </view>
+        <view class="scroll-view-warp">
+          <view class="commodity-transfer">
+            <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
+            <view class="commodity-transfer-content">
+              <view class="commodity-transfer-price">转让1份，158元/份</view>
+              <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+            </view>
+          </view>
+          <view class="commodity-transfer">
+            <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
+            <view class="commodity-transfer-content">
+              <view class="commodity-transfer-price">转让1份，158元/份</view>
+              <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,14 @@
+.err{
+    margin-top: 50%;
+    text-align: center;
+}
+
+.err-img{
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.err-text{
+    margin-top: 2%;
+    font-size: 30rpx;
+}

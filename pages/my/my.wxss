@@ -1,0 +1,131 @@
+@import "../../common/animation.wxss";
+@import "../../common/common.wxss";
+
+page {
+  background-color: #f1f1f1;
+}
+
+.userinfo {
+  padding: 2% 3% 7% 3%;
+  justify-content: flex-start;
+  background-color: #fff;
+  background-image: url("http://7xz8pr.com1.z1.glb.clouddn.com/me.jpg");
+}
+
+.userinfo-img {
+  margin-left: 3%;
+  border-radius: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.userinfo-content {
+  margin-top: 8%;
+  margin-left: 4%;
+  margin-bottom: 2%;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 150rpx;
+}
+
+.userinfo-name {
+  font-weight: bold;
+}
+
+.userinfo-vip {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.userinfo-progress {
+  height: 14rpx;
+  width: 100%;
+  background: #22a1f2;
+  border-radius: 10rpx;
+}
+
+.userinfo-orange {
+  width: 60%;
+  background: #ffa557;
+  float: left;
+  height: 14rpx;
+  text-align: right;
+  border-radius: 10rpx;
+}
+
+.userinfo-bill {
+  padding: 2% 3% 2% 3%;
+  justify-content: space-around;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.vertical-divide{
+    height: 70rpx;
+    background-color: #f1f1f1;
+    width: 1px;
+}
+
+.userinfo-expenditure-name {
+  margin-bottom: 7%;
+}
+
+.userinfo-income-name {
+  margin-bottom: 7%;
+}
+
+.myOrders{
+    padding: 3%;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #fff;
+}
+
+.myOrders-name{
+    padding-bottom: 3%;
+}
+
+.myOrders-wrap{
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 3%;
+}
+
+.myOrders-item{
+    justify-content: space-around;
+}
+
+.myOrders-text{
+    font-size: 30rpx;
+}
+
+
+.myOrders-img{
+    padding-top: 13%;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.myOrders-color{
+    color: #1392e3;
+    font-size: 34rpx;
+}
+
+.myOrders-sale{
+    width: 100%;
+    font-size: 28rpx;
+}
+
+.myOrders-sale-text{
+    width: 92%;
+}
+
+.myOrders-sale-item{
+    justify-content: space-between;
+       margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.myOrders-del{
+    color: red;
+}

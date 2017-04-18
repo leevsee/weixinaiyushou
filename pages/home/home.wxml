@@ -1,100 +1,103 @@
-<view class="columnView home-head">
-  <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
-  <view class="home-head-text">
-    <text>发现身边的限量版！</text>
-  </view>
-</view>
-
-<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
-  <block wx:for="{{imgUrls}}">
-    <swiper-item class="swiperPic">
-      <image src="{{item}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" />
-    </swiper-item>
-  </block>
-</swiper>
-
-<view class="divide"></view>
-
-<view class="rowView category">
-  <view class="category-brand">
-    <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
-    <view class="category-text">
-      <text>邕宁特色馆(2)</text>
+<block wx:if="{{! showLoading}}">
+  <!-- 头部 -->
+  <view class="columnView home-head">
+    <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
+    <view class="home-head-text">
+      <text>发现身边的限量版！</text>
     </view>
   </view>
-  <view class="category-brand">
-    <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
-    <view class="category-text">
-    <text>禾塘鲜生(2)</text>
-    </view>
-  </view>
-  <view class="category-brand">
-    <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
-    <view class="category-text">
-    <text>YOONI·CAKE(2)</text>
-    </view>
-  </view>
-  <view class="category-brand">
-    <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
-    <view class="category-text">
-    <text>红酒兵法(2)</text>
-    </view>
-  </view>
-</view>
 
-<view class="divide"></view>
+  <!-- 轮播 -->
+  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item class="swiperPic">
+        <image src="{{item}}" mode="scaleToFill" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" style="width:100%;height:100%;" />
+      </swiper-item>
+    </block>
+  </swiper>
 
-<view class="rowView headline-sale">
-  <view class="headline-sale-image">
-    <image src="/res/others.png" style="width: 100rpx; height: 100rpx;"></image>
-  </view>
-  <view class="headline-sale-content">
-    <view class="headline-sale-slider">
-      <block wx:for="{{content}}">
-        <view class="headline-sale-slider-text">
-          <view class="classname" bindtap="mytest" id="1">{{item.wenzhi}}</view>
-          <view class="classname" bindtap="mytest" id="1">{{item.wenzhi}}</view>
-        </view>
-      </block>
+  <!-- 分割线 -->
+  <view class="divide"></view>
 
-      <!--<view class="headline-slider-text">
-        <view class="classname" bindtap="mytest" id="1">优惠多多优惠多多优惠多多，优惠多多！</view>
-        <view class="classname" bindtap="mytest" id="2">全程提货站红酒买一送一，优惠多多！</view>
+  <!-- 大商品分类 -->
+  <view class="rowView category">
+    <view class="category-brand" bindtap="goToCommodityList">
+      <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
+      <view class="category-text">
+        <text>邕宁特色馆(2)</text>
       </view>
-      <view class="headline-slider-text" bindtap="mytest" id="2">2</view>
-      <view class="headline-slider-text" bindtap="mytest" id="3">3</view>-->
+    </view>
+    <view class="category-brand">
+      <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
+      <view class="category-text">
+        <text>禾塘鲜生(2)</text>
+      </view>
+    </view>
+    <view class="category-brand">
+      <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
+      <view class="category-text">
+        <text>YOONI·CAKE(2)</text>
+      </view>
+    </view>
+    <view class="category-brand">
+      <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
+      <view class="category-text">
+        <text>红酒兵法(2)</text>
+      </view>
     </view>
   </view>
-</view>
 
-<view class="divide"></view>
+  <!-- 分割线 -->
+  <view class="divide"></view>
 
-<view class="rowView allcategory">
-  <view class="allcategory-text">
-    <text>鸡鸡(2)</text>
+  <!-- 预售头条 -->
+  <view class="rowView headline-sale">
+    <view class="headline-sale-image">
+      <image src="/res/others.png" style="width: 100rpx; height: 100rpx;"></image>
+    </view>
+    <view class="headline-sale-content">
+      <view class="headline-sale-slider">
+        <block wx:for="{{topLine}}">
+          <view class="headline-sale-slider-text">
+            <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{item[0].LinkUrl}}">{{item[0].Title}}</view>
+            <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{item[0].LinkUrl}}">{{item[1].Title}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
   </view>
-  <view class="allcategory-text">
-    <text>鸭鸭(2)</text>
-  </view>
-  <view class="allcategory-text">
-    <text>猪猪(2)</text>
-  </view>
-  <view class="allcategory-text">
-    <text>羊羊(2)</text>
-  </view>
-  <view class="allcategory-text">
-    <text>鱼鱼(2)</text>
-  </view>
-  <view class="allcategory-text">
-    <text>鹅鹅(2)</text>
-  </view>
-  <view class="allcategory-text">
-    <text>水果(2)</text>
-  </view>
-  <view class="allcategory-text">
-    <text>蔬菜(2)</text>
-  </view>
-  <!--<view class="categoryView">
+
+  <!-- 分割线 -->
+  <view class="divide"></view>
+
+  <!-- 商品分类 -->
+  <view class="rowView allcategory">
+    <view class="allcategory-text">
+      <text>鸡鸡(2)</text>
+    </view>
+    <view class="allcategory-text">
+      <text>鸭鸭(2)</text>
+    </view>
+    <view class="allcategory-text">
+      <text>猪猪(2)</text>
+    </view>
+    <view class="allcategory-text">
+      <text>羊羊(2)</text>
+    </view>
+    <view class="allcategory-text">
+      <text>鱼鱼(2)</text>
+    </view>
+    <view class="allcategory-text">
+      <text>鹅鹅(2)</text>
+    </view>
+    <view class="allcategory-text">
+      <text>水果(2)</text>
+    </view>
+    <view class="allcategory-text">
+      <text>蔬菜(2)</text>
+    </view>
+
+    <!--<view class="categoryView">
     <text>蛋奶(2)</text>
   </view>
   <view class="categoryView">
@@ -103,34 +106,7 @@
   <view class="categoryView">
     <text>酒水(2)</text>
   </view>-->
-</view>
-
-<!--<swiper class="test" autoplay="true" interval="5000" duration="500">
-  <view class="headline">
-    <image src="/resources/others.png" style="width: 50px; height: 50px;"></image>
   </view>
-  <block wx:for="{{content}}">
-    <swiper-item class="swiperTest2">
-      {{item.wenzhi}}
-    </swiper-item>
-  </block>
-</swiper>-->
-
-<!--<swiper class="test" autoplay="true" interval="5000" duration="500">
-  <view class="headline">
-    <image src="/resources/others.png" style="width: 50px; height: 20px;"></image>
-  </view>
-  <block wx:for="{{content}}" >
-    <swiper-item class="swiperTest2">
-      {{item.wenzhi}}
-    </swiper-item>
-  </block>
-</swiper>-->
-
-<!--<view id="wrap" class="wrap">
-  <view id="slider" class="slider">
-    <view class="slider-li" bindtap="mytest" id="1">1</view>
-    <view class="slider-li" bindtap="mytest" id="2">2</view>
-    <view class="slider-li" bindtap="mytest" id="3">3</view>
-  </view>
-</view>-->
+</block>
+<import src="../../component/message/message.wxml" />
+<template is="message" data="{{message: message}}" />

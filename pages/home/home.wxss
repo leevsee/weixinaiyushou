@@ -1,5 +1,7 @@
-@import "../../coommon/animation.wxss";
-@import "../../coommon/coommon.wxss";
+@import "../../common/animation.wxss";
+@import "../../common/common.wxss";
+@import "../../component/err/err.wxss";
+@import "../../component/message/message.wxss";
 
 .home-head {
   margin-top: 1%;

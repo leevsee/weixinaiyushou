@@ -5,13 +5,18 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
-    condition:false,
-    condition1:true,
+    condition: false,
+    condition1: true,
   },
   onLoad: function () {
-   
+
   },
-  radioChange:function(e){
+  radioChange: function (e) {
     console.log(e);
+  },
+  goToOrders: function () {
+    wx.redirectTo({
+      url: '../orders/orders'
+    })
   }
 })

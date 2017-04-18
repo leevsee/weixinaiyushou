@@ -1,0 +1,133 @@
+
+<!-- 我的头像 -->
+<view class="rowView userinfo">
+  <image src="/res/touxiang3.jpg" class="userinfo-img"></image>
+  <view class="columnView userinfo-content">
+    <view class="userinfo-name">人生何处不相逢</view>
+    <view class="userinfo-vip">还差60%升级到华贵铂金会员</view>
+    <view class="userinfo-progress">
+      <view class="userinfo-orange"></view>
+    </view>
+  </view>
+</view>
+
+<!-- 我的收入支出 -->
+<view class="rowView userinfo-bill">
+  <view class="columnView userinfo-expenditure">
+    <view class="userinfo-expenditure-name">
+      <text>支出</text>
+    </view>
+    <view class="userinfo-expenditure-price">
+      <text>￥6520.00</text>
+    </view>
+  </view>
+  <view class="vertical-divide">
+  </view>
+  <view class="columnView">
+    <view class="userinfo-income-name">
+      <text>支出</text>
+    </view>
+    <view class="userinfo-income-price">
+      <text>￥16520.00</text>
+    </view>
+  </view>
+</view>
+
+<!-- 分割线 -->
+<view class="divide"></view>
+
+<!-- 我的订单 -->
+<view class="columnView myOrders">
+  <view class="myOrders-name">
+    <text>我的订单</text>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="thin-divide nopadding-right"></view>
+  <view class="rowView myOrders-wrap">
+    <view class="columnView myOrders-item" bindtap="goToOrders">
+      <view class="myOrders-text">
+        <text>待付款(3)</text>
+      </view>
+      <image src="/res/pay.png" class="myOrders-img"></image>
+    </view>
+    <view class="columnView myOrders-item">
+      <view class="myOrders-text">
+        <text>待发货(3)</text>
+      </view>
+      <image src="/res/send.png" class="myOrders-img"></image>
+    </view>
+    <view class="columnView myOrders-item">
+      <view class="myOrders-text">
+        <text>已收货(3)</text>
+      </view>
+      <image src="/res/sended.png" class="myOrders-img"></image>
+    </view>
+    <view class="columnView myOrders-item">
+      <view class="myOrders-text">
+        <text>已发货(3)</text>
+      </view>
+      <image src="/res/receive.png" class="myOrders-img"></image>
+    </view>
+  </view>
+</view>
+
+<!-- 分割线 -->
+<view class="divide"></view>
+
+<!-- 出售的订单 -->
+<view class="columnView myOrders">
+  <view class="myOrders-name">
+    <text>出售订单</text>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="thin-divide nopadding-right"></view>
+  <view class="rowView myOrders-wrap">
+    <view class="columnView myOrders-item">
+      <view class="myOrders-text">
+        <text>待出售(3)</text>
+      </view>
+      <image src="/res/sale.png" class="myOrders-img"></image>
+    </view>
+    <view class="columnView myOrders-item">
+      <view class="myOrders-text">
+        <text>已出售(3)</text>
+      </view>
+      <image src="/res/send.png" class="myOrders-img"></image>
+    </view>
+    <view class="columnView myOrders-item">
+      <view class="myOrders-text">
+        <text>待提货(3)</text>
+      </view>
+      <image src="/res/take.png" class="myOrders-img"></image>
+    </view>
+  </view>
+</view>
+
+<!-- 分割线 -->
+<view class="divide"></view>
+
+<!-- 我的转售预售 -->
+<view class="columnView myOrders">
+  <view class="myOrders-name myOrders-color">
+    <text>人生何处不相逢的转售预售宝贝</text>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="thin-divide nopadding-right"></view>
+  <view class="myOrders-sale">
+    <view class="rowView myOrders-sale-item">
+      <text class="myOrders-sale-text text-overflow">人生何处不相逢推荐：【邕宁特色馆】散养土鸡人生何处不相逢推荐：【邕宁特色馆】散养土鸡</text>
+      <text class="myOrders-del">删除</text>
+    </view>
+    <view class="rowView myOrders-sale-item">
+      <text class="myOrders-sale-text text-overflow">人生何处不相逢推荐：【邕宁特色馆】散养土鸡人生何处不相逢推荐：【邕宁特色馆】散养土鸡</text>
+      <text class="myOrders-del">删除</text>
+    </view>
+    <view class="rowView myOrders-sale-item">
+      <text class="myOrders-sale-text text-overflow">人生何处不相逢推荐：【邕宁特色馆】散养土鸡</text>
+      <text class="myOrders-del">删除</text>
+    </view>
+  </view>
+</view>

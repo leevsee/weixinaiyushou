@@ -1,3 +1,5 @@
+var api = require('../../common/script/fetch.js')
+
 Page({
   data: {
     imgUrls: [
@@ -5,19 +7,34 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
-    content: [
-      { 'url': 'http', 'wenzhi': '全程提货站红酒买一送一，优惠多多！' },
-      { 'url': 'http', 'wenzhi': '全程提货站红酒买一送一，优惠多多！字数有限制' },
-      { 'url': 'http', 'wenzhi': '全程提货站红酒买一送一，优惠多多！' }
-    ],
-    content1: [
-      { 'url': 'http', 'wenzhi': '优惠多多优惠多多优惠多多，优惠多多！' },
-      { 'url': 'http', 'wenzhi': '上线试运营上线试运营上线试运营上线试运营!' },
-      { 'url': 'http', 'wenzhi': '淘宝网淘宝网淘宝网淘宝网淘宝网淘宝网淘！' }
-    ]
+    classification: '',
+    category: '',
+    topLine:'',
+    showLoading: true,
+    hiddenLoading: true
   },
   onLoad: function () {
-   
+    var that = this;
+    wx.showNavigationBarLoading();
+    wx.showLoading({
+      title: '玩命加载中',
+    });
+    api.getCategory.call(that);
+    api.getTopLine.call(that);
+  },
+  goTotopLine:function(e){
+    console.log(e.currentTarget.dataset);
+  },
+  onPullDownRefresh: function () {
+    var that = this
+    that.setData({
+      classification: '',
+      category: '',
+      showLoading: true,
+      hiddenLoading: true
+    })
+    this.onLoad();
+    wx.stopPullDownRefresh();
   },
   swiperPicOnClick: function (e) {
     console.log(e);
@@ -38,7 +55,9 @@ Page({
       }
     })
   },
-  mytest:function(e){
-    console.log(e);
+  goToCommodityList: function () {
+    wx.navigateTo({
+      url: '../commodityList/commodityList'
+    })
   }
 })

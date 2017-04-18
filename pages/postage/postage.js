@@ -18,7 +18,7 @@ Page({
         });
         console.log("session 未过期");
         console.log(Math.random().toString(36).substr(2) + "====" + Math.random().toString(36).substr(2))
-        
+
       },
       fail: function () {
         console.log("登录态过期");
@@ -48,5 +48,10 @@ Page({
       }
     });
 
+  },
+  goToStation: function () {
+    wx.navigateTo({
+      url: '../selectStation/selectStation'
+    })
   }
 })
