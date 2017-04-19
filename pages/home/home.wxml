@@ -1,4 +1,5 @@
 <block wx:if="{{! showLoading}}">
+
   <!-- 头部 -->
   <view class="columnView home-head">
     <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
@@ -21,13 +22,16 @@
 
   <!-- 大商品分类 -->
   <view class="rowView category">
-    <view class="category-brand" bindtap="goToCommodityList">
-      <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
-      <view class="category-text">
-        <text>邕宁特色馆(2)</text>
+    <block wx:for="{{classification}}">
+      <view class="category-brand" bindtap="goToCommodityList">
+        <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
+        <view class="category-text">
+          <text>{{item.TName}}({{item.CountNumber}})</text>
+        </view>
       </view>
-    </view>
-    <view class="category-brand">
+    </block>
+
+    <!--<view class="category-brand">
       <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
       <view class="category-text">
         <text>禾塘鲜生(2)</text>
@@ -44,7 +48,7 @@
       <view class="category-text">
         <text>红酒兵法(2)</text>
       </view>
-    </view>
+    </view>-->
   </view>
 
   <!-- 分割线 -->
@@ -72,10 +76,13 @@
 
   <!-- 商品分类 -->
   <view class="rowView allcategory">
-    <view class="allcategory-text">
-      <text>鸡鸡(2)</text>
-    </view>
-    <view class="allcategory-text">
+    <block wx:for="{{category}}">
+      <view class="allcategory-text">
+        <text>{{item.TName}}({{item.CountNumber}})</text>
+      </view>
+    </block>
+
+    <!--<view class="allcategory-text">
       <text>鸭鸭(2)</text>
     </view>
     <view class="allcategory-text">
@@ -95,7 +102,7 @@
     </view>
     <view class="allcategory-text">
       <text>蔬菜(2)</text>
-    </view>
+    </view>-->
 
     <!--<view class="categoryView">
     <text>蛋奶(2)</text>

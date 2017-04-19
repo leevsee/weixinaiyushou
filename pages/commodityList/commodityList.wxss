@@ -35,7 +35,7 @@
 
 .scroll-view_y{
   border-top: 2rpx solid #ccc;
-  margin-top: 140rpx;
+  margin-top: 139rpx;
   height: 1030rpx;
 }
 
@@ -51,9 +51,14 @@
   font-size: 36rpx;
 }
 
+.topPadding {
+  padding-top: 1.4%;
+}
+
+
 .commodity-detail {
   justify-content: space-around;
-  margin-top: 2%;
+  /*margin-top: 2%;*/
 }
 
 .commodity-detail-width {

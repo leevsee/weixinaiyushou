@@ -9,23 +9,23 @@
 
 <!-- 收货地址选择 -->
 <view class="rowView addrSelc-content">
-  <view class="addrSelc-content-text">
+  <view class="addrSelc-content-text" bindtap="selectAddres">
     <text>添加收货地址</text>
   </view>
   <image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>
 </view>
 
 <!-- 分割线 -->
-<view class="divide"></view>
+<view class="divide" wx:if="{{address}}"></view>
 
 <!-- 收货地址显示 -->
-<view class="addrView">
+<view class="addrView" wx:if="{{address}}">
   <view class="addr-title">
     <text>收货地址：</text>
   </view>
   <view class="rowView addr-display">
     <view class="addrSelc-content-text">
-      <text>厢竹打到33好公安小区2号铺</text>
+      <text>{{address}}</text>
     </view>
     <image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>
   </view>
@@ -41,12 +41,12 @@
   </view>
   <view class="columnView onSale-name-content">
     <view class="onSale-name-text">【邕宁特色馆】散养土鸡2.5只/斤散养土鸡2.5只/斤散养土鸡2.5只/斤</view>
-    <view class="onSale-name-price">￥118.00</view>
+    <view class="onSale-name-price">￥{{price}}</view>
     <view class="onSale-name-buy">
-      <image src="/res/minusnum.png" class="onSale-name-but"></image>
+      <image src="/res/minusnum.png" class="onSale-name-but" bindtap="subNum"></image>
       <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}"></image>
-      <view class="onSale-name-num">2</view>
-      <image src="/res/addnum.png" class="onSale-name-but"></image>
+      <view class="onSale-name-num">{{num}}</view>
+      <image src="/res/addnum.png" class="onSale-name-but" bindtap="addNum"></image>
     </view>
   </view>
 </view>
@@ -64,7 +64,7 @@
 <!-- 总价 -->
 <view class="rowView total">
   <view class="total-text">合计</view>
-  <view class="total-price">￥128.00</view>
+  <view class="total-price">￥{{totlePrice}}</view>
 </view>
 
 <!-- 买家留言 -->
@@ -110,12 +110,12 @@
 <!-- 选着送货方式 -->
 <view class="onSale-radio-group">
   <view class="onSale-delivery">
-      <image class="onSale-select" src="/res/select.png"></image>
-      <image class="onSale-select" src="/res/no_select.png" wx:if="{{condition}}"></image>
+      <image class="onSale-select" src="/res/select.png" wx:if="{{!condition}}" bindtap=""></image>
+      <image class="onSale-select" src="/res/no_select.png" wx:if="{{condition}}" bindtap=""></image>
     <text>放入提货站待售</text>
     <view class="onSale-name-buy onSale-delivery-num">
-      <image src="/res/minusnum.png" class="onSale-name-but"></image>
-      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}"></image>
+      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{!condition}}" bindtap=""></image>
+      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}" bindtap=""></image>
       <view class="onSale-name-num">2</view>
       <image src="/res/addnum.png" class="onSale-name-but"></image>
     </view>

@@ -1,0 +1,13 @@
+
+.swiperView{
+    height: 800rpx;
+}
+
+.swiperPic{
+    text-align: center;
+}
+
+.swiper-img{
+    width: 100%;
+    /*height: 100%;*/
+}

@@ -12,6 +12,7 @@
     </view>
   </view>
 </view>
+
 <scroll-view class="scroll-view_y" scroll-y="true" bindscrolltolower="scrollTest">
   
   <view class="commodity-wrap">
@@ -38,14 +39,14 @@
 
     <!-- 商品图片视频信息 -->
     <view class="rowView commodity-detail">
-      <view class="columnView commodity-detail-width">
-        <image src="/res/commodity_pic.png" style="width: 50rpx; height: 50rpx;"></image>
+      <view class="columnView commodity-detail-width topPadding" bindtap="goToPic">
+        <image src="/res/commodity_pic.png" style="width: 45rpx; height: 45rpx;"></image>
         <view class="commodity-detail-text">
           <text>图片</text>
         </view>
       </view>
-      <view class="columnView commodity-detail-width">
-        <image src="/res/commodity_vedio.png" style="width: 50rpx; height: 50rpx;"></image>
+      <view class="columnView commodity-detail-width topPadding">
+        <image src="/res/commodity_vedio.png" style="width: 45rpx; height: 45rpx;"></image>
         <view class="commodity-detail-text">
           <text>视频</text>
         </view>
@@ -151,14 +152,14 @@
 
     <!-- 商品图片视频信息 -->
     <view class="rowView commodity-detail">
-      <view class="columnView commodity-detail-width">
-        <image src="/res/commodity_pic.png" style="width: 50rpx; height: 50rpx;"></image>
+      <view class="columnView commodity-detail-width topPadding">
+        <image src="/res/commodity_pic.png" style="width: 45rpx; height: 45rpx;"></image>
         <view class="commodity-detail-text">
           <text>图片</text>
         </view>
       </view>
-      <view class="columnView commodity-detail-width">
-        <image src="/res/commodity_vedio.png" style="width: 50rpx; height: 50rpx;"></image>
+      <view class="columnView commodity-detail-width topPadding">
+        <image src="/res/commodity_vedio.png" style="width: 45rpx; height: 45rpx;"></image>
         <view class="commodity-detail-text">
           <text>视频</text>
         </view>

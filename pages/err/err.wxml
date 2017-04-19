@@ -1,4 +1,0 @@
-<view class="err">
-    <image src="/res/err.png" class="err-img"></image>
-    <view class="err-text">网络开了会小差，点击重新加载</view>
-</view>

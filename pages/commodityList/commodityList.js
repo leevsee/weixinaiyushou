@@ -19,5 +19,10 @@ Page({
     wx.navigateTo({
       url: '../purchase/purchase'
     })
+  },
+  goToPic:function(){
+        wx.navigateTo({
+      url: '../commodityPic/commodityPic'
+    })
   }
 })

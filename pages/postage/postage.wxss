@@ -4,6 +4,7 @@
 page {
   background: #f1f1f1;
 }
+
 /*.headViewCtrl {
   display: flex;
   align-items: center;
@@ -33,12 +34,40 @@ page {
   margin-bottom: 3%;
 }*/
 
+.top-blank {
+  margin-top: 125rpx;
+}
+
+.loading-tip {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #ccc;
+}
 
 .commodity-head {
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 3%;
   background: #fff;
+  position: fixed;
+  height: 110rpx;
+  width: 100%;
+  top: 0;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.commodity-pic {
+  width: 100%;
+  height: 500rpx;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.scroll-view_y {
+  margin-top: 17%;
+  height: 980rpx;
+  /*margin-bottom: 50rpx;*/
 }
 
 .commodity-head-text {
@@ -63,21 +92,20 @@ page {
   background-color: #1392e3;
 }
 
-.postage{
+.postage {
   padding: 3%;
   background: #fff;
 }
 
-.postage-img{
+.postage-img {
   width: 200rpx;
   height: 150rpx;
 }
 
-.postage-info{
-  
+.postage-info {
 }
 
-.postage-info-content{
+.postage-info-content {
   height: 150rpx;
   justify-content: space-between;
   align-items: flex-start;
@@ -99,41 +127,40 @@ page {
   padding-right: inherit;
 }
 
-.postage-info-text{
+.postage-info-text {
   font-size: 30rpx;
 }
 
-.postage-info-button{
+.postage-info-button {
   width: 90%;
 }
 
-.postage-button{
+.postage-button {
   /*color: red;*/
   background-color: #fff;
 }
 
 .postage-button-hover {
-  background-color: #EDEDED;
+  background-color: #ededed;
 }
 
-.logistics{
+.logistics {
   justify-content: flex-start;
   padding: 1% 0 0 2%;
   background: #fff;
 }
 
-.logistics-img{
+.logistics-img {
   width: 50rpx;
   height: 50rpx;
 }
 
-.logistics-text{
+.logistics-text {
   width: 89%;
   margin-left: 2%;
   font-size: 26rpx;
-  color: #666666;
+  color: #666;
 }
-
 
 .commodity-name {
   padding-top: 2%;
@@ -144,8 +171,12 @@ page {
 
 .commodity-detail {
   justify-content: space-around;
-  padding-top: 2%;
+  /*margin-top: 2%;*/
   background: #fff;
+}
+
+.topPadding {
+  padding-top: 1.5%;
 }
 
 .commodity-detail-width {
@@ -187,7 +218,6 @@ page {
   background-color: #1392e3;
 }
 
-
 button::after {
-  border:1px solid #1392e3;
+  border: 1px solid #1392e3;
 }

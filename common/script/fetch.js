@@ -29,13 +29,13 @@ function fetchCategory(cb, fail_cb) {
         },
         method: 'GET',
         success: function (res) {
-            console.log(res);
+            
             wx.hideNavigationBarLoading()
             let allCategory = new Array();
             allCategory[0] = [];
             allCategory[1] = [];
             res.data.map(function (item, i) {
-                if (item.TCode == "002001") {
+                if (item.TCode.substring(0,3) == "001") {
                     allCategory[0].push(item);
                 } else {
                     allCategory[1].push(item);
