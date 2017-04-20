@@ -1,17 +1,13 @@
 {
   "pages": [
-     "pages/home/home",
+    "pages/home/home",
+    "pages/selectStation/selectStation",
     "pages/purchase/purchase",
     "pages/postage/postage",
     "pages/commodityList/commodityList",
-    
-   
     "pages/my/my",
     "pages/orders/orders",
-    "pages/selectStation/selectStation",
-    
     "pages/commodityPic/commodityPic",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {
@@ -23,6 +19,7 @@
   },
   "tabBar": {
     "selectedColor": "red",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/postage/postage",

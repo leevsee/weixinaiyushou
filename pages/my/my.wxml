@@ -25,7 +25,7 @@
   </view>
   <view class="columnView">
     <view class="userinfo-income-name">
-      <text>支出</text>
+      <text>收入</text>
     </view>
     <view class="userinfo-income-price">
       <text>￥16520.00</text>

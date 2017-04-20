@@ -30,29 +30,27 @@
   background-color: #1392e3;
 }
 
-
-.postage{
+.postage {
   padding: 3%;
   background: #fff;
 }
 
-
-.station-text{
+.station-text {
   font-size: 30rpx;
   margin-bottom: 2%;
 }
 
-.station-button{
+.station-button {
   /*color: red;*/
-  background-color: #4BCDBF;
+  background-color: #4bcdbf;
 }
 
 .postage-button-hover {
-  background-color: #63EADC;
+  background-color: #63eadc;
 }
 
 button::after {
-  border:0px;
+  border: 0px;
 }
 
 .commodity-introduce-head {
@@ -70,32 +68,43 @@ button::after {
   padding-right: inherit;
 }
 
-.station-scroll{
-    height: 400rpx;
+.station-pic {
+  width: 100%;
+  height: 500rpx;
 }
 
-.bordertop{
-    border-top: 1px solid #f1f1f1;
+.station-img {
+  width: 100%;
+  height: 100%;
 }
 
-.station-item{
-    padding: 3%;
-    justify-content: space-between;
-    /*border-top: 1px solid #f1f1f1;*/
-    border-bottom: 1px solid #f1f1f1;
+.station-scroll {
+  margin-top: 1rpx;
+  height: 380rpx;
 }
 
-.station-item-img{
-    width: 40rpx;
-    height: 40rpx;
+.bordertop {
+  border-top: 1px solid #f1f1f1;
 }
 
-.station-item-head{
-    font-size: 30rpx;
+.station-item {
+  padding: 3%;
+  justify-content: space-between;
+  /*border-top: 1px solid #f1f1f1;*/
+  border-bottom: 1px solid #f1f1f1;
 }
 
-.station-item-subhead{
-    margin-top: 2%;
-    font-size: 28rpx;
-    color: #666666;
+.station-item-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.station-item-head {
+  font-size: 30rpx;
+}
+
+.station-item-subhead {
+  margin-top: 2%;
+  font-size: 28rpx;
+  color: #666;
 }

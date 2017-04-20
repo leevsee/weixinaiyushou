@@ -36,6 +36,7 @@ page {
 
 .top-blank {
   margin-top: 125rpx;
+  
 }
 
 .loading-tip {
@@ -43,6 +44,7 @@ page {
   line-height: 80rpx;
   text-align: center;
   color: #ccc;
+  font-size: 28rpx;
 }
 
 .commodity-head {

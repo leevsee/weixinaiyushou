@@ -14,5 +14,11 @@ Page({
     wx.navigateBack({
       
     })
+  },
+  selecStation:function(e){
+    console.log(e.currentTarget.dataset)
+    this.setData({
+      condition:!this.data.condition
+    })
   }
 })

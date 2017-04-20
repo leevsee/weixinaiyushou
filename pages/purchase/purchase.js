@@ -6,11 +6,17 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
     price: '118.00',
-    num: 2,
+    num: 1,
+    postage: 10,
     totlePrice: '128.00',
+    deliveryNum: 1,
+    deliveryPrice: 158,
+    totleDeliveryPrice: 158,
     address: '',
+    message:'',
     condition: false,
-    condition1: true,
+    isDelivery: true,
+    isResale: false
   },
   onLoad: function () {
 
@@ -39,6 +45,22 @@ Page({
       })
     }
   },
+  subDeliveryNum: function () {
+    if (this.data.deliveryNum > 1) {
+      this.setData({
+        deliveryNum: this.data.deliveryNum - 1,
+        totleDeliveryPrice: Number((this.data.deliveryNum - 1) * this.data.deliveryPrice)
+      })
+    }
+  },
+  addDeliveryNum: function () {
+    if (this.data.deliveryNum < this.data.num) {
+      this.setData({
+        deliveryNum: this.data.deliveryNum + 1,
+        totleDeliveryPrice: Number((this.data.deliveryNum + 1) * this.data.deliveryPrice)
+      })
+    }
+  },
   selectAddres: function () {
     let that = this;
     wx.chooseAddress({
@@ -47,6 +69,23 @@ Page({
           address: res.provinceName + res.cityName + res.countyName + res.detailInfo
         })
       }
+    })
+  },
+  isDelivery: function (e) {
+    console.log(e.currentTarget.dataset);
+    this.setData({
+      isDelivery: !this.data.isDelivery
+    })
+  },
+  isResale: function (e) {
+    console.log(e.currentTarget.dataset);
+    this.setData({
+      isResale: !this.data.isResale
+    })
+  },
+  bindTextAreaBlur: function (e) {
+    this.setData({
+      message: e.detail.value
     })
   }
 })

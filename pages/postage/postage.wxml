@@ -22,59 +22,56 @@
   </view>
 </view>
 
+<!-- 分割线 -->
+<view class="divide top-blank"></view>
+
+<!-- 提货站信息 -->
+<view class="postage">
+  <view class="commodity-introduce-head">
+    <text>商品说明</text>
+  </view>
+  <view class="divide commodity-introduce-divide"></view>
+  <view class="rowView postage-info">
+    <image src="/res/postage.jpg" class="postage-img"></image>
+    <view class="columnView postage-info-content">
+      <view class="postage-info-text">
+        <text>广西南宁市青秀区民族大道25号月湾小区</text>
+      </view>
+      <view class="rowView postage-info-button">
+        <button size="mini" bindtap="goToStation" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">重新选择</button>
+        <button size="mini" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">自助开门</button>
+        <button size="mini" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">加盟提货站</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- item -->
+<view class="commodity-wrap">
 
   <!-- 分割线 -->
-  <view class="divide top-blank"></view>
+  <view class="divide"></view>
 
-  <!-- 提货站信息 -->
-  <view class="postage">
-    <view class="commodity-introduce-head">
-      <text>商品说明</text>
-    </view>
-    <view class="divide commodity-introduce-divide"></view>
-    <view class="rowView postage-info">
-      <image src="/res/postage.jpg" class="postage-img"></image>
-      <view class="columnView postage-info-content">
-        <view class="postage-info-text">
-          <text>广西南宁市青秀区民族大道25号月湾小区</text>
-        </view>
-        <view class="rowView postage-info-button">
-          <button size="mini" bindtap="goToStation" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">重新选择</button>
-          <button size="mini" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">自助开门</button>
-          <button size="mini" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">加盟提货站</button>
-        </view>
-      </view>
+  <!-- 商品标题 -->
+  <view class="commodity-name">【邕宁特色馆】散养土鸡2.5只/斤</view>
+
+  <!-- 分割线 -->
+  <view class="thin-divide"></view>
+  <view class="rowView logistics">
+    <image src="/res/wuliu.png" class="logistics-img"></image>
+    <view class="logistics-text text-overflow">
+      <text>2017-2-15 15:24 商品从邕宁集散中心发往厢竹提货站竹提货站竹提货站竹提货站</text>
     </view>
   </view>
 
+  <!-- 商品图片 -->
+  <view class="commodity-pic">
+    <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" mode="scaleToFill" style="width: 100%; height: 100%;"></image>
+  </view>
 
-  
-  <!-- item -->
-  <view class="commodity-wrap">
+  <!-- 商品图片轮播 -->
 
-    <!-- 分割线 -->
-    <view class="divide"></view>
-
-    <!-- 商品标题 -->
-    <view class="commodity-name">【邕宁特色馆】散养土鸡2.5只/斤</view>
-
-    <!-- 分割线 -->
-    <view class="thin-divide"></view>
-    <view class="rowView logistics">
-      <image src="/res/wuliu.png" class="logistics-img"></image>
-      <view class="logistics-text text-overflow">
-        <text>2017-2-15 15:24 商品从邕宁集散中心发往厢竹提货站竹提货站竹提货站竹提货站</text>
-      </view>
-    </view>
-
-    <!-- 商品图片 -->
-    <view class="commodity-pic">
-      <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" mode="scaleToFill" style="width: 100%; height: 100%;"></image>
-    </view>
-
-    <!-- 商品图片轮播 -->
-
-    <!--<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
+  <!--<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
       <block wx:for="{{imgUrls}}">
         <swiper-item class="swiperPic">
           <image src="{{item}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" />
@@ -82,60 +79,60 @@
       </block>
     </swiper>-->
 
-    <!-- 商品图片视频信息 -->
-    <view class="rowView commodity-detail">
-      <view class="columnView commodity-detail-width topPadding">
-        <image src="/res/commodity_pic.png" style="width: 45rpx; height: 45rpx;"></image>
-        <view class="commodity-detail-text">
-          <text>图片</text>
-        </view>
+  <!-- 商品图片视频信息 -->
+  <view class="rowView commodity-detail">
+    <view class="columnView commodity-detail-width topPadding">
+      <image src="/res/commodity_pic.png" style="width: 45rpx; height: 45rpx;"></image>
+      <view class="commodity-detail-text">
+        <text>图片</text>
       </view>
-      <view class="columnView commodity-detail-width topPadding">
-        <image src="/res/commodity_vedio.png" style="width: 45rpx; height: 45rpx;"></image>
-        <view class="commodity-detail-text">
-          <text>视频</text>
-        </view>
+    </view>
+    <view class="columnView commodity-detail-width topPadding">
+      <image src="/res/commodity_vedio.png" style="width: 45rpx; height: 45rpx;"></image>
+      <view class="commodity-detail-text">
+        <text>视频</text>
       </view>
-      <view class="columnView commodity-detail-width">
-        <view class="commodity-detail-discount">￥57.99</view>
-        <view class="commodity-detail-price">￥58.00</view>
+    </view>
+    <view class="columnView commodity-detail-width">
+      <view class="commodity-detail-discount">￥57.99</view>
+      <view class="commodity-detail-price">￥58.00</view>
+    </view>
+    <view class="columnView commodity-detail-width commodity-detail-buy">
+      <view class="commodity-detail-buy-text">
+        <text>立刻购买</text>
       </view>
-      <view class="columnView commodity-detail-width commodity-detail-buy">
-        <view class="commodity-detail-buy-text">
-          <text>立刻购买</text>
-        </view>
 
-        <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 立刻购买 </button>-->
-      </view>
+      <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 立刻购买 </button>-->
+    </view>
+  </view>
+</view>
+
+<!-- item -->
+<view class="commodity-wrap">
+
+  <!-- 分割线 -->
+  <view class="divide"></view>
+
+  <!-- 商品标题 -->
+  <view class="commodity-name">【邕宁特色馆】散养土鸡2.5只/斤</view>
+
+  <!-- 分割线 -->
+  <view class="thin-divide"></view>
+  <view class="rowView logistics">
+    <image src="/res/wuliu.png" class="logistics-img"></image>
+    <view class="logistics-text text-overflow">
+      <text>2017-2-15 15:24 商品从邕宁集散中心发往厢竹提货站竹提货站竹提货站竹提货站</text>
     </view>
   </view>
 
-    <!-- item -->
-  <view class="commodity-wrap">
+  <!-- 商品图片 -->
+  <view class="commodity-pic">
+    <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" mode="scaleToFill" style="width: 100%; height: 100%;"></image>
+  </view>
 
-    <!-- 分割线 -->
-    <view class="divide"></view>
+  <!-- 商品图片轮播 -->
 
-    <!-- 商品标题 -->
-    <view class="commodity-name">【邕宁特色馆】散养土鸡2.5只/斤</view>
-
-    <!-- 分割线 -->
-    <view class="thin-divide"></view>
-    <view class="rowView logistics">
-      <image src="/res/wuliu.png" class="logistics-img"></image>
-      <view class="logistics-text text-overflow">
-        <text>2017-2-15 15:24 商品从邕宁集散中心发往厢竹提货站竹提货站竹提货站竹提货站</text>
-      </view>
-    </view>
-
-    <!-- 商品图片 -->
-    <view class="commodity-pic">
-      <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" mode="scaleToFill" style="width: 100%; height: 100%;"></image>
-    </view>
-
-    <!-- 商品图片轮播 -->
-
-    <!--<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
+  <!--<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
       <block wx:for="{{imgUrls}}">
         <swiper-item class="swiperPic">
           <image src="{{item}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" />
@@ -143,31 +140,36 @@
       </block>
     </swiper>-->
 
-    <!-- 商品图片视频信息 -->
-    <view class="rowView commodity-detail">
-      <view class="columnView commodity-detail-width topPadding">
-        <image src="/res/commodity_pic.png" style="width: 45rpx; height: 45rpx;"></image>
-        <view class="commodity-detail-text">
-          <text>图片</text>
-        </view>
-      </view>
-      <view class="columnView commodity-detail-width topPadding">
-        <image src="/res/commodity_vedio.png" style="width: 45rpx; height: 45rpx;"></image>
-        <view class="commodity-detail-text">
-          <text>视频</text>
-        </view>
-      </view>
-      <view class="columnView commodity-detail-width">
-        <view class="commodity-detail-discount">￥57.99</view>
-        <view class="commodity-detail-price">￥58.00</view>
-      </view>
-      <view class="columnView commodity-detail-width commodity-detail-buy">
-        <view class="commodity-detail-buy-text">
-          <text>立刻购买</text>
-        </view>
-
-        <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 立刻购买 </button>-->
+  <!-- 商品图片视频信息 -->
+  <view class="rowView commodity-detail">
+    <view class="columnView commodity-detail-width topPadding">
+      <image src="/res/commodity_pic.png" style="width: 45rpx; height: 45rpx;"></image>
+      <view class="commodity-detail-text">
+        <text>图片</text>
       </view>
     </view>
+    <view class="columnView commodity-detail-width topPadding">
+      <image src="/res/commodity_vedio.png" style="width: 45rpx; height: 45rpx;"></image>
+      <view class="commodity-detail-text">
+        <text>视频</text>
+      </view>
+    </view>
+    <view class="columnView commodity-detail-width">
+      <view class="commodity-detail-discount">￥57.99</view>
+      <view class="commodity-detail-price">￥58.00</view>
+    </view>
+    <view class="columnView commodity-detail-width commodity-detail-buy">
+      <view class="commodity-detail-buy-text">
+        <text>立刻购买</text>
+      </view>
+
+      <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 立刻购买 </button>-->
+    </view>
   </view>
-<view class="loading-tip">没有更多内容了</view>
+</view>
+<block wx:if="{{hasMore}}">
+  <view class="loading-tip">拼命加载中…</view>
+</block>
+<block wx:else>
+  <view class="loading-tip">没有更多内容了</view>
+</block>

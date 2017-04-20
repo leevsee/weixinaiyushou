@@ -27,18 +27,18 @@
   </view>
   <button size="mini" bindtap="goBack" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 5%;">确定</button>
 </view>
-<view class="classname">
-  <image src="/res/postage.jpg"></image>
+<view class="station-pic">
+  <image src="/res/postage.jpg" mode="scaleToFill" class="station-img"></image>
 </view>
 
 <!-- 地点选择 -->
 <scroll-view scroll-y="true" class="station-scroll">
-  <view class="rowView station-item bordertop">
+  <view class="rowView station-item bordertop" bindtap="selecStation" data-station="value">
     <view class="station-item-text">
       <view class="station-item-head">南宁第二中学</view>
       <view class="station-item-subhead">广西壮族自治区南宁市青秀区新民路29号</view>
     </view>
-    <image src="/res/station.png" class="station-item-img"></image>
+    <image src="/res/station.png" class="station-item-img" wx:if="{{condition}}"></image>
   </view>
   <view class="rowView station-item">
     <view class="station-item-text">

@@ -1,5 +1,6 @@
 {
     "navigationBarBackgroundColor": "#1392e3",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "选择提货站"
+    "navigationBarTitleText": "选择提货站",
+    "enablePullDownRefresh": false
 }

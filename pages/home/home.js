@@ -19,6 +19,16 @@ Page({
     wx.showLoading({
       title: '玩命加载中',
     });
+        wx.login({
+      success: function (res) {
+        console.log(res);
+        wx.getUserInfo({
+          success: function (res) {
+            console.log(res);
+          }
+        })
+      }
+    })
     api.getCategory.call(that);
     api.getTopLine.call(that);
   },

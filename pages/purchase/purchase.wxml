@@ -55,7 +55,7 @@
 <view class="thin-divide"></view>
 <view class="rowView onSale-postage">
   <view class="onSale-postage-text">送货/提货费</view>
-  <view class="onSale-postage-price">￥10</view>
+  <view class="onSale-postage-price">￥{{postage}}</view>
 </view>
 
 <!-- 分割线 -->
@@ -69,7 +69,7 @@
 
 <!-- 买家留言 -->
 <view class="message">
-  <textarea class="message-input" placeholder="给卖家留言" />
+  <textarea class="message-input" placeholder="给卖家留言" bindblur="bindTextAreaBlur"/>
 </view>
 
 <!-- 买家留言 -->
@@ -110,20 +110,20 @@
 <!-- 选着送货方式 -->
 <view class="onSale-radio-group">
   <view class="onSale-delivery">
-      <image class="onSale-select" src="/res/select.png" wx:if="{{!condition}}" bindtap=""></image>
-      <image class="onSale-select" src="/res/no_select.png" wx:if="{{condition}}" bindtap=""></image>
+      <image class="onSale-select" src="/res/select.png" wx:if="{{isDelivery}}" bindtap="isDelivery" data-isDelivery="noDelivery"></image>
+      <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isDelivery}}" bindtap="isDelivery" data-isDelivery="isDelivery"></image>
     <text>放入提货站待售</text>
     <view class="onSale-name-buy onSale-delivery-num">
-      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{!condition}}" bindtap=""></image>
-      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}" bindtap=""></image>
-      <view class="onSale-name-num">2</view>
-      <image src="/res/addnum.png" class="onSale-name-but"></image>
+      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{!condition}}" bindtap="subDeliveryNum"></image>
+      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}" bindtap="subDeliveryNum"></image>
+      <view class="onSale-name-num">{{deliveryNum}}</view>
+      <image src="/res/addnum.png" class="onSale-name-but" bindtap="addDeliveryNum"></image>
     </view>
-    <view class="onSale-delivery-price">建议售价：￥158</view>
+    <view class="onSale-delivery-price">建议售价:￥{{totleDeliveryPrice}}</view>
   </view>
   <view class="onSale-resale">
-    <image class="onSale-select" src="/res/no_select.png"></image>
-    <image class="onSale-select" src="/res/no_select.png" wx:if="{{condition}}"></image>
+    <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isResale}}" bindtap="isResale" data-isResale="isResale"></image>
+    <image class="onSale-select" src="/res/select.png" wx:if="{{isResale}}" bindtap="isResale" data-isResale="noResale"></image>
     <text>发货前允许转售</text>
     <!--<view class="onSale-resale-price">建议售价：￥158</view>-->
   </view>
@@ -157,7 +157,7 @@
 
 <!-- 提交 -->
 <view class="rowView onSale-submit">
-  <view class="onSale-submit-text">合计:￥128</view>
+  <view class="onSale-submit-text">合计:￥{{totlePrice}}</view>
   <view class="rowView onSale-submit-button" bindtap="goToOrders">
     <text>立刻付款</text>
 
