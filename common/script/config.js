@@ -6,6 +6,7 @@ module.exports={
     categoryNum:"20",
     apiList:{
         category:url+'Home_Page/CommodityType_Lists',
-        topLine:url+'Home_Page/Get_NewsLists'
+        topLine:url+'Home_Page/Get_NewsLists',
+        commodity:url+'Home_Page/Get_CommodityModel'
     }
 }

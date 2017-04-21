@@ -1,13 +1,15 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/commodityList/commodityList",
+    
     "pages/selectStation/selectStation",
     "pages/purchase/purchase",
     "pages/postage/postage",
-    "pages/commodityList/commodityList",
+    
     "pages/my/my",
     "pages/orders/orders",
-    "pages/commodityPic/commodityPic",
+    "pages/showPic/showPic",
     "pages/logs/logs"
   ],
   "window": {

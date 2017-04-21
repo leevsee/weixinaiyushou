@@ -29,13 +29,13 @@ function fetchCategory(cb, fail_cb) {
         },
         method: 'GET',
         success: function (res) {
-            
+
             wx.hideNavigationBarLoading()
             let allCategory = new Array();
             allCategory[0] = [];
             allCategory[1] = [];
             res.data.map(function (item, i) {
-                if (item.TCode.substring(0,3) == "001") {
+                if (item.TCode.substring(0, 3) == "001") {
                     allCategory[0].push(item);
                 } else {
                     allCategory[1].push(item);
@@ -101,8 +101,33 @@ function fetchTopLine(cb, fail_cb) {
     })
 }
 
+function fetchCommodity(typeCode, num, page, cb, fail_cb) {
+    var that = this;
+    wx.request({
+        url: config.apiList.commodity,
+        data: {
+            FK_TypeCode: typeCode,
+            pageSize: num,
+            pageIndex: page
+        },
+        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        // header: {}, // 设置请求的 header
+        success: function (res) {
+            console.log(res)
+            that.setData({
+                commodityList: res.data
+            });
+            // success
+        },
+        fail: function (res) {
+            // fail
+        }
+    })
+}
+
 
 module.exports = {
     getCategory: fetchCategory,
-    getTopLine: fetchTopLine
+    getTopLine: fetchTopLine,
+    getCommodity: fetchCommodity
 }
