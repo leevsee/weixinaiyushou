@@ -1,0 +1,130 @@
+
+<!--<view class="headViewCtrl">
+  <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
+  <view class="headViewCtrl-text">
+    <view class="headViewCtrl-textcontent1">提货站服务标准：</view>
+    <view class="headViewCtrl-textcontent2">自助提货，小区内免费送货上门</view>
+  </view>
+</view>
+<view class="divide"></view>-->
+<block wx:if="{{! showLoading}}">
+
+  <!-- 头部信息 -->
+  <view class="rowView commodity-head">
+    <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
+    <view class="commodity-head-text">
+      <view class="commodity-head-textcontent1">
+        <text>提货站服务标准：</text>
+      </view>
+      <view class="divide commodity-head-divide"></view>
+      <view class="commodity-head-textcontent2">
+        <text>自助提货，小区内免费送货上门</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divide top-blank"></view>
+
+  <!-- 提货站信息 -->
+  <view class="postage">
+    <view class="commodity-introduce-head">
+      <text>商品说明</text>
+    </view>
+    <view class="divide commodity-introduce-divide"></view>
+    <view class="rowView postage-info">
+      <image src="/res/postage.jpg" class="postage-img"></image>
+      <view class="columnView postage-info-content">
+        <view class="postage-info-text">
+          <text>{{stationName}}</text>
+        </view>
+        <view class="rowView postage-info-button">
+          <view class="btn" bindtap="goToStation">
+            <text>重新选择</text>
+          </view>
+          <view class="btn" bindtap="goToStation">
+            <text>自助开门</text>
+          </view>
+          <view class="btn" bindtap="goToStation">
+            <text>加盟提货站</text>
+          </view>
+
+          <!--<button size="mini" bindtap="goToStation" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">重新选择</button>
+          <button size="mini" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">自助开门</button>
+          <button size="mini" hover-class="postage-button-hover" class="postage-button" style="font-size:24rpx;color:#1392e3;padding:0 3%;">加盟提货站</button>-->
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:for="{{commodityList}}">
+
+    <!-- item -->
+    <view class="commodity-wrap">
+
+      <!-- 分割线 -->
+      <view class="divide"></view>
+
+      <!-- 商品标题 -->
+      <view class="commodity-name">{{item.CommName}}</view>
+
+      <!-- 分割线 -->
+      <view class="thin-divide"></view>
+      <view class="rowView logistics">
+        <image src="/res/wuliu.png" class="logistics-img"></image>
+        <view class="logistics-text text-overflow">
+          <text>2017-2-15 15:24 商品从邕宁集散中心发往厢竹提货站竹提货站竹提货站竹提货站</text>
+        </view>
+      </view>
+
+      <!-- 商品图片 -->
+      <view class="commodity-pic">
+        <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" mode="scaleToFill" style="width: 100%; height: 100%;"></image>
+      </view>
+
+      <!-- 商品图片轮播 -->
+
+      <!--<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item class="swiperPic">
+          <image src="{{item}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" />
+        </swiper-item>
+      </block>
+    </swiper>-->
+
+      <!-- 商品图片视频信息 -->
+      <view class="rowView commodity-detail">
+        <view class="columnView commodity-detail-width topPadding" data-CommCode="{{item.CommCode}}" bindtap="goToPic">
+          <image src="/res/commodity_pic.png" style="width: 45rpx; height: 45rpx;"></image>
+          <view class="commodity-detail-text">
+            <text>图片</text>
+          </view>
+        </view>
+        <view class="columnView commodity-detail-width topPadding" data-CommCode="{{item.CommCode}}" bindtap="goToVideo">
+          <image src="/res/commodity_vedio.png" style="width: 45rpx; height: 45rpx;"></image>
+          <view class="commodity-detail-text">
+            <text>视频</text>
+          </view>
+        </view>
+        <view class="columnView commodity-detail-width">
+          <view class="commodity-detail-discount">￥{{item.SalePrice}}</view>
+          <view class="commodity-detail-price">￥{{item.MarketPrice}}</view>
+        </view>
+        <view class="columnView commodity-detail-width commodity-detail-buy" bindtap="goToPurchase">
+          <view class="commodity-detail-buy-text">
+            <text>立刻购买</text>
+          </view>
+
+          <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 立刻购买 </button>-->
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{hasMore}}">
+    <view class="loading-tip">拼命加载中…</view>
+  </block>
+  <block wx:else>
+    <view class="loading-tip">没有更多内容了</view>
+  </block>
+</block>
+<import src="../../component/message/message.wxml" />
+<template is="message" data="{{message: message}}" />

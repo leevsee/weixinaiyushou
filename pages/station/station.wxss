@@ -1,0 +1,235 @@
+@import "../../common/animation.wxss";
+@import "../../common/common.wxss";
+
+page {
+  background: #f1f1f1;
+}
+
+/*.headViewCtrl {
+  display: flex;
+  align-items: center;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  margin-left: 3%;
+}
+
+.headViewCtrl-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+.headViewCtrl-textcontent1 {
+  font-size: 36rpx;
+}
+
+.headViewCtrl-textcontent2 {
+  font-size: 34rpx;
+}
+
+.divide {
+  width: 100%;
+  height: 6rpx;
+  background-color: coral;
+  margin-bottom: 3%;
+}*/
+
+.top-blank {
+  margin-top: 125rpx;
+  
+}
+
+.loading-tip {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.commodity-head {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 3%;
+  background: #fff;
+  position: fixed;
+  height: 110rpx;
+  width: 100%;
+  top: 0;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.commodity-pic {
+  width: 100%;
+  height: 500rpx;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.scroll-view_y {
+  margin-top: 17%;
+  height: 980rpx;
+  /*margin-bottom: 50rpx;*/
+}
+
+.commodity-head-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  width: 83%;
+}
+
+.commodity-head-textcontent1 {
+  color: #1392e3;
+  font-size: 34rpx;
+}
+
+.commodity-head-textcontent2 {
+  margin-top: 1%;
+  font-size: 32rpx;
+}
+
+.commodity-head-divide {
+  height: 1rpx;
+  background-color: #1392e3;
+}
+
+.postage {
+  padding: 3%;
+  background: #fff;
+}
+
+.postage-img {
+  width: 200rpx;
+  height: 150rpx;
+}
+
+.postage-info {
+}
+
+.postage-info-content {
+  height: 150rpx;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-left: 2%;
+  width: 80%;
+}
+
+.commodity-introduce-head {
+  color: #1392e3;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 1%;
+}
+
+.commodity-introduce-divide {
+  /*position: absolute;*/
+  height: 1rpx;
+  background-color: #1392e3;
+  margin-bottom: 2%;
+  padding-right: inherit;
+}
+
+.postage-info-text {
+  font-size: 30rpx;
+}
+
+.postage-info-button {
+  justify-content: space-around;
+  width: 92%;
+}
+
+.postage-button {
+  /*color: red;*/
+  background-color: #fff;
+}
+
+.btn{
+  font-size:28rpx;
+  color:#1392e3;
+  padding: 1.5%;
+  border: 1rpx solid #1392e3;
+  border-radius: 10rpx;
+}
+
+.postage-button-hover {
+  background-color: #ededed;
+}
+
+.logistics {
+  justify-content: flex-start;
+  padding: 1% 0 0 2%;
+  background: #fff;
+}
+
+.logistics-img {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.logistics-text {
+  width: 89%;
+  margin-left: 2%;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.commodity-name {
+  padding-top: 2%;
+  padding-bottom: 1%;
+  font-size: 36rpx;
+  background: #fff;
+}
+
+.commodity-detail {
+  justify-content: space-around;
+  /*margin-top: 2%;*/
+  background: #fff;
+}
+
+.topPadding {
+  padding-top: 1.5%;
+}
+
+.commodity-detail-width {
+  width: 25%;
+  padding-bottom: 1%;
+}
+
+.commodity-detail-text {
+  padding-top: 5%;
+  font-size: 28rpx;
+}
+
+.commodity-detail-discount {
+  padding-top: 5%;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1392e3;
+}
+
+.commodity-detail-price {
+  padding-top: 5%;
+  font-size: 30rpx;
+  /*font-weight: bold;*/
+  text-decoration: line-through;
+  color: #666;
+}
+
+.commodity-detail-buy {
+  padding-bottom: 0;
+}
+
+.commodity-detail-buy-text {
+  line-height: 105rpx;
+  text-align: center;
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: white;
+  background-color: #1392e3;
+}
+
+button::after {
+  border: 1px solid #1392e3;
+}

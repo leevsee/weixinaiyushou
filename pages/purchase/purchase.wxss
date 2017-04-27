@@ -163,6 +163,10 @@ page {
   font-size: 30rpx;
 }
 
+.onSale-resale-station{
+  padding-left: 8%;
+}
+
 .onSale-resale-price {
   display: flex;
   justify-content: flex-end;

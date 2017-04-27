@@ -1,24 +1,58 @@
+var api = require('../../common/script/fetchStation')
+
 Page({
   data: {
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    condition: false
+    stationId: '',
+    selectStationName: '',
+    stationList: '',
+    condition: false,
+    isFromOrder: false
   },
-  onLoad: function () {
-
+  onLoad: function (options) {
+    if (options.isFromOrder) {
+      this.setData({
+        isFromOrder: options.isFromOrder
+      });
+    }
+    api.getSelectStation.call(this);
   },
   goBack: function () {
-    wx.navigateBack({
-      
-    })
+    if (this.data.isFromOrder) {
+      wx.setStorage({
+        key: 'stationInfo',
+        data: {
+          stationId: this.data.stationId,
+          selectStationName: this.data.selectStationName,
+        },
+        success: function (res) {
+          // success
+          wx.navigateBack({})
+        },
+        fail: function (res) {
+          // fail
+        }
+      })
+
+    } else {
+      wx.reLaunch({
+        url: '../station/station?id=' + this.data.stationId + '&stationname=' + this.data.selectStationName
+      })
+    }
   },
-  selecStation:function(e){
-    console.log(e.currentTarget.dataset)
+  selecStation: function (e) {
+    console.log(e.currentTarget.dataset.stationId)
+    console.log(e.currentTarget.dataset.stationName)
+    this.data.stationList.map(function (item, i) {
+      if (e.currentTarget.id == i) {
+        item.Select = true;
+      } else {
+        item.Select = false;
+      }
+    });
     this.setData({
-      condition:!this.data.condition
+      stationId: e.currentTarget.dataset.stationId,
+      selectStationName: e.currentTarget.dataset.stationName,
+      stationList: this.data.stationList
     })
   }
 })

@@ -2,22 +2,30 @@ const config = require('./config');
 const message = require('../../component/message/message')
 const err = require('../../component/err/err')
 
-function fetchCategory1(codeNum, pageSize, cb) {
+function fetchToken(code, cb, fail_cb) {
     wx.request({
-        url: config.apiList.category,
+        url: config.apiList.loginToken,
         data: {
-            TCode: codeNum,
-            pageSize: config.categoryNum
+            code: code,
         },
-        method: 'GET',
-        success: cb,
+        header: {
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        method: 'POST',
+        success: function (res) {
+            console.log(res.data.ResultData)
+            wx.setStorage({
+                key: "token",
+                data: res.data.ResultData
+            })
+        },
         fail: function (res) {
             // fail
         }
     })
 }
 
-
+//获取分类
 function fetchCategory(cb, fail_cb) {
     var that = this;
     message.hide.call(that);
@@ -60,6 +68,7 @@ function fetchCategory(cb, fail_cb) {
     })
 }
 
+//获取头条
 function fetchTopLine(cb, fail_cb) {
     var that = this;
     message.hide.call(that);
@@ -70,7 +79,6 @@ function fetchTopLine(cb, fail_cb) {
         method: 'GET',
         success: function (res) {
             wx.hideNavigationBarLoading()
-            console.log(res);
             let topLine = new Array();
             for (var i = 0; i < res.data.length; i = i + 2) {
                 topLine[i] = [];
@@ -101,6 +109,7 @@ function fetchTopLine(cb, fail_cb) {
     })
 }
 
+//获取商品列表
 function fetchCommodity(typeCode, num, page, cb, fail_cb) {
     var that = this;
     wx.request({
@@ -113,7 +122,7 @@ function fetchCommodity(typeCode, num, page, cb, fail_cb) {
         method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         // header: {}, // 设置请求的 header
         success: function (res) {
-            console.log(res)
+            // console.log(res)
             that.setData({
                 commodityList: res.data
             });
@@ -126,8 +135,42 @@ function fetchCommodity(typeCode, num, page, cb, fail_cb) {
 }
 
 
+function fetchMyOrder(cb, fail_cb) {
+    var that = this;
+    wx.getStorage({
+        key: 'token',
+        success: function (res) {
+            console.log(res.data);
+            // success
+            wx.request({
+                url: config.apiList.myOrderNum,
+                data: {
+                    token:res.data
+                },
+                method: 'GET',
+                success: function (res) {
+                    // success
+                    console.log(res);
+                    that.setData({
+                        ordersNum:res.data
+                    });
+                },
+                fail: function (res) {
+                    // fail
+                }
+            })
+        },
+        fail: function (res) {
+            // fail
+        }
+    })
+}
+
+
 module.exports = {
+    getToken: fetchToken,
     getCategory: fetchCategory,
     getTopLine: fetchTopLine,
-    getCommodity: fetchCommodity
+    getCommodity: fetchCommodity,
+    getMyOrder:fetchMyOrder
 }

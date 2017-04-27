@@ -25,7 +25,7 @@
   </view>
   <view class="rowView addr-display">
     <view class="addrSelc-content-text">
-      <text>{{address}}</text>
+      <text>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</text>
     </view>
     <image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>
   </view>
@@ -40,7 +40,7 @@
     <image src="/res/niurou.jpg" style="width: 220rpx; height: 150rpx;"></image>
   </view>
   <view class="columnView onSale-name-content">
-    <view class="onSale-name-text">【邕宁特色馆】散养土鸡2.5只/斤散养土鸡2.5只/斤散养土鸡2.5只/斤</view>
+    <view class="onSale-name-text">{{commName}}</view>
     <view class="onSale-name-price">￥{{price}}</view>
     <view class="onSale-name-buy">
       <image src="/res/minusnum.png" class="onSale-name-but" bindtap="subNum"></image>
@@ -69,7 +69,7 @@
 
 <!-- 买家留言 -->
 <view class="message">
-  <textarea class="message-input" placeholder="给卖家留言" bindblur="bindTextAreaBlur"/>
+  <textarea class="message-input" placeholder="给卖家留言" bindblur="bindTextAreaBlur" />
 </view>
 
 <!-- 买家留言 -->
@@ -108,10 +108,10 @@
 </radio-group>-->
 
 <!-- 选着送货方式 -->
-<view class="onSale-radio-group">
+<view class="onSale-radio-group" wx:if="{{dispalyResale}}">
   <view class="onSale-delivery">
-      <image class="onSale-select" src="/res/select.png" wx:if="{{isDelivery}}" bindtap="isDelivery" data-isDelivery="noDelivery"></image>
-      <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isDelivery}}" bindtap="isDelivery" data-isDelivery="isDelivery"></image>
+    <image class="onSale-select" src="/res/select.png" wx:if="{{isDelivery}}" bindtap="isDelivery" data-isDelivery="noDelivery"></image>
+    <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isDelivery}}" bindtap="isDelivery" data-isDelivery="isDelivery"></image>
     <text>放入提货站待售</text>
     <view class="onSale-name-buy onSale-delivery-num">
       <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{!condition}}" bindtap="subDeliveryNum"></image>
@@ -121,10 +121,15 @@
     </view>
     <view class="onSale-delivery-price">建议售价:￥{{totleDeliveryPrice}}</view>
   </view>
+  <view class="onSale-resale onSale-resale-station" wx:if="{{isDelivery}}">
+    <text>已选择提货站：{{stationName}}</text>
+    <!--<view class="onSale-resale-price">建议售价：￥158</view>-->
+  </view>
   <view class="onSale-resale">
     <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isResale}}" bindtap="isResale" data-isResale="isResale"></image>
     <image class="onSale-select" src="/res/select.png" wx:if="{{isResale}}" bindtap="isResale" data-isResale="noResale"></image>
     <text>发货前允许转售</text>
+
     <!--<view class="onSale-resale-price">建议售价：￥158</view>-->
   </view>
 </view>

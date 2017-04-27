@@ -23,7 +23,7 @@
   </view>
   <view class="divide commodity-introduce-divide"></view>
   <view class="station-text">
-    <text>已选择：南宁市第二中学</text>
+    <text >已选择：{{selectStationName}}</text>
   </view>
   <button size="mini" bindtap="goBack" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 5%;">确定</button>
 </view>
@@ -33,39 +33,14 @@
 
 <!-- 地点选择 -->
 <scroll-view scroll-y="true" class="station-scroll">
-  <view class="rowView station-item bordertop" bindtap="selecStation" data-station="value">
+
+
+  <view wx:for="{{stationList}}" id="{{index}}" class="rowView station-item bordertop" bindtap="selecStation" data-station-id="{{item.PK_ID}}" data-station-name="{{item.TName}}">
     <view class="station-item-text">
-      <view class="station-item-head">南宁第二中学</view>
-      <view class="station-item-subhead">广西壮族自治区南宁市青秀区新民路29号</view>
+      <view class="station-item-head">{{item.TName}}</view>
+      <view class="station-item-subhead">{{item.Address}}</view>
     </view>
-    <image src="/res/station.png" class="station-item-img" wx:if="{{condition}}"></image>
+    <image src="/res/station.png" class="station-item-img" wx:if="{{item.Select}}"></image>
   </view>
-  <view class="rowView station-item">
-    <view class="station-item-text">
-      <view class="station-item-head">广西科技馆</view>
-      <view class="station-item-subhead">广西壮族自治区南宁市青秀区新民路29号</view>
-    </view>
-    <image src="/res/station.png" class="station-item-img"></image>
-  </view>
-  <view class="rowView station-item">
-    <view class="station-item-text">
-      <view class="station-item-head">民族广场</view>
-      <view class="station-item-subhead">广西壮族自治区南宁市青秀区新民路29号</view>
-    </view>
-    <image src="/res/station.png" class="station-item-img"></image>
-  </view>
-  <view class="rowView station-item">
-    <view class="station-item-text">
-      <view class="station-item-head">南宁第二中学</view>
-      <view class="station-item-subhead">广西壮族自治区南宁市青秀区新民路29号</view>
-    </view>
-    <image src="/res/station.png" class="station-item-img"></image>
-  </view>
-  <view class="rowView station-item">
-    <view class="station-item-text">
-      <view class="station-item-head">南宁第二中学</view>
-      <view class="station-item-subhead">广西壮族自治区南宁市青秀区新民路29号</view>
-    </view>
-    <image src="/res/station.png" class="station-item-img"></image>
-  </view>
+
 </scroll-view>

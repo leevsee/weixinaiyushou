@@ -1,39 +1,98 @@
+var api = require('../../common/script/fetchOrder')
+
+
 Page({
   data: {
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    price: '118.00',
+    imgUrls: '',
+    commName: '',
+    price: '',
     num: 1,
     postage: 10,
-    totlePrice: '128.00',
+    totlePrice: '',
     deliveryNum: 1,
-    deliveryPrice: 158,
-    totleDeliveryPrice: 158,
+    deliveryPrice: '',
+    totleDeliveryPrice: '',
+    stock: '',
     address: '',
-    message:'',
-    condition: false,
-    isDelivery: true,
-    isResale: false
+    message: '',
+    dispalyResale: true,
+    isDelivery: false,
+    isResale: false,
+    stationId: 0,
+    stationName: '',
+    item: ''
   },
-  onLoad: function () {
-
+  onLoad: function (options) {
+    console.log(options.commcode)
+    api.getOrder.call(this, options.commcode);
+  },
+  onShow: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'stationInfo',
+      success: function (res) {
+        // success
+        that.setData({
+          stationId: res.data.stationId,
+          stationName: res.data.selectStationName,
+          isDelivery: true
+        });
+        wx.removeStorage({
+          key: 'stationInfo',
+          success: function (res) {
+            console.log(res.data)
+          }
+        })
+      },
+      fail: function (res) {
+        // fail
+      }
+    })
   },
   radioChange: function (e) {
     console.log(e);
   },
   goToOrders: function () {
-    wx.redirectTo({
-      url: '../orders/orders'
+    var that = this;
+    wx.getStorage({
+      key: 'token',
+      success: function (res) {
+        // success
+        var data = {
+          FK_SellerUserID: that.data.item.FK_UserId,
+          FK_AddressID: that.data.address.provinceName + that.data.address.cityName + that.data.address.countyName + that.data.address.detailInfo,
+          AMoney: that.data.totlePrice,
+          UserLeaving: that.data.message,
+          CommCode: that.data.item.CommCode,
+          IsResaleAfter: Number(that.data.isDelivery),
+          ResaleCount: that.data.deliveryNum,
+          IsResaleTop: Number(that.data.isResale),
+          PostalCode: that.data.address.postalCode,
+          ProvinceName: that.data.address.provinceName,
+          CityName: that.data.address.cityName,
+          CountyName: that.data.address.countyName,
+          NationalCode: that.data.address.nationalCode,
+          TelNumber: that.data.address.telNumber,
+          UserName: that.data.address.userName,
+          CommCount: that.data.num,
+          FK_TerminalID: that.data.stationId,
+          token: res.data,
+        }
+        api.confirmOrder.call(that, data);
+      },
+      fail: function (res) {
+        // fail
+      },
+      complete: function (res) {
+        // complete
+      }
     })
   },
   subNum: function () {
     if (this.data.num > 1) {
       this.setData({
         num: this.data.num - 1,
-        totlePrice: Number((this.data.num - 1) * this.data.price).toFixed(2)
+        totlePrice: Number(((this.data.num - 1) * this.data.price) + 10).toFixed(2)
       })
     }
   },
@@ -41,7 +100,7 @@ Page({
     if (this.data.num < 99) {
       this.setData({
         num: this.data.num + 1,
-        totlePrice: Number((this.data.num + 1) * this.data.price).toFixed(2)
+        totlePrice: Number(((this.data.num + 1) * this.data.price) + 10).toFixed(2)
       })
     }
   },
@@ -61,21 +120,29 @@ Page({
       })
     }
   },
+  //获取微信地址
   selectAddres: function () {
     let that = this;
     wx.chooseAddress({
       success: function (res) {
+        console.log(res);
         that.setData({
-          address: res.provinceName + res.cityName + res.countyName + res.detailInfo
+          address: res
         })
       }
     })
   },
   isDelivery: function (e) {
     console.log(e.currentTarget.dataset);
-    this.setData({
-      isDelivery: !this.data.isDelivery
-    })
+    if (this.data.isDelivery == false) {
+      wx.navigateTo({
+        url: '../selectStation/selectStation?isFromOrder=true'
+      })
+    } else {
+      this.setData({
+        isDelivery: !this.data.isDelivery
+      })
+    }
   },
   isResale: function (e) {
     console.log(e.currentTarget.dataset);
