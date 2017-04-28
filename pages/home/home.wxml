@@ -57,7 +57,8 @@
   <!-- 预售头条 -->
   <view class="rowView headline-sale">
     <view class="headline-sale-image">
-      <image src="/res/others.png" style="width: 100rpx; height: 100rpx;"></image>
+      <!--<image src="/res/others.png" style="width: 100rpx; height: 100rpx;"></image>-->
+      <text>预售头条</text>
     </view>
     <view class="headline-sale-content">
       <view class="headline-sale-slider">

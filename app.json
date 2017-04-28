@@ -5,7 +5,6 @@
     "pages/commodityList/commodityList",
     "pages/station/station",
     "pages/selectStation/selectStation",
-    "pages/station/station",
     "pages/my/my",
     "pages/purchase/purchase",
     
@@ -21,26 +20,26 @@
     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "selectedColor": "red",
+    "selectedColor": "#1392e3",
     "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/station/station",
         "text": "提货站",
         "iconPath": "res/tihuo.png",
-        "selectedIconPath": "res/tihuo1.png"
+        "selectedIconPath": "res/tihuo_select.png"
       },
       {
         "pagePath": "pages/home/home",
         "text": "爱预售",
         "iconPath": "res/home.png",
-        "selectedIconPath": "res/home1.png"
+        "selectedIconPath": "res/home_select.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我",
         "iconPath": "res/me.png",
-        "selectedIconPath": "res/me1.png"
+        "selectedIconPath": "res/me_select.png"
       }
     ]
   },

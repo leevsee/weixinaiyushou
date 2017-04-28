@@ -39,8 +39,15 @@
 }
 
 .headline-sale-image {
-  margin-left: 2%;
+  padding: 2%;
+  margin-left: 3%;
   margin-right: 2%;
+  text-align: center;
+  width: 12%;
+  font-size: 36rpx;
+  border-radius: 15%;
+  color: white;
+  background-color: #1392e3;
 }
 
 .headline-sale-content {

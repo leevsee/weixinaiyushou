@@ -49,25 +49,25 @@
       <view class="myOrders-text">
         <text>待付款({{ordersNum.Ending_pay}})</text>
       </view>
-      <image src="/res/pay.png" class="myOrders-img"></image>
+      <image src="/res/my_pay.png" class="myOrders-img"></image>
     </view>
     <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="1" data-state="1" data-title="待发货">
       <view class="myOrders-text">
         <text>待发货({{ordersNum.Waiting_delivery}})</text>
       </view>
-      <image src="/res/send.png" class="myOrders-img"></image>
+      <image src="/res/my_send.png" class="myOrders-img"></image>
     </view>
     <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="1" data-state="2" data-title="已收货">
       <view class="myOrders-text">
         <text>已收货({{ordersNum.Already_delivery}})</text>
       </view>
-      <image src="/res/sended.png" class="myOrders-img"></image>
+      <image src="/res/my_sended.png" class="myOrders-img"></image>
     </view>
     <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="1" data-state="3" data-title="已发货">
       <view class="myOrders-text">
         <text>已发货({{ordersNum.Received_goods}})</text>
       </view>
-      <image src="/res/receive.png" class="myOrders-img"></image>
+      <image src="/res/my_receive.png" class="myOrders-img"></image>
     </view>
   </view>
 </view>
@@ -88,19 +88,19 @@
       <view class="myOrders-text">
         <text>待出售({{ordersNum.Pending_sale}})</text>
       </view>
-      <image src="/res/sale.png" class="myOrders-img"></image>
+      <image src="/res/my_sale.png" class="myOrders-img"></image>
     </view>
     <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="2" data-state="1" data-title="已出售">
       <view class="myOrders-text">
         <text>已出售({{ordersNum.Already_sold}})</text>
       </view>
-      <image src="/res/send.png" class="myOrders-img"></image>
+      <image src="/res/my_sended.png" class="myOrders-img"></image>
     </view>
     <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="2" data-state="2" data-title="待提货">
       <view class="myOrders-text">
         <text>待提货({{ordersNum.Take_delivery}})</text>
       </view>
-      <image src="/res/take.png" class="myOrders-img"></image>
+      <image src="/res/my_take.png" class="myOrders-img"></image>
     </view>
   </view>
 </view>
