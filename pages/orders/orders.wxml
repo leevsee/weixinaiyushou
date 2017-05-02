@@ -34,6 +34,6 @@
   <!-- 分割线 -->
   <view class="thin-divide"></view>
   <view class="order-item-but">
-    <button size="mini" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 4%;">去付款</button>
+    <button size="mini" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 4%;" bindtap="goToPay" data-index="{{index}}">去付款</button>
   </view>
 </view>

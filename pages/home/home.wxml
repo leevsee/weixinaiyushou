@@ -2,7 +2,7 @@
 
   <!-- 头部 -->
   <view class="columnView home-head">
-    <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
+    <image src="/res/logo.png" style="width: 100rpx; height: 100rpx;"></image>
     <view class="home-head-text">
       <text>发现身边的限量版！</text>
     </view>
@@ -23,8 +23,8 @@
   <!-- 大商品分类 -->
   <view class="rowView category">
     <block wx:for="{{classification}}">
-      <view class="category-brand" bindtap="goToCommodityList">
-        <image src="/res/defult_icon.png" style="width: 80rpx; height: 80rpx;"></image>
+      <view class="category-brand" bindtap="goToCommodityList" data-TCode="{{item.TCode}}">
+        <image src="/res/{{index}}.png" style="width: 80rpx; height: 80rpx;"></image>
         <view class="category-text">
           <text>{{item.TName}}({{item.CountNumber}})</text>
         </view>
@@ -78,7 +78,7 @@
   <!-- 商品分类 -->
   <view class="rowView allcategory">
     <block wx:for="{{category}}">
-      <view class="allcategory-text">
+      <view class="allcategory-text" bindtap="goToCommodityList" data-TCode="{{item.TCode}}">
         <text>{{item.TName}}({{item.CountNumber}})</text>
       </view>
     </block>

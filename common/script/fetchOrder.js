@@ -55,7 +55,7 @@ function confirmOrder(data, cb, fail_cb) {
     success: function (res) {
       // success
       console.log(res);
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../orders/orders?bs=1&state=0&title=待付款'
       })
     },

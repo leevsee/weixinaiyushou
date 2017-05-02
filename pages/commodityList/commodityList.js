@@ -9,9 +9,10 @@ Page({
     ],
     commodityList: ''
   },
-  onLoad: function () {
+  onLoad: function (options) {
     let that = this;
-    api.getCommodity.call(this, "001001", "10", "0");
+    console.log(options.tcode);    
+    api.getCommodity.call(this, options.tcode, "10", "0");
   }, onReachBottom: function () {
     // Do something when page reach bottom.
     console.log("onReachBottom");

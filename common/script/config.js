@@ -17,5 +17,6 @@ module.exports={
         ordering:url+'User_Order_Information/Add_OrderInformation',
         orders:url+'MyMessage/Get_OrdersFromUserMessage',
         myOrderNum:url+'MyMessage/My_Order',
+        orderPay:url+'WeChatPayment/WeChatPaidByOrder',
     }
 }

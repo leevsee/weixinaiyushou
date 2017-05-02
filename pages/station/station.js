@@ -45,9 +45,10 @@ Page({
       url: '../selectStation/selectStation'
     })
   },
-  goToPurchase: function () {
+  goToPurchase: function (e) {
+    console.log(e.currentTarget.dataset.commcode)
     wx.navigateTo({
-      url: '../purchase/purchase'
+      url: '../purchase/purchase?commcode='+e.currentTarget.dataset.commcode
     })
   },
   goToPic: function (e) {

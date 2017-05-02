@@ -13,7 +13,8 @@ function fetchToken(code, cb, fail_cb) {
         },
         method: 'POST',
         success: function (res) {
-            console.log(res.data.ResultData)
+            console.log('token success')
+            console.log(res.data.ResultData);
             wx.setStorage({
                 key: "token",
                 data: res.data.ResultData
@@ -21,6 +22,7 @@ function fetchToken(code, cb, fail_cb) {
         },
         fail: function (res) {
             // fail
+            console.log('token fail')
         }
     })
 }

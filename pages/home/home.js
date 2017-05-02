@@ -51,9 +51,10 @@ Page({
     console.log(e.target);
     console.log(e.target.dataset);
   },
-  goToCommodityList: function () {
+  goToCommodityList: function (e) {
+    // console.log(e.currentTarget.dataset.tcode)
     wx.navigateTo({
-      url: '../commodityList/commodityList'
+      url: '../commodityList/commodityList?tcode='+e.currentTarget.dataset.tcode
     })
   }
 })
