@@ -1,5 +1,7 @@
 @import "../../common/animation.wxss";
 @import "../../common/common.wxss";
+@import "../../component/err/err.wxss";
+@import "../../component/message/message.wxss";
 
 .commodity-head {
   padding-top: 1%;

@@ -6,9 +6,14 @@ Page({
     selectStationName: '',
     stationList: '',
     condition: false,
-    isFromOrder: false
+    isFromOrder: false,
+    showLoading: true
   },
   onLoad: function (options) {
+    wx.showNavigationBarLoading();
+    wx.showLoading({
+      title: '玩命加载中',
+    });
     if (options.isFromOrder) {
       this.setData({
         isFromOrder: options.isFromOrder

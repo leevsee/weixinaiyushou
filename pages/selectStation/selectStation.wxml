@@ -1,46 +1,47 @@
 
 <!-- 头部信息 -->
-<view class="rowView commodity-head">
-  <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
-  <view class="commodity-head-text">
-    <view class="commodity-head-textcontent1">
-      <text>提货站服务标准：</text>
+<block wx:if="{{! showLoading}}">
+  <view class="rowView commodity-head">
+    <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
+    <view class="commodity-head-text">
+      <view class="commodity-head-textcontent1">
+        <text>提货站服务标准：</text>
+      </view>
+      <view class="divide commodity-head-divide"></view>
+      <view class="commodity-head-textcontent2">
+        <text>自助提货，小区内免费送货上门</text>
+      </view>
     </view>
-    <view class="divide commodity-head-divide"></view>
-    <view class="commodity-head-textcontent2">
-      <text>自助提货，小区内免费送货上门</text>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divide"></view>
+
+  <!-- 提货站信息 -->
+  <view class="postage">
+    <view class="commodity-introduce-head">
+      <text>请在地图下面选择您的提货站</text>
     </view>
-  </view>
-</view>
-
-<!-- 分割线 -->
-<view class="divide"></view>
-
-<!-- 提货站信息 -->
-<view class="postage">
-  <view class="commodity-introduce-head">
-    <text>请在地图下面选择您的提货站</text>
-  </view>
-  <view class="divide commodity-introduce-divide"></view>
-  <view class="station-text">
-    <text >已选择：{{selectStationName}}</text>
-  </view>
-  <button size="mini" bindtap="goBack" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 5%;">确定</button>
-</view>
-<view class="station-pic">
-  <image src="/res/postage.jpg" mode="scaleToFill" class="station-img"></image>
-</view>
-
-<!-- 地点选择 -->
-<scroll-view scroll-y="true" class="station-scroll">
-
-
-  <view wx:for="{{stationList}}" id="{{index}}" class="rowView station-item bordertop" bindtap="selecStation" data-station-id="{{item.PK_ID}}" data-station-name="{{item.TName}}">
-    <view class="station-item-text">
-      <view class="station-item-head">{{item.TName}}</view>
-      <view class="station-item-subhead">{{item.Address}}</view>
+    <view class="divide commodity-introduce-divide"></view>
+    <view class="station-text">
+      <text>已选择：{{selectStationName}}</text>
     </view>
-    <image src="/res/station.png" class="station-item-img" wx:if="{{item.Select}}"></image>
+    <button size="mini" bindtap="goBack" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 5%;">确定</button>
+  </view>
+  <view class="station-pic">
+    <image src="/res/postage.jpg" mode="scaleToFill" class="station-img"></image>
   </view>
 
-</scroll-view>
+  <!-- 地点选择 -->
+  <scroll-view scroll-y="true" class="station-scroll">
+    <view wx:for="{{stationList}}" id="{{index}}" class="rowView station-item bordertop" bindtap="selecStation" data-station-id="{{item.PK_ID}}" data-station-name="{{item.TName}}">
+      <view class="station-item-text">
+        <view class="station-item-head">{{item.TName}}</view>
+        <view class="station-item-subhead">{{item.Address}}</view>
+      </view>
+      <image src="/res/station.png" class="station-item-img" wx:if="{{item.Select}}"></image>
+    </view>
+  </scroll-view>
+</block>
+<import src="../../component/message/message.wxml" />
+<template is="message" data="{{message: message}}" />

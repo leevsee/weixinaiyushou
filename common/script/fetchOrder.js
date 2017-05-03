@@ -104,11 +104,50 @@ function fetchOrders(buyOrSell, state, cb, fail_cb) {
       // fail
     }
   })
+}
 
+function fetchPay(payData, cb, fail_cb) {
+  console.log(payData);
+  wx.request({
+    url: config.apiList.orderPay,
+    data: payData,
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    success: function (res) {
+      // success
+      console.log(res.data)
+      wx.requestPayment({
+        timeStamp: String(res.data.timeStamp),
+        nonceStr: res.data.nonce_str,
+        package: 'prepay_id=' + res.data.prepay_id,
+        signType: 'MD5',
+        paySign: res.data.sign,
+        success: function (res) {
+          // success
+          console.log(res);
+        },
+        fail: function (res) {
+          // fail
+        },
+        complete: function (res) {
+          // complete
+        }
+      })
+    },
+    fail: function (res) {
+      // fail
+    },
+    complete: function (res) {
+      // complete
+    }
+  })
 }
 
 module.exports = {
   getOrder: addOrder,
   confirmOrder: confirmOrder,
-  getOrders: fetchOrders
+  getOrders: fetchOrders,
+  requestPay: fetchPay
 }

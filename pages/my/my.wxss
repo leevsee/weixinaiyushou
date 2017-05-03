@@ -1,5 +1,8 @@
 @import "../../common/animation.wxss";
 @import "../../common/common.wxss";
+@import "../../component/err/err.wxss";
+@import "../../component/message/message.wxss";
+@import "../../component/circle/circle.wxss";
 
 page {
   background-color: #f1f1f1;

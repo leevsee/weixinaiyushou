@@ -2,7 +2,8 @@ var api = require('../../common/script/fetchOrder')
 
 Page({
   data: {
-    ordersList: ''
+    ordersList: '',
+    title:''
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({

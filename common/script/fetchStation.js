@@ -38,7 +38,8 @@ function fetchStation(cb, fail_cb) {
                             //更新数据
                             that.setData({
                                 showLoading: false,
-                                commodityList: res.data
+                                commodityList: res.data,
+                                showLoading: false
                             });
                             wx.hideNavigationBarLoading();
                             wx.hideLoading();
@@ -137,9 +138,11 @@ function fetchSelectStation(cb, fail_cb) {
                     console.log(res.data[0].select);
                     that.setData({
                         selectStationName: res.data[0].TName,
-                        stationList: res.data
+                        stationList: res.data,
+                        showLoading: false
                     });
-
+                    wx.hideLoading();
+                    wx.hideNavigationBarLoading();
                     typeof cb == 'function' && cb(allCategory);
                 },
                 fail: function (res) {
@@ -159,5 +162,5 @@ function fetchSelectStation(cb, fail_cb) {
 module.exports = {
     getStation: fetchStation,
     getSelectStation: fetchSelectStation,
-    getStationByID:fetchStationByID
+    getStationByID: fetchStationByID
 }

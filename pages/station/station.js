@@ -37,7 +37,7 @@ Page({
       showLoading: true,
       hiddenLoading: true
     })
-    this.onLoad();
+    this.onLoad('');
     wx.stopPullDownRefresh();
   },
   goToStation: function () {
