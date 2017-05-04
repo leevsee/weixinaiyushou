@@ -1,34 +1,13 @@
 const config = require('./config');
+const common = require('./common');
 const message = require('../../component/message/message')
 const err = require('../../component/err/err')
 
-function fetchToken(code, cb, fail_cb) {
-    wx.request({
-        url: config.apiList.loginToken,
-        data: {
-            code: code,
-        },
-        header: {
-            'content-type': 'application/x-www-form-urlencoded'
-        },
-        method: 'POST',
-        success: function (res) {
-            console.log('token success')
-            console.log(res.data.ResultData);
-            wx.setStorage({
-                key: "token",
-                data: res.data.ResultData
-            })
-        },
-        fail: function (res) {
-            // fail
-            console.log('token fail')
-        }
-    })
-}
-
-//获取分类
+/**
+ * 获取分类
+ */
 function fetchCategory(cb, fail_cb) {
+    console.log('fetchCategory');
     var that = this;
     message.hide.call(that);
     wx.request({
@@ -64,18 +43,19 @@ function fetchCategory(cb, fail_cb) {
             typeof cb == 'function' && cb(allCategory);
         },
         fail: function (res) {
-            message.show.call(that, {
-                content: '网络开小差了',
-                icon: 'offline'
-            })
+            common.netErr(that);
             wx.hideLoading();
             typeof fail_cb == 'function' && fail_cb();
         }
     })
 }
 
-//获取头条
+
+/**
+ * 获取头条
+ */
 function fetchTopLine(cb, fail_cb) {
+    console.log('fetchTopLine');
     var that = this;
     message.hide.call(that);
     wx.request({
@@ -107,15 +87,22 @@ function fetchTopLine(cb, fail_cb) {
             typeof cb == 'function' && cb(topLine);
         },
         fail: function (res) {
-            netErr();
+            common.netErr(that);
             wx.hideLoading();
             typeof fail_cb == 'function' && fail_cb();
         }
     })
 }
 
-//获取商品列表
+/**
+ * 获取商品列表
+ */
 function fetchCommodity(typeCode, num, page, cb, fail_cb) {
+    wx.showNavigationBarLoading();
+    wx.showLoading({
+        title: '玩命加载中',
+    });
+    console.log('fetchCommodity');
     var that = this;
     wx.request({
         url: config.apiList.commodity,
@@ -129,12 +116,15 @@ function fetchCommodity(typeCode, num, page, cb, fail_cb) {
         success: function (res) {
             // console.log(res)
             that.setData({
-                commodityList: res.data
+                commodityList: res.data,
+                showLoading: false
             });
-            // success
+            wx.hideNavigationBarLoading();
+            wx.hideLoading()
         },
         fail: function (res) {
             // fail
+            common.netErr(that);
         }
     })
 }
@@ -143,53 +133,60 @@ function fetchCommodity(typeCode, num, page, cb, fail_cb) {
  * 获取订单数量
  */
 function fetchMyOrder(cb, fail_cb) {
+    console.log('fetchMyOrder');
     var that = this;
+    message.hide.call(that);
+    //获取token
     wx.getStorage({
         key: 'token',
         success: function (res) {
             console.log(res.data);
-            // success
-            wx.request({
-                url: config.apiList.myOrderNum,
-                data: {
-                    token: res.data
-                },
-                method: 'GET',
-                success: function (res) {
-                    // success
-                    console.log(res);
-                    that.setData({
-                        ordersNum: res.data,
-                        showLoading: false
-                    });
-                    wx.hideNavigationBarLoading();
-                    wx.hideLoading();
-                },
-                fail: function (res) {
-                    // fail
-                }
-            })
+            //若token为kong，则重新获取
+            if (res.data == null) {
+                common.getToken(function (token) {
+                    if (token == null) {
+                        common.netErr(that);
+                    } else {
+                        fetchMyOrder.call(that);
+                    }
+                }, '');
+            } else {
+                // success
+                wx.request({
+                    url: config.apiList.myOrderNum,
+                    data: {
+                        token: res.data
+                    },
+                    method: 'GET',
+                    success: function (res) {
+                        // success
+                        console.log(res);
+                        that.setData({
+                            ordersNum: res.data,
+                            showLoading: false
+                        });
+                        wx.hideNavigationBarLoading();
+                        wx.hideLoading();
+                    },
+                    fail: function (res) {
+                        // fail
+                        console.log('request fail');
+                        common.netErr(that);
+                    }
+                })
+            }
         },
         fail: function (res) {
             // fail
+            console.log('getStorage fail');
+            common.netErr(that);
         }
     })
 }
 
-function netErr() {
-    message.show.call(that, {
-        content: '网络开小差了',
-        icon: 'offline'
-    })
-    wx.hideLoading();
-    wx.hideNavigationBarLoading();
-}
-
-
 module.exports = {
-    getToken: fetchToken,
     getCategory: fetchCategory,
     getTopLine: fetchTopLine,
     getCommodity: fetchCommodity,
-    getMyOrder: fetchMyOrder
+    getMyOrder: fetchMyOrder,
 }

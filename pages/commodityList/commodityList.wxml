@@ -1,4 +1,4 @@
-
+<block wx:if="{{! showLoading}}">
 <!-- 头部信息 -->
 <view class="rowView commodity-head">
   <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
@@ -12,7 +12,8 @@
     </view>
   </view>
 </view>
-<scroll-view class="scroll-view_y" scroll-y="true" bindscrolltolower="scrollTest">
+
+<scroll-view class="scroll-view_y" style="{{setHeight}}" scroll-y="true" bindscrolltolower="scrollTest">
 
   <!-- item -->
   <block wx:for="{{commodityList}}">
@@ -132,3 +133,7 @@
   </block>
 
 </scroll-view>
+
+</block>
+<import src="../../component/message/message.wxml" />
+<template is="message" data="{{message: message}}" />

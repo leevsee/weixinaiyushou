@@ -1,4 +1,4 @@
-
+<block wx:if="{{! showLoading}}">
 <!--<view class="rowView addrSelcView">
   <image src="/res/add.png" style="width: 100rpx; height: 100rpx;"></image>
   <view class="addrSelc-content">
@@ -68,8 +68,8 @@
 </view>
 
 <!-- 买家留言 -->
-<view class="message">
-  <textarea class="message-input" placeholder="给卖家留言" bindblur="bindTextAreaBlur" />
+<view class="send-message">
+  <textarea class="send-message-input" placeholder="给卖家留言" bindblur="bindTextAreaBlur" />
 </view>
 
 <!-- 买家留言 -->
@@ -169,3 +169,7 @@
     <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 提交订单 </button>-->
   </view>
 </view>
+
+</block>
+<import src="../../component/message/message.wxml" />
+<template is="message" data="{{message: message}}" />

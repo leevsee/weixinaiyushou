@@ -1,8 +1,7 @@
 <block wx:if="{{! showLoading}}">
-
   <!-- 头部 -->
   <view class="columnView home-head">
-    <image src="/res/logo.png" style="width: 100rpx; height: 100rpx;"></image>
+    <image src="/res/logo.png" style="width: 100rpx; height: 100rpx;" bindtap="mytest"></image>
     <view class="home-head-text">
       <text>发现身边的限量版！</text>
     </view>

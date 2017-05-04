@@ -8,7 +8,8 @@
       <text>{{item.CommName}}</text>
     </view>
     <view class="order-item-status">
-      <text>待付款</text>
+      <text wx:if="{{item.FK_CodeID_Status  == 0}}">待付款</text>
+      <text wx:else>已付款</text>
     </view>
   </view>
 
@@ -28,12 +29,14 @@
 
   <!-- 订单合计 -->
   <view class="order-item-price">
-    <text>共{{item.CommCount}}件商品 需付款：￥{{item.AMoney}}</text>
+    <text wx:if="{{item.FK_CodeID_Status  == 0}}">共{{item.CommCount}}件商品 需付款：￥{{item.AMoney}}</text>
+    <text wx:else>共{{item.CommCount}}件商品 已付款：￥{{item.AMoney}}</text>
   </view>
-
+  <block wx:if="{{item.FK_CodeID_Status  == 0}}" >
   <!-- 分割线 -->
   <view class="thin-divide"></view>
   <view class="order-item-but">
     <button size="mini" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 4%;" bindtap="goToPay" data-index="{{index}}">去付款</button>
   </view>
+  </block>
 </view>

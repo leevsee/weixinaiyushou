@@ -1,5 +1,7 @@
 @import "../../common/animation.wxss";
 @import "../../common/common.wxss";
+@import "../../component/err/err.wxss";
+@import "../../component/message/message.wxss";
 
 page {
   background: #f1f1f1;
@@ -70,11 +72,12 @@ page {
   /*height: 80%;*/
   text-align: center;
   background-color: #f2f2f2;
+  line-height: 150%;
 }
 
 .onSale-name-but {
-  width: 36rpx;
-  height: 36rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .onSale-postage {
@@ -100,13 +103,13 @@ page {
   font-weight: bold;
 }
 
-.message {
+.send-message {
   height: 150rpx;
   padding: 2% 4% 2% 2%;
   background: #fff;
 }
 
-.message-input {
+.send-message-input {
   width: 96%;
   height: 150rpx;
   margin: 2% 4% 2% 2%;

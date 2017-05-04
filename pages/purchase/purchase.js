@@ -1,6 +1,5 @@
 var api = require('../../common/script/fetchOrder')
 
-
 Page({
   data: {
     imgUrls: '',
@@ -20,9 +19,13 @@ Page({
     isResale: false,
     stationId: 0,
     stationName: '',
-    item: ''
+    item: '',
+    showLoading: true
   },
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    });
     console.log(options.commcode)
     api.getOrder.call(this, options.commcode);
   },
@@ -54,39 +57,49 @@ Page({
   },
   goToOrders: function () {
     var that = this;
-    wx.getStorage({
-      key: 'token',
-      success: function (res) {
-        // success
-        var data = {
-          FK_SellerUserID: that.data.item.FK_UserId,
-          FK_AddressID: that.data.address.provinceName + that.data.address.cityName + that.data.address.countyName + that.data.address.detailInfo,
-          AMoney: that.data.totlePrice,
-          UserLeaving: that.data.message,
-          CommCode: that.data.item.CommCode,
-          IsResaleAfter: Number(that.data.isDelivery),
-          ResaleCount: that.data.deliveryNum,
-          IsResaleTop: Number(that.data.isResale),
-          PostalCode: that.data.address.postalCode,
-          ProvinceName: that.data.address.provinceName,
-          CityName: that.data.address.cityName,
-          CountyName: that.data.address.countyName,
-          NationalCode: that.data.address.nationalCode,
-          TelNumber: that.data.address.telNumber,
-          UserName: that.data.address.userName,
-          CommCount: that.data.num,
-          FK_TerminalID: that.data.stationId,
-          token: res.data,
+    if (this.data.address == '') {
+      wx.showToast({
+        title: '请选择收货地址',
+        image: '/res/err2.png',
+        mask: true,
+        icon: 'success',
+        duration: 2000
+      })
+    } else {
+      wx.getStorage({
+        key: 'token',
+        success: function (res) {
+          // success
+          var data = {
+            FK_SellerUserID: that.data.item.FK_UserId,
+            FK_AddressID: that.data.address.provinceName + that.data.address.cityName + that.data.address.countyName + that.data.address.detailInfo,
+            AMoney: that.data.totlePrice,
+            UserLeaving: that.data.message,
+            CommCode: that.data.item.CommCode,
+            IsResaleAfter: Number(that.data.isDelivery),
+            ResaleCount: that.data.deliveryNum,
+            IsResaleTop: Number(that.data.isResale),
+            PostalCode: that.data.address.postalCode,
+            ProvinceName: that.data.address.provinceName,
+            CityName: that.data.address.cityName,
+            CountyName: that.data.address.countyName,
+            NationalCode: that.data.address.nationalCode,
+            TelNumber: that.data.address.telNumber,
+            UserName: that.data.address.userName,
+            CommCount: that.data.num,
+            FK_TerminalID: that.data.stationId,
+            token: res.data,
+          }
+          api.confirmOrder.call(that, data);
+        },
+        fail: function (res) {
+          // fail
+        },
+        complete: function (res) {
+          // complete
         }
-        api.confirmOrder.call(that, data);
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
+      })
+    }
   },
   subNum: function () {
     if (this.data.num > 1) {
