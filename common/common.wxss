@@ -41,3 +41,11 @@
 .nopadding-right{
   padding-right: inherit;
 }
+
+.loading-tip {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #ccc;
+  font-size: 28rpx;
+}

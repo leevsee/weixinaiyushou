@@ -1,11 +1,11 @@
 {
   "pages": [
-    
+    "pages/my/my",
     "pages/home/home",
     "pages/commodityList/commodityList",
     "pages/station/station",
     "pages/selectStation/selectStation",
-    "pages/my/my",
+    
     "pages/purchase/purchase",
     
     "pages/orders/orders",

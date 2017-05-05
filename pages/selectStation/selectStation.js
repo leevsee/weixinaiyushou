@@ -32,9 +32,6 @@ Page({
         success: function (res) {
           // success
           wx.navigateBack({})
-        },
-        fail: function (res) {
-          // fail
         }
       })
 

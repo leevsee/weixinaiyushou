@@ -1,5 +1,6 @@
 <block wx:if="{{! showLoading}}">
-<!--<view class="rowView addrSelcView">
+
+  <!--<view class="rowView addrSelcView">
   <image src="/res/add.png" style="width: 100rpx; height: 100rpx;"></image>
   <view class="addrSelc-content">
     <view class="addrSelc-content-text">新增收货地址</view>
@@ -7,88 +8,90 @@
   </view>
 </view>-->
 
-<!-- 收货地址选择 -->
-<view class="rowView addrSelc-content">
-  <view class="addrSelc-content-text" bindtap="selectAddres">
-    <text>添加收货地址</text>
-  </view>
-  <image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>
-</view>
-
-<!-- 分割线 -->
-<view class="divide" wx:if="{{address}}"></view>
-
-<!-- 收货地址显示 -->
-<view class="addrView" wx:if="{{address}}">
-  <view class="addr-title">
-    <text>收货地址：</text>
-  </view>
-  <view class="rowView addr-display">
-    <view class="addrSelc-content-text">
-      <text>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</text>
+  <!-- 收货地址选择 -->
+  <view class="rowView addrSelc-content">
+    <view class="addrSelc-content-text" bindtap="selectAddres">
+      <text wx:if="{{address}}">重新选择收货地址</text>
+      <text wx:else>添加收货地址</text>
     </view>
     <image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>
   </view>
-</view>
 
-<!-- 分割线 -->
-<view class="divide"></view>
+  <!-- 分割线 -->
+  <view class="divide" wx:if="{{address}}"></view>
 
-<!-- 商品名称 -->
-<view class="rowView onSale-name">
-  <view class="onSale-name-pic">
-    <image src="/res/niurou.jpg" style="width: 220rpx; height: 150rpx;"></image>
-  </view>
-  <view class="columnView onSale-name-content">
-    <view class="onSale-name-text">{{commName}}</view>
-    <view class="onSale-name-price">￥{{price}}</view>
-    <view class="onSale-name-buy">
-      <image src="/res/minusnum.png" class="onSale-name-but" bindtap="subNum"></image>
-      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}"></image>
-      <view class="onSale-name-num">{{num}}</view>
-      <image src="/res/addnum.png" class="onSale-name-but" bindtap="addNum"></image>
+  <!-- 收货地址显示 -->
+  <view class="addrView" wx:if="{{address}}">
+    <view class="addr-title">
+      <text>收货地址：</text>
+    </view>
+    <view class="rowView addr-display">
+      <view class="addrSelc-content-text">
+        <text>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</text>
+      </view>
+
+      <!--<image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>-->
     </view>
   </view>
-</view>
 
-<!-- 分割线 -->
-<view class="thin-divide"></view>
-<view class="rowView onSale-postage">
-  <view class="onSale-postage-text">送货/提货费</view>
-  <view class="onSale-postage-price">￥{{postage}}</view>
-</view>
+  <!-- 分割线 -->
+  <view class="divide"></view>
 
-<!-- 分割线 -->
-<view class="thin-divide"></view>
+  <!-- 商品名称 -->
+  <view class="rowView onSale-name">
+    <view class="onSale-name-pic">
+      <image src="/res/niurou.jpg" style="width: 220rpx; height: 150rpx;"></image>
+    </view>
+    <view class="columnView onSale-name-content">
+      <view class="onSale-name-text">{{commName}}</view>
+      <view class="onSale-name-price">￥{{price}}</view>
+      <view class="onSale-name-buy">
+        <image src="/res/minusnum.png" class="onSale-name-but" bindtap="subNum"></image>
+        <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}"></image>
+        <view class="onSale-name-num">{{num}}</view>
+        <image src="/res/addnum.png" class="onSale-name-but" bindtap="addNum"></image>
+      </view>
+    </view>
+  </view>
 
-<!-- 总价 -->
-<view class="rowView total">
-  <view class="total-text">合计</view>
-  <view class="total-price">￥{{totlePrice}}</view>
-</view>
+  <!-- 分割线 -->
+  <view class="thin-divide"></view>
+  <view class="rowView onSale-postage">
+    <view class="onSale-postage-text">送货/提货费</view>
+    <view class="onSale-postage-price">￥{{postage}}</view>
+  </view>
 
-<!-- 买家留言 -->
-<view class="send-message">
-  <textarea class="send-message-input" placeholder="给卖家留言" bindblur="bindTextAreaBlur" />
-</view>
+  <!-- 分割线 -->
+  <view class="thin-divide"></view>
 
-<!-- 买家留言 -->
+  <!-- 总价 -->
+  <view class="rowView total">
+    <view class="total-text">合计</view>
+    <view class="total-price">￥{{totlePrice}}</view>
+  </view>
 
-<!--<view class="message">-->
+  <!-- 买家留言 -->
+  <view class="send-message">
+    <textarea class="send-message-input" placeholder="给卖家留言" bindblur="bindTextAreaBlur" />
+  </view>
 
-<!--<view class="message-text">买家留言:</view>-->
+  <!-- 买家留言 -->
 
-<!--<textarea class="message-input" placeholder="给卖家留言" />-->
+  <!--<view class="message">-->
 
-<!--</view>-->
+  <!--<view class="message-text">买家留言:</view>-->
 
-<!-- 分割线 -->
-<view class="divide"></view>
-<view class="onSale-text">
-  <text>待售转售</text>
-</view>
+  <!--<textarea class="message-input" placeholder="给卖家留言" />-->
 
-<!--<radio-group class="onSale-radio-group" bindchange="radioChange">
+  <!--</view>-->
+
+  <!-- 分割线 -->
+  <view class="divide"></view>
+  <view class="onSale-text">
+    <text>待售转售</text>
+  </view>
+
+  <!--<radio-group class="onSale-radio-group" bindchange="radioChange">
   <label class="onSale-delivery">
     <radio value="放入提货站待售" checked="" />
     <text>放入提货站待售</text>
@@ -107,34 +110,35 @@
   </label>
 </radio-group>-->
 
-<!-- 选着送货方式 -->
-<view class="onSale-radio-group" wx:if="{{dispalyResale}}">
-  <view class="onSale-delivery">
-    <image class="onSale-select" src="/res/select.png" wx:if="{{isDelivery}}" bindtap="isDelivery" data-isDelivery="noDelivery"></image>
-    <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isDelivery}}" bindtap="isDelivery" data-isDelivery="isDelivery"></image>
-    <text>放入提货站待售</text>
-    <view class="onSale-name-buy onSale-delivery-num">
-      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{!condition}}" bindtap="subDeliveryNum"></image>
-      <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}" bindtap="subDeliveryNum"></image>
-      <view class="onSale-name-num">{{deliveryNum}}</view>
-      <image src="/res/addnum.png" class="onSale-name-but" bindtap="addDeliveryNum"></image>
+  <!-- 选着送货方式 -->
+  <view class="onSale-radio-group" wx:if="{{dispalyResale}}">
+    <view class="onSale-delivery">
+      <image class="onSale-select" src="/res/select.png" wx:if="{{isDelivery}}" bindtap="isDelivery" data-isDelivery="noDelivery"></image>
+      <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isDelivery}}" bindtap="isDelivery" data-isDelivery="isDelivery"></image>
+      <text>放入提货站待售</text>
+      <view class="onSale-name-buy onSale-delivery-num">
+        <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{!condition}}" bindtap="subDeliveryNum"></image>
+        <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}" bindtap="subDeliveryNum"></image>
+        <view class="onSale-name-num">{{deliveryNum}}</view>
+        <image src="/res/addnum.png" class="onSale-name-but" bindtap="addDeliveryNum"></image>
+      </view>
+      <view class="onSale-delivery-price">建议售价:￥{{totleDeliveryPrice}}</view>
     </view>
-    <view class="onSale-delivery-price">建议售价:￥{{totleDeliveryPrice}}</view>
-  </view>
-  <view class="onSale-resale onSale-resale-station" wx:if="{{isDelivery}}">
-    <text>已选择提货站：{{stationName}}</text>
-    <!--<view class="onSale-resale-price">建议售价：￥158</view>-->
-  </view>
-  <view class="onSale-resale">
-    <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isResale}}" bindtap="isResale" data-isResale="isResale"></image>
-    <image class="onSale-select" src="/res/select.png" wx:if="{{isResale}}" bindtap="isResale" data-isResale="noResale"></image>
-    <text>发货前允许转售</text>
+    <view class="onSale-resale onSale-resale-station" wx:if="{{isDelivery}}">
+      <text>已选择提货站：{{stationName}}</text>
 
-    <!--<view class="onSale-resale-price">建议售价：￥158</view>-->
-  </view>
-</view>
+      <!--<view class="onSale-resale-price">建议售价：￥158</view>-->
+    </view>
+    <view class="onSale-resale">
+      <image class="onSale-select" src="/res/no_select.png" wx:if="{{!isResale}}" bindtap="isResale" data-isResale="isResale"></image>
+      <image class="onSale-select" src="/res/select.png" wx:if="{{isResale}}" bindtap="isResale" data-isResale="noResale"></image>
+      <text>发货前允许转售</text>
 
-<!--<view class="onSale-price">
+      <!--<view class="onSale-resale-price">建议售价：￥158</view>-->
+    </view>
+  </view>
+
+  <!--<view class="onSale-price">
   <view class="onSale-name">
     <view class="onSale-name-text">【邕宁特色馆】散养土鸡</view>
     <view class="onSale-name-price">￥118</view>
@@ -160,16 +164,15 @@
   </view>
 </view>-->
 
-<!-- 提交 -->
-<view class="rowView onSale-submit">
-  <view class="onSale-submit-text">合计:￥{{totlePrice}}</view>
-  <view class="rowView onSale-submit-button" bindtap="goToOrders">
-    <text>立刻付款</text>
+  <!-- 提交 -->
+  <view class="rowView onSale-submit">
+    <view class="onSale-submit-text">合计:￥{{totlePrice}}</view>
+    <view class="rowView onSale-submit-button" bindtap="goToOrders">
+      <text>立刻付款</text>
 
-    <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 提交订单 </button>-->
+      <!--<button type="warn" size="mini" bindtap="gotoBuyPage"> 提交订单 </button>-->
+    </view>
   </view>
-</view>
-
 </block>
 <import src="../../component/message/message.wxml" />
 <template is="message" data="{{message: message}}" />

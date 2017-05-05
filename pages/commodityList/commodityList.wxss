@@ -1,7 +1,16 @@
 @import "../../common/animation.wxss";
 @import "../../common/common.wxss";
 
+page {
+  background: #f1f1f1;
+}
+
+.commodity-wrap{
+  background: #fff;
+}
+
 .commodity-head {
+  background: #fff;
   padding-top: 6rpx;
   padding-bottom: 6rpx;
   padding-left: 3%;
@@ -9,6 +18,8 @@
   height: 120rpx;
   width: 100%;
   top: 0;
+  z-index: 999;
+  border-bottom: 2rpx solid #ccc;
 }
 
 .commodity-head-text {
@@ -34,8 +45,8 @@
 }
 
 .scroll-view_y{
-  border-top: 2rpx solid #ccc;
-  margin-top: 139rpx;
+  
+  margin-top: 132rpx;
   height: 1030rpx;
 }
 
@@ -48,6 +59,7 @@
 
 .commodity-name {
   padding-top: 2%;
+  padding-left: 2%;
   font-size: 36rpx;
 }
 

@@ -2,6 +2,7 @@ const config = require('./config');
 const common = require('./common');
 const message = require('../../component/message/message')
 const err = require('../../component/err/err')
+const circle = require('../../component/circle/circle')
 
 /**
  * 获取分类
@@ -134,14 +135,14 @@ function fetchCommodity(typeCode, num, page, cb, fail_cb) {
  */
 function fetchMyOrder(cb, fail_cb) {
     console.log('fetchMyOrder');
-    var that = this;
+    let that = this;
     message.hide.call(that);
     //获取token
     wx.getStorage({
         key: 'token',
         success: function (res) {
             console.log(res.data);
-            //若token为kong，则重新获取
+            //若token为null，则重新获取
             if (res.data == null) {
                 common.getToken(function (token) {
                     if (token == null) {
@@ -161,12 +162,23 @@ function fetchMyOrder(cb, fail_cb) {
                     success: function (res) {
                         // success
                         console.log(res);
-                        that.setData({
-                            ordersNum: res.data,
-                            showLoading: false
-                        });
-                        wx.hideNavigationBarLoading();
-                        wx.hideLoading();
+                        if (res.data.error_code == -1) {
+                            common.getToken(function (token) {
+                                fetchMyOrder.call(that);
+                            }, '');
+                        } else {
+                            that.setData({
+                                ordersNum: res.data,
+                                percent: res.data.return_Value.toFixed(0),
+                                income: res.data.SIncome.toFixed(2),
+                                expenditure: res.data.SPay.toFixed(2),
+                                percentage: res.data.return_Value,
+                                showLoading: false
+                            });
+                            wx.hideNavigationBarLoading();
+                            wx.hideLoading();
+                            fetchMySaleOrder.call(that);
+                        }
                     },
                     fail: function (res) {
                         // fail
@@ -184,9 +196,56 @@ function fetchMyOrder(cb, fail_cb) {
     })
 }
 
+/**
+ * 转、预售订单
+ */
+function fetchMySaleOrder(cb, fail_cb) {
+    console.log('fetchMySaleOrder');
+    let that = this;
+    circle.show.call(that);
+    //获取token
+    wx.getStorage({
+        key: 'token',
+        success: function (res) {
+            console.log(res.data);
+            //若token为null，则重新获取
+            // success
+            wx.request({
+                url: config.apiList.mySaleOrder,
+                data: {
+                    pageIndex: 0,
+                    pageSize: 5,
+                    token: res.data
+                },
+                method: 'GET',
+                success: function (res) {
+                    // success
+                    console.log(res);
+                    that.setData({
+                        mySaleOrders:res.data
+                    });
+                    circle.hide.call(that);
+                },
+                fail: function (res) {
+                    // fail
+                    console.log('request fail');
+
+                }
+            })
+
+        },
+        fail: function (res) {
+            // fail
+            console.log('getStorage fail');
+
+        }
+    })
+}
+
 module.exports = {
     getCategory: fetchCategory,
     getTopLine: fetchTopLine,
     getCommodity: fetchCommodity,
     getMyOrder: fetchMyOrder,
+    getMySaleOrder:fetchMySaleOrder
 }

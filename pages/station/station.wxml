@@ -11,7 +11,7 @@
 
   <!-- 头部信息 -->
   <view class="rowView commodity-head">
-    <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
+    <image src="/res/logo.png" style="width: 100rpx; height: 100rpx;"></image>
     <view class="commodity-head-text">
       <view class="commodity-head-textcontent1">
         <text>提货站服务标准：</text>

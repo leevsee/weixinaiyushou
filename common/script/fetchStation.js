@@ -4,6 +4,7 @@ const err = require('../../component/err/err')
 
 
 function fetchStation(cb, fail_cb) {
+    console.log('fetchStation');
     var that = this;
     message.hide.call(that);
     //获取当前位置经纬度
@@ -75,6 +76,7 @@ function fetchStation(cb, fail_cb) {
 
 //根据提货站ID获取其中的商品数据
 function fetchStationByID(id, cb, fail_cb) {
+    console.log('fetchStationByID');    
     console.log(id);
     console.log(cb);
     console.log(fail_cb);
@@ -116,6 +118,7 @@ function fetchStationByID(id, cb, fail_cb) {
 
 //获取所有提货站
 function fetchSelectStation(cb, fail_cb) {
+    console.log('fetchSelectStation');    
     var that = this;
     message.hide.call(that);
     //获取当前位置经纬度
@@ -137,6 +140,7 @@ function fetchSelectStation(cb, fail_cb) {
                     res.data[0].select = false;
                     console.log(res.data[0].select);
                     that.setData({
+                        stationId: res.data[0].PK_ID,
                         selectStationName: res.data[0].TName,
                         stationList: res.data,
                         showLoading: false

@@ -10,7 +10,8 @@ Page({
     commodityList: '',
     options: '',
     showLoading: true,
-    setHeight: ''
+    setHeight: '',
+    hasMore:false
   },
   onLoad: function (options) {
     var that = this

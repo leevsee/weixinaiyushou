@@ -8,6 +8,10 @@ page {
   background-color: #f1f1f1;
 }
 
+.circle{
+    margin-top: 8%;
+}
+
 .userinfo {
   padding: 2% 3% 7% 3%;
   justify-content: flex-start;
@@ -67,6 +71,14 @@ page {
     height: 70rpx;
     background-color: #f1f1f1;
     width: 1px;
+}
+
+.userinfo-expenditure{
+    margin-left: 8%;
+}
+
+.userinfo-income{
+    margin-right: 8%
 }
 
 .userinfo-expenditure-name {
@@ -131,4 +143,8 @@ page {
 
 .myOrders-del{
     color: red;
+}
+
+.mySaleOrder{
+    padding-bottom: 0%;
 }
