@@ -1,0 +1,3 @@
+<template name="loading">
+  <view class="loading circle" hidden="{{loading.visiable ? false : true}}"></view>
+</template>

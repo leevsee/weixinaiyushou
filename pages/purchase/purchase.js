@@ -110,7 +110,7 @@ Page({
     }
   },
   addNum: function () {
-    if (this.data.num < 99) {
+    if (this.data.num < this.data.stock) {
       this.setData({
         num: this.data.num + 1,
         totlePrice: Number(((this.data.num + 1) * this.data.price) + 10).toFixed(2)

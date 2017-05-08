@@ -109,8 +109,11 @@
   <!-- 分割线 -->
   <view class="divide"></view>
 
-  <import src="../../component/circle/circle.wxml" />
-  <template is="circle" data="{{circle: circle}}" />
+  <!--<import src="../../component/circle/circle.wxml" />
+  <template is="circle" data="{{circle: circle}}" />-->
+
+    <import src="../../component/loading/loading.wxml" />
+  <template is="loading" data="{{loading: loading}}" />
 
   <!-- 我的转售预售 -->
   <view class="columnView myOrders mySaleOrder" wx:if="{{mySaleOrders}}">

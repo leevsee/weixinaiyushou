@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/my/my",
     "pages/home/home",
+    "pages/my/my",
+    
     "pages/commodityList/commodityList",
     "pages/station/station",
     "pages/selectStation/selectStation",
@@ -45,5 +46,6 @@
   },
   "networkTimeout": {
     "request": "10000"
-  }
+  },
+  "debug": true
 }

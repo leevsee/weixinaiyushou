@@ -16,9 +16,6 @@ Page({
   },
   onLoad: function () {
     wx.showNavigationBarLoading();
-    wx.showLoading({
-      title: '玩命加载中',
-    });
     api.getCategory.call(this);
     api.getTopLine.call(this);
     // token.getToken.call(this);

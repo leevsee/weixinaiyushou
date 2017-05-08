@@ -3,6 +3,7 @@ const common = require('./common');
 const message = require('../../component/message/message')
 const err = require('../../component/err/err')
 const circle = require('../../component/circle/circle')
+const loading = require('../../component/loading/loading')
 
 /**
  * 获取分类
@@ -99,10 +100,6 @@ function fetchTopLine(cb, fail_cb) {
  * 获取商品列表
  */
 function fetchCommodity(typeCode, num, page, cb, fail_cb) {
-    wx.showNavigationBarLoading();
-    wx.showLoading({
-        title: '玩命加载中',
-    });
     console.log('fetchCommodity');
     var that = this;
     wx.request({
@@ -202,13 +199,14 @@ function fetchMyOrder(cb, fail_cb) {
 function fetchMySaleOrder(cb, fail_cb) {
     console.log('fetchMySaleOrder');
     let that = this;
-    circle.show.call(that);
+    // circle.show.call(that);
+    loading.show.call(that);
+
     //获取token
     wx.getStorage({
         key: 'token',
         success: function (res) {
             console.log(res.data);
-            //若token为null，则重新获取
             // success
             wx.request({
                 url: config.apiList.mySaleOrder,
@@ -222,9 +220,10 @@ function fetchMySaleOrder(cb, fail_cb) {
                     // success
                     console.log(res);
                     that.setData({
-                        mySaleOrders:res.data
+                        mySaleOrders: res.data
                     });
-                    circle.hide.call(that);
+                    // circle.hide.call(that);
+                    loading.hide.call(that);
                 },
                 fail: function (res) {
                     // fail
@@ -232,7 +231,6 @@ function fetchMySaleOrder(cb, fail_cb) {
 
                 }
             })
-
         },
         fail: function (res) {
             // fail
@@ -242,10 +240,104 @@ function fetchMySaleOrder(cb, fail_cb) {
     })
 }
 
+/**
+ * 删除转、预售订单
+ */
+function delMySaleOrder(commCode, cb, fail_cb) {
+    console.log('delMySaleOrder');
+    console.log(commCode);
+
+    let that = this;
+    console.log(that.data.mySaleOrders);
+
+    wx.showModal({
+        title: '提示',
+        content: '是否删除',
+        confirmColor: '#1392e3',
+        success: function (res) {
+            if (res.confirm) {
+                console.log('用户点击确定')
+                wx.showLoading({
+                    title: '正在删除中',
+                    mask: true
+                });
+                //获取token
+                wx.getStorage({
+                    key: 'token',
+                    success: function (res) {
+                        // token success
+                        wx.request({
+                            url: config.apiList.delMySaleOrder,
+                            data: {
+                                CommCode: commCode,
+                                token: res.data
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                // success
+                                console.log(res);
+                                if (res.data.Msg == 'ok') {
+                                    wx.hideLoading();
+                                    wx.showToast({
+                                        title: '删除成功',
+                                        icon: 'success',
+                                        mask: true,
+                                        duration: 1000
+                                    })
+                                    let tmp = that.data.mySaleOrders;
+                                    tmp.map(function (item, i) {
+                                        if (item.CommCode == commCode) {
+                                            tmp.splice(i, 1);
+                                        }
+                                    });
+                                    console.log(tmp);
+                                    that.setData({
+                                        mySaleOrders: tmp
+                                    });
+                                } else {
+                                    wx.hideLoading();
+                                    wx.showModal({
+                                        title: '删除错误',
+                                        content: '删除失败,请刷新页面后再尝试',
+                                        showCancel: false,
+                                        confirmColor: '#1392e3',
+                                        success: function (res) {
+                                            if (res.confirm) {
+                                                console.log('用户点击确定')
+                                            } else if (res.cancel) {
+                                                console.log('用户点击取消')
+                                            }
+                                        }
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                // fail
+                                console.log('request fail');
+                                common.netErr(that);
+                            }
+                        })
+
+                    },
+                    fail: function (res) {
+                        // fail
+                        console.log('getStorage fail');
+                        common.netErr(that);
+                    }
+                })
+            }
+        }
+    })
+}
+
 module.exports = {
     getCategory: fetchCategory,
     getTopLine: fetchTopLine,
     getCommodity: fetchCommodity,
     getMyOrder: fetchMyOrder,
-    getMySaleOrder:fetchMySaleOrder
+    getMySaleOrder: fetchMySaleOrder,
+    getDelSaleOrder: delMySaleOrder
 }

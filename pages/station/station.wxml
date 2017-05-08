@@ -29,7 +29,7 @@
   <!-- 提货站信息 -->
   <view class="postage">
     <view class="commodity-introduce-head">
-      <text>商品说明</text>
+      <text>您的提货站</text>
     </view>
     <view class="divide commodity-introduce-divide"></view>
     <view class="rowView postage-info">

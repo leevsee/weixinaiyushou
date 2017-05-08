@@ -11,10 +11,14 @@ Page({
     options: '',
     showLoading: true,
     setHeight: '',
-    hasMore:false
+    hasMore: false
   },
   onLoad: function (options) {
     var that = this
+    // wx.showNavigationBarLoading();
+    wx.showLoading({
+      title: '玩命加载中',
+    });
     console.log(options.tcode);
     wx.getSystemInfo({
       success: function (res) {

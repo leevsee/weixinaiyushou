@@ -79,6 +79,7 @@ function confirmOrder(data, cb, fail_cb) {
   wx.showModal({
     title: '提示',
     content: '是否确认下单',
+    confirmColor:'#1392e3',
     success: function (res) {
       if (res.confirm) {
         wx.showLoading({
@@ -101,12 +102,12 @@ function confirmOrder(data, cb, fail_cb) {
               })
             } else {
               //否则提示下单失败，返回商品列表界面
-              common.errShow('下单失败，请重新提交','../home/home');              
+              common.errShow('下单失败，请重新提交', '../home/home');
             }
           },
           fail: function (res) {
             // 请求失败
-            common.errShow('网络通信有误，请重新提交','../home/home');   
+            common.errShow('网络通信有误，请重新提交', '../home/home');
           },
           complete: function (res) {
             // complete
@@ -122,7 +123,7 @@ function confirmOrder(data, cb, fail_cb) {
 }
 
 /**
- * 
+ * 获得我的订单
  */
 function fetchOrders(buyOrSell, state, cb, fail_cb) {
   console.log('fetchOrders');
@@ -148,6 +149,7 @@ function fetchOrders(buyOrSell, state, cb, fail_cb) {
           that.setData({
             ordersList: res.data
           });
+          wx.hideLoading();
         },
         fail: function (res) {
           // fail

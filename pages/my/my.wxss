@@ -3,6 +3,8 @@
 @import "../../component/err/err.wxss";
 @import "../../component/message/message.wxss";
 @import "../../component/circle/circle.wxss";
+@import "../../component/loading/loading.wxss";
+
 
 page {
   background-color: #f1f1f1;
@@ -13,7 +15,7 @@ page {
 }
 
 .userinfo {
-  padding: 2% 3% 7% 3%;
+  padding: 2% 3% 6% 3%;
   justify-content: flex-start;
   background-color: #fff;
   background-image: url("http://7xz8pr.com1.z1.glb.clouddn.com/me.jpg");

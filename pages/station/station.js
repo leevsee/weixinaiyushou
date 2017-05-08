@@ -15,7 +15,7 @@ Page({
     hiddenLoading: true
   },
   onLoad: function (options) {
-    wx.showNavigationBarLoading();
+    // wx.showNavigationBarLoading();
     wx.showLoading({
       title: '玩命加载中',
     });

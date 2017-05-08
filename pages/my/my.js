@@ -14,7 +14,6 @@ Page({
   },
   onLoad: function () {
     let that = this;
-    wx.showNavigationBarLoading();
     wx.showLoading({
       title: '玩命加载中',
     });
@@ -50,5 +49,6 @@ Page({
   },
   delComm: function (e) {
     console.log(e.currentTarget.dataset.commcode);
+    api.getDelSaleOrder.call(this,e.currentTarget.dataset.commcode);
   }
 })

@@ -87,7 +87,7 @@
 
   <!-- 分割线 -->
   <view class="divide"></view>
-  <view class="onSale-text">
+  <view class="onSale-text" wx:if="{{dispalyResale}}">
     <text>待售转售</text>
   </view>
 

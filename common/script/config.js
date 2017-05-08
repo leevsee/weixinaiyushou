@@ -20,5 +20,7 @@ module.exports = {
         myOrderNum: url + 'MyMessage/My_Order',
         orderPay: url + 'WeChatPayment/WeChatPaidByOrder',
         mySaleOrder: url + 'MyMessage/Get_OrderFromUser',
+        delMySaleOrder: url + 'MyMessage/Delete_OrderByCommCode',
+        
     }
 }
