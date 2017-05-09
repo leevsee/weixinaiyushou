@@ -17,7 +17,7 @@ Page({
   onLoad: function () {
     wx.showNavigationBarLoading();
     api.getCategory.call(this);
-    api.getTopLine.call(this);
+    // api.getTopLine.call(this);
     // token.getToken.call(this);
   },
   goTotopLine: function (e) {
@@ -25,6 +25,10 @@ Page({
   },
   onPullDownRefresh: function () {
     // var that = this
+    wx.showLoading({
+      title: '玩命加载中',
+      mask: true
+    });
     this.setData({
       classification: '',
       category: '',

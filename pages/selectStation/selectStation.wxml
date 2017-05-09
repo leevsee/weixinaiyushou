@@ -34,7 +34,7 @@
 
   <!-- 地点选择 -->
   <scroll-view scroll-y="true" class="station-scroll">
-    <view wx:for="{{stationList}}" id="{{index}}" class="rowView station-item bordertop" bindtap="selecStation" data-station-id="{{item.PK_ID}}" data-station-name="{{item.TName}}">
+    <view wx:for="{{stationList}}" id="{{index}}" class="rowView station-item bordertop" bindtap="selecStation" >
       <view class="station-item-text">
         <view class="station-item-head">{{item.TName}}</view>
         <view class="station-item-subhead">{{item.Address}}</view>

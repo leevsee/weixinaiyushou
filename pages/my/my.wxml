@@ -112,7 +112,7 @@
   <!--<import src="../../component/circle/circle.wxml" />
   <template is="circle" data="{{circle: circle}}" />-->
 
-    <import src="../../component/loading/loading.wxml" />
+  <import src="../../component/loading/loading.wxml" />
   <template is="loading" data="{{loading: loading}}" />
 
   <!-- 我的转售预售 -->

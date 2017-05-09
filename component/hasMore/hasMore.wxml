@@ -1,0 +1,25 @@
+<template name="hasMore">
+  <!--<block wx:if="{{hasMore.show}}">-->
+  <!--<view hidden="{{hasMore.show}}">-->
+    <block wx:if="{{hasMore.type == 1}}">
+      <view class="loading-tip">
+        <view class="loadEffect">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </view>拼命加载中…
+      </view>
+    </block>
+    <block wx:elif="{{hasMore.type == 0}}">
+      <view class="loading-tip">上拉到底部，加载更多</view>
+    </block>
+    <block wx:else>
+      <view class="loading-tip">没有更多内容了</view>
+    </block>
+  <!--</block>-->
+</template>

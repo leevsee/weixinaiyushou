@@ -1,0 +1,98 @@
+.loading-tip {
+  height: 150rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #ccc;
+  font-size: 30rpx;
+}
+
+.loadEffect {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  margin-top: 2.5%;  
+  margin-left: 30%;
+  /*margin: 0 auto;
+	margin-top: 100px;*/
+}
+
+/*0.16*/
+.loadEffect span {
+  display: inline-block;
+  width: 6.4rpx;
+  height: 6.4rpx;
+  border-radius: 50%;
+  background: #1392e3;
+  position: absolute;
+  animation: load 1.04s ease infinite;
+}
+
+@keyframes load {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+/*0.08*/
+.loadEffect span:nth-child(1) {
+  left: 0;
+  top: 50%;
+  margin-top: -3.2rpx;
+  animation-delay: 0.13s;
+}
+
+/*0.14*/
+.loadEffect span:nth-child(2) {
+  left: 5.6rpx;
+  top: 5.6rpx;
+  animation-delay: 0.26s;
+}
+
+/*0.08*/
+.loadEffect span:nth-child(3) {
+  left: 50%;
+  top: 0;
+  margin-left: -3.2rpx;
+  animation-delay: 0.39s;
+}
+
+/*0.14*/
+.loadEffect span:nth-child(4) {
+  top: 5.6rpx;
+  right: 5.6rpx;
+  animation-delay: 0.52s;
+}
+
+/*0.08*/
+.loadEffect span:nth-child(5) {
+  right: 0;
+  top: 50%;
+  margin-top: -3.2rpx;
+  animation-delay: 0.65s;
+}
+
+/*0.14*/
+.loadEffect span:nth-child(6) {
+  right: 5.6rpx;
+  bottom: 5.6rpx;
+  animation-delay: 0.78s;
+}
+
+/*0.08*/
+.loadEffect span:nth-child(7) {
+  bottom: 0;
+  left: 50%;
+  margin-left: -3.2rpx;
+  animation-delay: 0.91s;
+}
+
+/*0.14*/
+.loadEffect span:nth-child(8) {
+  bottom: 5.6rpx;
+  left: 5.6rpx;
+  animation-delay: 1.04s;
+}

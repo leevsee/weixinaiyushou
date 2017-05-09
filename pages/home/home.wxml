@@ -59,8 +59,13 @@
       <!--<image src="/res/others.png" style="width: 100rpx; height: 100rpx;"></image>-->
       <text>预售头条</text>
     </view>
+
     <view class="headline-sale-content">
-      <view class="headline-sale-slider">
+
+      <import src="../../component/loading/loading.wxml" />
+      <template is="loading" data="{{loading: loading}}" />
+
+      <view class="headline-sale-slider" wx:if="{{topLine}}">
         <block wx:for="{{topLine}}">
           <view class="headline-sale-slider-text">
             <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{item[0].LinkUrl}}">{{item[0].Title}}</view>

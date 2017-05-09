@@ -18,6 +18,7 @@ Page({
     // wx.showNavigationBarLoading();
     wx.showLoading({
       title: '玩命加载中',
+      mask: true
     });
     console.log(options.tcode);
     wx.getSystemInfo({

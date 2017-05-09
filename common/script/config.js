@@ -1,11 +1,12 @@
 
-// var url = 'http://192.168.0.33/AYSAPI/api/';
-var url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
+const url = 'http://192.168.0.33/AYSAPI/api/';
+// const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
 
 module.exports = {
-    categoryTCode: "0",
-    categoryNum: "20",
+    categoryTCode: '0',
+    categoryNum: '20',
     commodityByStationSize: '5',
+    pageNum: '5',
     apiList: {
         loginToken: url + 'Account/wxsm_Login',
         category: url + 'Home_Page/CommodityType_Lists',
@@ -21,6 +22,6 @@ module.exports = {
         orderPay: url + 'WeChatPayment/WeChatPaidByOrder',
         mySaleOrder: url + 'MyMessage/Get_OrderFromUser',
         delMySaleOrder: url + 'MyMessage/Delete_OrderByCommCode',
-        
+        openStationDoor: url + 'WMJ/WMJ_Message',
     }
 }

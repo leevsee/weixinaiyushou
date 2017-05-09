@@ -2,16 +2,15 @@
 @import "../../common/common.wxss";
 @import "../../component/err/err.wxss";
 @import "../../component/message/message.wxss";
-@import "../../component/circle/circle.wxss";
 @import "../../component/loading/loading.wxss";
-
 
 page {
   background-color: #f1f1f1;
 }
 
-.circle{
-    margin-top: 8%;
+.loader {
+  margin-left: 46%;
+  margin-top: 8%;
 }
 
 .userinfo {
@@ -43,7 +42,7 @@ page {
 
 .userinfo-vip {
   font-size: 28rpx;
-  color: #333333;
+  color: #333;
 }
 
 .userinfo-progress {
@@ -69,18 +68,18 @@ page {
   font-size: 30rpx;
 }
 
-.vertical-divide{
-    height: 70rpx;
-    background-color: #f1f1f1;
-    width: 1px;
+.vertical-divide {
+  height: 70rpx;
+  background-color: #f1f1f1;
+  width: 1px;
 }
 
-.userinfo-expenditure{
-    margin-left: 8%;
+.userinfo-expenditure {
+  margin-left: 8%;
 }
 
-.userinfo-income{
-    margin-right: 8%
+.userinfo-income {
+  margin-right: 8%;
 }
 
 .userinfo-expenditure-name {
@@ -91,62 +90,61 @@ page {
   margin-bottom: 7%;
 }
 
-.myOrders{
-    padding: 3%;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: #fff;
+.myOrders {
+  padding: 3%;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #fff;
 }
 
-.myOrders-name{
-    padding-bottom: 3%;
+.myOrders-name {
+  padding-bottom: 3%;
 }
 
-.myOrders-wrap{
-    width: 100%;
-    justify-content: space-between;
-    padding-top: 3%;
+.myOrders-wrap {
+  width: 100%;
+  justify-content: space-between;
+  padding-top: 3%;
 }
 
-.myOrders-item{
-    justify-content: space-around;
+.myOrders-item {
+  justify-content: space-around;
 }
 
-.myOrders-text{
-    font-size: 30rpx;
+.myOrders-text {
+  font-size: 30rpx;
 }
 
-
-.myOrders-img{
-    padding-top: 13%;
-    width: 46rpx;
-    height: 46rpx;
+.myOrders-img {
+  padding-top: 13%;
+  width: 46rpx;
+  height: 46rpx;
 }
 
-.myOrders-color{
-    color: #1392e3;
-    font-size: 34rpx;
+.myOrders-color {
+  color: #1392e3;
+  font-size: 34rpx;
 }
 
-.myOrders-sale{
-    width: 100%;
-    font-size: 28rpx;
+.myOrders-sale {
+  width: 100%;
+  font-size: 28rpx;
 }
 
-.myOrders-sale-text{
-    width: 92%;
+.myOrders-sale-text {
+  width: 92%;
 }
 
-.myOrders-sale-item{
-    justify-content: space-between;
-       margin-top: 3%;
-    margin-bottom: 3%;
+.myOrders-sale-item {
+  justify-content: space-between;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
-.myOrders-del{
-    color: red;
+.myOrders-del {
+  color: red;
 }
 
-.mySaleOrder{
-    padding-bottom: 0%;
+.mySaleOrder {
+  padding-bottom: 0%;
 }

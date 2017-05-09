@@ -1,4 +1,3 @@
-
 <!--<view class="headViewCtrl">
   <image src="/res/location.png" style="width: 100rpx; height: 100rpx;"></image>
   <view class="headViewCtrl-text">
@@ -38,14 +37,14 @@
         <view class="postage-info-text">
           <text>{{stationName}}</text>
         </view>
-        <view class="rowView postage-info-button">
+        <view class="rowView postage-info-button" style="width:{{openDoorWidth}}%">
           <view class="btn" bindtap="goToStation">
             <text>重新选择</text>
           </view>
-          <view class="btn" bindtap="goToStation">
+          <view class="btn" bindtap="openStationDoor" wx:if="{{isOpenDoor == 1}}" data-stationID="{{stationInfo.PK_ID}}">
             <text>自助开门</text>
           </view>
-          <view class="btn" bindtap="goToStation">
+          <view class="btn" bindtap="joinStation" data-phone="{{phone}}">
             <text>加盟提货站</text>
           </view>
 

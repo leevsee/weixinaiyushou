@@ -1,5 +1,5 @@
 module.exports = {
-    show: function (cfg) {
+    show: function () {
         let that = this
         that.setData({
             loading: {

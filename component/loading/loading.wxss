@@ -1,15 +1,14 @@
 .loading {
-    margin-left: 46%;
   width: 70rpx;
   height: 70rpx;
   /*width: 2em;
   height: 2em;*/
   border-radius: 50%;
-  background: red;
-  background: -moz-linear-gradient(left, #fff 10%, rgba(255, 255, 255, 0) 42%);
-  background: -webkit-linear-gradient(left, #fff 10%, rgba(255, 255, 255, 0) 42%);
-  background: -o-linear-gradient(left, #fff 10%, rgba(255, 255, 255, 0) 42%);
-  background: -ms-linear-gradient(left, #fff 10%, rgba(255, 255, 255, 0) 42%);
+  background: #1392e3;
+  background: -moz-linear-gradient(left, #1392e3 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #1392e3 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #1392e3 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #1392e3 10%, rgba(255, 255, 255, 0) 42%);
   background: linear-gradient(to right, #1392e3 10%, rgba(255, 255, 255, 0) 42%);
   position: relative;
   -webkit-animation: loadingKF 1.4s infinite linear;
@@ -29,11 +28,11 @@
 
 .loading:after {
   background: #f1f1f1;
-  width: 80%;
-  height: 80%;
+  /*width: 80%;*/
+  /*height: 80%;*/
   border-radius: 50%;
   content: '';
-  margin: auto;
+  margin: 7rpx;
   position: absolute;
   top: 0;
   left: 0;

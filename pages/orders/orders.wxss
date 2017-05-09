@@ -1,5 +1,6 @@
 @import "../../common/animation.wxss";
 @import "../../common/common.wxss";
+@import "../../component/hasMore/hasMore.wxss";
 
 page {
   background-color: #f1f1f1;

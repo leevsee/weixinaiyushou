@@ -1,51 +1,48 @@
 {
-  "pages": [
-    "pages/home/home",
-    "pages/my/my",
-    
-    "pages/commodityList/commodityList",
-    "pages/station/station",
-    "pages/selectStation/selectStation",
-    
-    "pages/purchase/purchase",
-    
-    "pages/orders/orders",
-    "pages/showPic/showPic",
-    "pages/logs/logs"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "爱预售",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
-  },
-  "tabBar": {
-    "selectedColor": "#1392e3",
-    "borderStyle": "white",
-    "list": [
-      {
-        "pagePath": "pages/station/station",
-        "text": "提货站",
-        "iconPath": "res/tihuo.png",
-        "selectedIconPath": "res/tihuo_select.png"
-      },
-      {
-        "pagePath": "pages/home/home",
-        "text": "爱预售",
-        "iconPath": "res/home.png",
-        "selectedIconPath": "res/home_select.png"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "text": "我",
-        "iconPath": "res/me.png",
-        "selectedIconPath": "res/me_select.png"
-      }
-    ]
-  },
-  "networkTimeout": {
-    "request": "10000"
-  },
-  "debug": true
+    "pages": [
+        "pages/station/station",
+        "pages/home/home",
+        "pages/my/my",
+        "pages/commodityList/commodityList",
+        "pages/selectStation/selectStation",
+        "pages/purchase/purchase",
+        "pages/orders/orders",
+        "pages/showPic/showPic",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "爱预售",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "selectedColor": "#1392e3",
+        "borderStyle": "white",
+        "list": [
+            {
+                "pagePath": "pages/station/station",
+                "text": "提货站",
+                "iconPath": "res/tihuo.png",
+                "selectedIconPath": "res/tihuo_select.png"
+            },
+            {
+                "pagePath": "pages/home/home",
+                "text": "爱预售",
+                "iconPath": "res/home.png",
+                "selectedIconPath": "res/home_select.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我",
+                "iconPath": "res/me.png",
+                "selectedIconPath": "res/me_select.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": "10000"
+    },
+    "debug": true
 }
