@@ -2,11 +2,12 @@ var api = require('../../common/script/fetchStation')
 
 Page({
    data: {
+      stationList: '',
+      selcStationInfo:'',
       stationId: '',
       selectStationName: '',
       isOpenDoor: 0,
       phone: '',
-      stationList: '',
       condition: false,
       isFromOrder: false,
       showLoading: true
@@ -15,51 +16,50 @@ Page({
       wx.showNavigationBarLoading();
       wx.showLoading({
          title: '玩命加载中',
+         mask: true
       });
-      if (options.isFromOrder) {
-         this.setData({
-            isFromOrder: options.isFromOrder
-         });
-      }
+      // if (options.isFromOrder) {
+      //    this.setData({
+      //       isFromOrder: options.isFromOrder
+      //    });
+      // }
       api.getSelectStation.call(this);
    },
+   //返回上层页面
    goBack: function () {
-      if (this.data.isFromOrder) {
-         wx.setStorage({
-            key: 'stationInfo',
-            data: {
-               stationId: this.data.stationId,
-               selectStationName: this.data.selectStationName,
-            },
-            success: function (res) {
-               // success
-               wx.navigateBack({})
-            }
-         })
-
-      } else {
-         wx.reLaunch({
-            url: '../station/station?id=' + this.data.stationId + '&stationname=' + this.data.selectStationName + '&isopendoor=' + this.data.isOpenDoor + '&phone=' + this.data.phone
-         })
-      }
+      wx.setStorage({
+         key: 'stationInfo',
+         data: {
+            stationInfo: this.data.selcStationInfo,
+            stationId: this.data.stationId,
+            stationName: this.data.selectStationName,
+            isOpenDoor: this.data.isOpenDoor,
+            phone: this.data.phone
+         },
+         success: function (res) {
+            wx.navigateBack({})
+         }
+      })
    },
+   //选择当前地点
    selecStation: function (e) {
-      let that = this;
-      console.log(that.data.stationList[e.currentTarget.id].PK_ID)
-      console.log(that.data.stationList[e.currentTarget.id].TName)
+      // let that = this;
+      console.log(this.data.stationList[e.currentTarget.id].PK_ID)
+      console.log(this.data.stationList[e.currentTarget.id].TName)
       this.data.stationList.map(function (item, i) {
          if (e.currentTarget.id == i) {
             item.Select = true;
          } else {
             item.Select = false;
          }
-      });    
-      that.setData({
-         stationId: that.data.stationList[e.currentTarget.id].PK_ID,
-         selectStationName: that.data.stationList[e.currentTarget.id].TName,
-         isOpenDoor: that.data.stationList[e.currentTarget.id].TType,
-         phone: that.data.stationList[e.currentTarget.id].RePhone,
-         stationList: that.data.stationList
+      });
+      this.setData({
+         selcStationInfo: this.data.stationList[e.currentTarget.id],
+         stationId: this.data.stationList[e.currentTarget.id].PK_ID,
+         selectStationName: this.data.stationList[e.currentTarget.id].TName,
+         isOpenDoor: this.data.stationList[e.currentTarget.id].TType,
+         phone: this.data.stationList[e.currentTarget.id].RePhone,
+         stationList: this.data.stationList
       })
    }
 })

@@ -1,6 +1,6 @@
 
 <!-- item -->
-<block wx:if="{{isShow}}">
+<block wx:if="{{! showLoading}}">
   <view class="columnView order-item" wx:for="{{ordersList}}">
 
     <!-- 订单名 -->

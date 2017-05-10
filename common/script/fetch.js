@@ -1,9 +1,8 @@
 const config = require('./config');
 const common = require('./common');
 const message = require('../../component/message/message')
-const err = require('../../component/err/err')
-const circle = require('../../component/circle/circle')
 const loading = require('../../component/loading/loading')
+const hasMore = require('../../component/hasMore/hasMore')
 
 /**
  * 获取分类
@@ -112,24 +111,39 @@ function fetchTopLine(cb, fail_cb) {
 /**
  * 获取商品列表
  */
-function fetchCommodity(typeCode, num, page, cb, fail_cb) {
+function fetchCommodity(typeCode, cb, fail_cb) {
    console.log('fetchCommodity');
-   var that = this;
+   let that = this;
+   hasMore.showLoading.call(that);
    //商品列表请求
    wx.request({
       url: config.apiList.commodity,
       data: {
          FK_TypeCode: typeCode,
-         pageSize: num,
-         pageIndex: page
+         pageIndex: that.data.page,
+         pageSize: config.pageNum
       },
       method: 'GET',
       success: function (res) {
          // console.log(res)
-         that.setData({
-            commodityList: res.data,
-            showLoading: false
-         });
+         if (res.data.length == 0) {
+            hasMore.noContent.call(that);
+         } else {
+            that.setData({
+               page: that.data.page + 1,
+               commodityList: that.data.commodityList.concat(res.data)
+            });
+            if (res.data.length == config.pageNum) {
+               hasMore.showButton.call(that);
+            } else {
+               hasMore.noContent.call(that);
+            }
+         }
+         if (that.data.showLoading) {
+            that.setData({
+               showLoading: false
+            });
+         }
          wx.hideNavigationBarLoading();
          wx.hideLoading()
       },
@@ -185,6 +199,7 @@ function fetchMyOrder(cb, fail_cb) {
                         percentage: res.data.return_Value,
                         showLoading: false
                      });
+                     loading.show.call(that);
                      //获取转、预售订单
                      fetchMySaleOrder.call(that);
                      wx.hideNavigationBarLoading();
@@ -213,9 +228,7 @@ function fetchMyOrder(cb, fail_cb) {
 function fetchMySaleOrder(cb, fail_cb) {
    console.log('fetchMySaleOrder');
    let that = this;
-   // circle.show.call(that);
-   loading.show.call(that);
-
+   hasMore.showLoading.call(that);
    //获取token
    wx.getStorage({
       key: 'token',
@@ -225,18 +238,28 @@ function fetchMySaleOrder(cb, fail_cb) {
          wx.request({
             url: config.apiList.mySaleOrder,
             data: {
-               pageIndex: 0,
-               pageSize: 5,
+               pageIndex: that.data.page,
+               pageSize: config.pageNum,
                token: res.data
             },
             method: 'GET',
             success: function (res) {
                console.log(res);
                //更新数据
-               that.setData({
-                  mySaleOrders: res.data
-               });
-               // circle.hide.call(that);
+               if (res.data.length == 0) {
+                  hasMore.noContent.call(that);
+               } else {
+                  that.setData({
+                     page: that.data.page + 1,
+                     mySaleOrders: that.data.mySaleOrders.concat(res.data)
+                  });
+                  if (res.data.length == config.pageNum) {
+                     hasMore.showButton.call(that);
+                  } else {
+                     hasMore.noContent.call(that);
+                  }
+               }
+
                loading.hide.call(that);
             },
             fail: function (res) {
@@ -266,7 +289,7 @@ function delMySaleOrder(commCode, cb, fail_cb) {
    //删除提示
    wx.showModal({
       title: '提示',
-      content: '是否删除',
+      content: '是否删除该正在出售中的商品',
       confirmColor: '#1392e3',
       success: function (res) {
          if (res.confirm) {

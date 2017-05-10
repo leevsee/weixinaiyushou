@@ -16,7 +16,7 @@
 
 
   <!--<scroll-view class="scroll-view_y" style="{{setHeight}}" scroll-y="true" bindscrolltolower="scrollTest">-->
-<view class="scroll-view_y" style="{{setHeight}}">
+  <view class="scroll-view_y" style="{{setHeight}}">
 
 
     <!-- item -->
@@ -89,7 +89,7 @@
 
         <!-- 商品转让信息 -->
         <view class="commodity-introduce" wx:if="{{item.List_Temp_Commoditys.length}}">
-        <!--<view class="commodity-introduce">-->
+          <!--<view class="commodity-introduce">-->
           <view class="commodity-introduce-head">
             <text>转让信息</text>
           </view>
@@ -131,13 +131,18 @@
         </view>
       </view>
     </block>
-      <block wx:if="{{hasMore}}">
-    <view class="loading-tip">拼命加载中…</view>
-  </block>
-  <block wx:else>
-    <view class="loading-tip">没有更多内容了</view>
-  </block>
-  <!--</scroll-view>-->
+
+    <!--<block wx:if="{{hasMore}}">
+      <view class="loading-tip">拼命加载中…</view>
+    </block>
+    <block wx:else>
+      <view class="loading-tip">没有更多内容了</view>
+    </block>-->
+    
+    <import src="../../component/hasMore/hasMore.wxml" />
+    <template is="hasMore" data="{{hasMore: hasMore}}" />
+
+    <!--</scroll-view>-->
   </view>
 </block>
 <import src="../../component/message/message.wxml" />

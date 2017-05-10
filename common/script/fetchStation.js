@@ -1,6 +1,7 @@
 const config = require('./config');
 const message = require('../../component/message/message')
 const err = require('../../component/err/err')
+const hasMore = require('../../component/hasMore/hasMore')
 
 /**
  * 获取当前提货站并获取商品数据
@@ -31,38 +32,38 @@ function fetchStation(cb, fail_cb) {
                   phone: res.data.RePhone
                });
                //获取提货站中的商品数据
-               wx.request({
-                  url: config.apiList.commodityByStation,
-                  data: {
-                     PK_ID: res.data.PK_ID,
-                     pageIndex: 0,
-                     pageSize: config.commodityByStationSize
-                  },
-                  method: 'GET',
-                  success: function (res) {
-                     // success
-                     console.log(res.data);
-                     //更新商品数据
-                     that.setData({
-                        showLoading: false,
-                        commodityList: res.data,
-                        showLoading: false
-                     });
-                     wx.hideNavigationBarLoading();
-                     wx.hideLoading();
-                  },
-                  fail: function (res) {
-                     // fail
-                     message.show.call(that, {
-                        content: '网络开小差了',
-                        icon: 'offline'
-                     })
-                     wx.hideLoading();
-                  },
-                  complete: function (res) {
-                     // complete
-                  }
-               })
+               fetchCommByStationID.call(that, res.data.PK_ID);
+               // wx.request({
+               //    url: config.apiList.commodityByStation,
+               //    data: {
+               //       PK_ID: res.data.PK_ID,
+               //       pageIndex: 0,
+               //       pageSize: config.commodityByStationSize
+               //    },
+               //    method: 'GET',
+               //    success: function (res) {
+               //       // success
+               //       console.log(res.data);
+               //       //更新商品数据
+               //       that.setData({
+               //          showLoading: false,
+               //          commodityList: res.data
+               //       });
+               //       wx.hideNavigationBarLoading();
+               //       wx.hideLoading();
+               //    },
+               //    fail: function (res) {
+               //       // fail
+               //       message.show.call(that, {
+               //          content: '网络开小差了',
+               //          icon: 'offline'
+               //       })
+               //       wx.hideLoading();
+               //    },
+               //    complete: function (res) {
+               //       // complete
+               //    }
+               // })
 
                typeof cb == 'function' && cb(allCategory);
             },
@@ -83,26 +84,41 @@ function fetchStation(cb, fail_cb) {
 /**
  * 根据提货站ID获取其中的商品数据
  */
-function fetchStationByID(id, cb, fail_cb) {
+function fetchCommByStationID(id, cb, fail_cb) {
    console.log('fetchStationByID');
    let that = this;
    message.hide.call(that);
+   hasMore.showLoading.call(that);
    wx.request({
       url: config.apiList.commodityByStation,
       data: {
          PK_ID: id,
-         pageIndex: 0,
-         pageSize: config.commodityByStationSize
+         pageIndex: that.data.page,
+         pageSize: config.pageNum
       },
       method: 'GET',
       success: function (res) {
          // success
          console.log(res.data);
-         //更新商品数据
-         that.setData({
-            showLoading: false,
-            commodityList: res.data
-         });
+         if (res.data.length == 0) {
+            hasMore.noContent.call(that);
+         } else {
+            //更新商品数据
+            that.setData({
+               page: that.data.page + 1,
+               commodityList: that.data.commodityList.concat(res.data)
+            });
+            if (res.data.length == config.pageNum) {
+               hasMore.showButton.call(that);
+            } else {
+               hasMore.noContent.call(that);
+            }
+         }
+         if (that.data.showLoading) {
+            that.setData({
+               showLoading: false
+            });
+         }
          wx.hideNavigationBarLoading();
          wx.hideLoading();
       },
@@ -147,6 +163,7 @@ function fetchSelectStation(cb, fail_cb) {
                console.log(res.data);
                //更新提货站数据
                that.setData({
+                  selcStationInfo: res.data[0],
                   stationId: res.data[0].PK_ID,
                   selectStationName: res.data[0].TName,
                   stationList: res.data,
@@ -172,7 +189,7 @@ function fetchSelectStation(cb, fail_cb) {
 /**
  * 提货站开门
  */
-function openStationDoorByID(stationID,cb, fail_cb){
+function openStationDoorByID(stationID, cb, fail_cb) {
    console.log('openStationDoor');
    console.log(stationID);
    wx.showModal({
@@ -183,10 +200,10 @@ function openStationDoorByID(stationID,cb, fail_cb){
             console.log('用户点击确定')
             wx.request({
                url: config.apiList.openStationDoor,
-               data:{
+               data: {
                   PK_ID: stationID
                },
-               success:function(res){
+               success: function (res) {
                   console.log(res.data);
                }
             })
@@ -200,6 +217,6 @@ function openStationDoorByID(stationID,cb, fail_cb){
 module.exports = {
    getStation: fetchStation,
    getSelectStation: fetchSelectStation,
-   getStationByID: fetchStationByID,
+   getCommByID: fetchCommByStationID,
    openStationDoor: openStationDoorByID
 }

@@ -3,6 +3,7 @@
 @import "../../component/err/err.wxss";
 @import "../../component/message/message.wxss";
 @import "../../component/loading/loading.wxss";
+@import "../../component/hasMore/hasMore.wxss";
 
 page {
   background-color: #f1f1f1;

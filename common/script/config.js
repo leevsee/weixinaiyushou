@@ -6,7 +6,7 @@ module.exports = {
     categoryTCode: '0',
     categoryNum: '20',
     commodityByStationSize: '5',
-    pageNum: '5',
+    pageNum: '3',
     apiList: {
         loginToken: url + 'Account/wxsm_Login',
         category: url + 'Home_Page/CommodityType_Lists',

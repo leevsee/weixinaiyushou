@@ -3,13 +3,16 @@ var api = require('../../common/script/fetch')
 Page({
   data: {
     ordersNum: '',
-    mySaleOrders: '',
+    mySaleOrders: [],
     userName: '',
     income: '0.00',
     expenditure: '0.00',
     percent: '0',
     percentage: 'inherit',
-    condition: true,
+    page: 0,
+    hasMore: {
+       type: 2
+    },
     showLoading: true
   },
   onLoad: function () {
@@ -30,13 +33,15 @@ Page({
       }
     })
   },
+  onReachBottom: function () {
+     console.log('onReachBottom');
+     api.getMySaleOrder.call(this);
+  },
   onPullDownRefresh: function () {
     var that = this
-    // that.setData({
-    //   ordersNum: ''
-    // })
     this.setData({
-      mySaleOrders:'',
+      mySaleOrders:[],
+      page: 0,
       showLoading: true
     })
     this.onLoad();
@@ -44,10 +49,10 @@ Page({
   },
   goToOrders: function (e) {
     wx.navigateTo({
-      url: '../orders/orders?bs=' + e.currentTarget.dataset.bs + '&state=' + e.currentTarget.dataset.state + '&title=' + e.currentTarget.dataset.title
+      url: '../orders/orders?bs=' + e.currentTarget.dataset.bs + '&state=' + e.currentTarget.dataset.state + '&title=订单 - ' + e.currentTarget.dataset.title
     })
   },
-  delComm: function (e) {
+  delMySaleComm: function (e) {
     console.log(e.currentTarget.dataset.commcode);
     api.getDelSaleOrder.call(this,e.currentTarget.dataset.commcode);
   }

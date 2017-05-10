@@ -118,12 +118,10 @@
       </view>
     </view>
   </block>
-  <block wx:if="{{hasMore}}">
-    <view class="loading-tip">拼命加载中…</view>
-  </block>
-  <block wx:else>
-    <view class="loading-tip">没有更多内容了</view>
-  </block>
+
+  <import src="../../component/hasMore/hasMore.wxml" />
+  <template is="hasMore" data="{{hasMore: hasMore}}" />
+
 </block>
 <import src="../../component/message/message.wxml" />
 <template is="message" data="{{message: message}}" />

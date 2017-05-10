@@ -10,63 +10,103 @@ Page({
       stationInfo: '',
       stationName: '',
       isOpenDoor: 0,
-      phone:'',
-      commodityList: '',
-      openDoorWidth:'',
+      phone: '',
+      commodityList: [],
+      openDoorWidth: '',
+      page: 0,
+      hasMore: {
+         type: 2
+      },
       isSelect: false,
       hasMore: false,
       showLoading: true,
       hiddenLoading: true
    },
    onLoad: function (options) {
+      console.log('onLoad');
+      console.log(options);
       // wx.showNavigationBarLoading();
       wx.showLoading({
          title: '玩命加载中',
       });
       console.log(options);
-      if (options.id == undefined) {
+      //判断是否首次加载
+      if (options.stationId == undefined) {
          api.getStation.call(this);
       } else {
-         api.getStationByID.call(this, options.id);
+         //根据选择提货站ID显示
+         api.getCommByID.call(this, options.stationId);
          this.setData({
-            stationName: options.stationname,
-            isOpenDoor: options.isopendoor,
+            stationInfo: options.stationInfo,
+            stationName: options.stationName,
+            isOpenDoor: options.isOpenDoor,
             phone: options.phone,
          });
       }
    },
+   onShow: function (options) {
+      // Do something when show.
+      console.log('onShow');
+      var that = this;
+      wx.getStorage({
+         key: 'stationInfo',
+         success: function (res) {
+            console.log(res);
+            that.setData({
+               stationName: '',
+               page: 0,
+               commodityList: [],
+               showLoading: true,
+               hiddenLoading: true
+            })            
+            that.onLoad(res.data);
+            wx.removeStorage({
+               key: 'stationInfo'
+            })
+         }
+      })
+   },
+   onReachBottom: function () {
+      console.log('onReachBottom');
+
+      api.getCommByID.call(this, this.data.stationInfo.PK_ID);
+   },
    onPullDownRefresh: function () {
-      var that = this
-      that.setData({
+      this.setData({
          stationName: '',
-         commodityList: '',
+         page: 0,
+         commodityList: [],
          showLoading: true,
          hiddenLoading: true
       })
       this.onLoad('');
       wx.stopPullDownRefresh();
    },
+   //选择提货站
    goToStation: function () {
       wx.navigateTo({
          url: '../selectStation/selectStation'
       })
    },
+   //购买商品
    goToPurchase: function (e) {
       console.log(e.currentTarget.dataset.commcode)
       wx.navigateTo({
          url: '../purchase/purchase?commcode=' + e.currentTarget.dataset.commcode
       })
    },
+   //自助开门
    openStationDoor: function (e) {
       api.openStationDoor.call(this, e.currentTarget.dataset.stationid)
    },
+   //加盟提货站
    joinStation: function (e) {
       console.log(e.currentTarget.dataset.phone);
       wx.makePhoneCall({
          phoneNumber: e.currentTarget.dataset.phone //仅为示例，并非真实的电话号码
       })
    },
-
+   
    goToPic: function (e) {
       console.log(e.currentTarget.dataset.commcode);
       wx.navigateTo({

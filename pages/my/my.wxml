@@ -128,7 +128,7 @@
       <!-- item -->
       <view class="rowView myOrders-sale-item" wx:for="{{mySaleOrders}}">
         <text class="myOrders-sale-text text-overflow">{{userName}}推荐：{{item.CommName}}</text>
-        <text class="myOrders-del" data-CommCode="{{item.CommCode}}" bindtap="delComm">删除</text>
+        <text class="myOrders-del" data-CommCode="{{item.CommCode}}" bindtap="delMySaleComm">删除</text>
       </view>
 
       <!--<view class="rowView myOrders-sale-item">
@@ -141,6 +141,9 @@
       </view>-->
     </view>
   </view>
+
+  <import src="../../component/hasMore/hasMore.wxml" />
+  <template is="hasMore" data="{{hasMore: hasMore}}" />
 
 
 

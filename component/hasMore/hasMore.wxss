@@ -1,9 +1,10 @@
 .loading-tip {
-  height: 150rpx;
+  height: 120rpx;
   line-height: 80rpx;
   text-align: center;
   color: #ccc;
   font-size: 30rpx;
+  box-shadow: 0 0 40rpx #f5f5f5 inset;
 }
 
 .loadEffect {

@@ -7,8 +7,9 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
-    commodityList: '',
+    commodityList: [],
     options: '',
+    page:0,
     showLoading: true,
     setHeight: '',
     hasMore: false
@@ -32,11 +33,11 @@ Page({
       }
     })
 
-    api.getCommodity.call(this, options.tcode, "10", "0");
+    api.getCommodity.call(this, options.tcode);
   },
   onReachBottom: function () {
-    // Do something when page reach bottom.
     console.log("onReachBottom");
+     api.getCommodity.call(this, this.data.options.tcode);
   },
   scrollTest: function (e) {
     console.log(e)
