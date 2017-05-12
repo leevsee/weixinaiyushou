@@ -1,6 +1,6 @@
 
-// const url = 'http://192.168.0.33/AYSAPI/api/';
-const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
+const url = 'http://192.168.0.33/AYSAPI/api/';
+// const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
 
 module.exports = {
     categoryTCode: '0',

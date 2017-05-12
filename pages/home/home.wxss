@@ -70,7 +70,7 @@
   width: 100%;
   height: 100%;
   text-align: center;
-  color: #fff;
+  color: #777777;
   margin-left: 0;
   animation: swiperSlide 20s ease-out infinite;
 }
@@ -95,7 +95,7 @@
 
 .allcategory-text {
   font-size: 30rpx;
-  color: #666;
+  /*color: #666;*/
   width: 25%;
   text-align: center;
   margin-top: 3%;

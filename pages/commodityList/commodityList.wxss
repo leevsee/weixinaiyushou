@@ -82,6 +82,7 @@ page {
 .commodity-detail-text {
   padding-top: 5%;
   font-size: 28rpx;
+  color: #777777;
 }
 
 .commodity-detail-discount {
@@ -96,7 +97,7 @@ page {
   font-size: 30rpx;
   /*font-weight: bold;*/
   text-decoration: line-through;
-  color: #666;
+  color: #ebe7e7;
 }
 
 .commodity-detail-buy {
@@ -134,6 +135,7 @@ page {
 
 .commodity-introduce-text {
   font-size: 36rpx;
+  color: #777777;
 }
 
 .commodity-introducer {

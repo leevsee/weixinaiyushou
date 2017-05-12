@@ -122,6 +122,10 @@ page {
   color: #666;
 }
 
+textarea:placeholder { 
+   color:red;
+}
+
 .onSale-text {
   color: #1392e3;
   padding: 2% 4% 0 2%;
