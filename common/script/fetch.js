@@ -44,7 +44,7 @@ function fetchCategory(cb, fail_cb) {
             wx.hideLoading();
             wx.hideNavigationBarLoading();
          } else {
-            netErr(that);
+            common.netErr(that);
          }
          typeof cb == 'function' && cb(allCategory);
       },

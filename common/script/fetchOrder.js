@@ -47,7 +47,7 @@ function addOrder(commCode, cb, fail_cb) {
                         commCode: res.data.CommCode,
                         commName: res.data.CommName,
                         price: res.data.SalePrice,
-                        totlePrice: res.data.SalePrice + 10,
+                        totlePrice: res.data.SalePrice + that.data.postage,
                         stock: res.data.Stock,
                         deliveryPrice: res.data.ResalePrice,
                         totleDeliveryPrice: res.data.ResalePrice,
@@ -76,6 +76,7 @@ function addOrder(commCode, cb, fail_cb) {
 function confirmOrder(data, cb, fail_cb) {
    console.log('confirmOrder');
    console.log(data);
+   let that = this;
    //确认下单提示
    wx.showModal({
       title: '提示',
@@ -97,9 +98,29 @@ function confirmOrder(data, cb, fail_cb) {
                success: function (res) {
                   console.log(res);
                   //如果返回信息成功，跳转待付款界面
-                  if (res.data.Msg == 'ok') {
-                     wx.redirectTo({
-                        url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                  if (res.data.return_code == 'SUCCESS') {
+                     wx.requestPayment({
+                        timeStamp: String(res.data.timeStamp),
+                        nonceStr: res.data.nonce_str,
+                        package: 'prepay_id=' + res.data.prepay_id,
+                        signType: 'MD5',
+                        paySign: res.data.sign,
+                        success: function (res) {
+                           // success
+                           console.log(res);
+                           wx.redirectTo({
+                              url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
+                           })
+                        },
+                        fail: function (res) {
+                           // fail
+                           wx.redirectTo({
+                              url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                           })
+                        },
+                        complete: function (res) {
+                           // complete
+                        }
                      })
                   } else {
                      //否则提示下单失败，返回商品列表界面
@@ -200,9 +221,17 @@ function fetchPay(payData, cb, fail_cb) {
             success: function (res) {
                // success
                console.log(res);
+               wx.redirectTo({
+                  url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
+               })
             },
             fail: function (res) {
                // fail
+               console.log(res);
+               wx.redirectTo({
+                  url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+               })
+               
             },
             complete: function (res) {
                // complete

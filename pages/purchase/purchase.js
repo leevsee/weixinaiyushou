@@ -6,7 +6,7 @@ Page({
       commName: '',
       price: '',
       num: 1,
-      postage: 10,
+      postage: 0,
       totlePrice: '',
       deliveryNum: 1,
       deliveryPrice: '',
@@ -20,6 +20,7 @@ Page({
       stationId: 0,
       stationName: '',
       item: '',
+      showPostage: false,
       showLoading: true
    },
    onLoad: function (options) {
@@ -85,6 +86,7 @@ Page({
                   UserName: that.data.address.userName,
                   CommCount: that.data.num,
                   FK_TerminalID: that.data.stationId,
+                  Body: '爱预售-购买' + that.data.commName,
                   token: res.data,
                }
                api.confirmOrder.call(that, data);
@@ -102,7 +104,7 @@ Page({
       if (this.data.num > 1) {
          this.setData({
             num: this.data.num - 1,
-            totlePrice: Number(((this.data.num - 1) * this.data.price) + 10).toFixed(2)
+            totlePrice: Number(((this.data.num - 1) * this.data.price) + this.data.postage).toFixed(2)
          })
       }
    },
@@ -110,7 +112,7 @@ Page({
       if (this.data.num < this.data.stock) {
          this.setData({
             num: this.data.num + 1,
-            totlePrice: Number(((this.data.num + 1) * this.data.price) + 10).toFixed(2)
+            totlePrice: Number(((this.data.num + 1) * this.data.price) + this.data.postage).toFixed(2)
          })
       }
    },
@@ -133,12 +135,17 @@ Page({
    //获取微信地址
    selectAddres: function () {
       let that = this;
+      wx.showLoading({
+         title: '正在打开微信地址',
+         mask:true
+      });
       wx.chooseAddress({
          success: function (res) {
             console.log(res);
             that.setData({
                address: res
-            })
+            });
+            wx.hideLoading();
          }
       })
    },

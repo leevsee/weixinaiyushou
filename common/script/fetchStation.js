@@ -198,15 +198,23 @@ function openStationDoorByID(stationID, cb, fail_cb) {
       success: function (res) {
          if (res.confirm) {
             console.log('用户点击确定')
-            wx.request({
-               url: config.apiList.openStationDoor,
-               data: {
-                  PK_ID: stationID
-               },
+            wx.getStorage({
+               key: 'token',
                success: function (res) {
-                  console.log(res.data);
-               }
+                  wx.request({
+                     url: config.apiList.openStationDoor,
+                     data: {
+                        PK_ID: stationID,
+                        token: res.data,
+                     },
+                     success: function (res) {
+                        console.log(res.data);
+                     }
+                  })
+
+               },
             })
+
          } else if (res.cancel) {
             console.log('用户点击取消')
          }

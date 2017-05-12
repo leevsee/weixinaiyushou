@@ -56,7 +56,7 @@
 
   <!-- 分割线 -->
   <view class="thin-divide"></view>
-  <view class="rowView onSale-postage">
+  <view class="rowView onSale-postage" wx:if="{{showPostage}}">
     <view class="onSale-postage-text">送货/提货费</view>
     <view class="onSale-postage-price">￥{{postage}}</view>
   </view>
