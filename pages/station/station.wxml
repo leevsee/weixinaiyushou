@@ -30,7 +30,7 @@
     <view class="commodity-introduce-head">
       <text>您的提货站</text>
     </view>
-    <view class="divide commodity-introduce-divide"></view>
+    <!--<view class="divide commodity-introduce-divide"></view>-->
     <view class="rowView postage-info">
       <image src="/res/postage.jpg" class="postage-img"></image>
       <view class="columnView postage-info-content">

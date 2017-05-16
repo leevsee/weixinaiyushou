@@ -19,7 +19,7 @@ App({
       }
     })
 
-   //登陆获取OPID测试
+   // 登陆获取OPID测试
    //  wx.login({
    //     success: function (res) {
    //        if (res.code) {
@@ -42,6 +42,7 @@ App({
    //        }
    //     }
    //  });
+   
   }
 
 })

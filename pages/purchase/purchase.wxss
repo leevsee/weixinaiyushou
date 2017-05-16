@@ -9,7 +9,8 @@ page {
 
 .addrSelc-content {
   justify-content: space-between;
-  padding: 5% 2% 5% 3%;
+  padding: 4.5% 2% 4.5% 0;
+  padding-left: 20rpx;
   background: #fff;
 }
 
@@ -42,7 +43,7 @@ page {
   justify-content: space-around;
   padding-top: 2%;
   padding-bottom: 1%;
-  padding-left: 1%;
+  padding-left: 20rpx;
   background: #fff;
 }
 
@@ -98,7 +99,8 @@ page {
 
 .total {
   justify-content: space-between;
-  padding: 2% 4% 2% 2%;
+  padding: 2% 4% 2% 0;
+  padding-left: 20rpx;
   background: #fff;
 }
 
@@ -110,7 +112,8 @@ page {
 
 .send-message {
   height: 150rpx;
-  padding: 2% 4% 2% 2%;
+  padding: 2% 4% 2% 0;
+  padding-left: 20rpx;
   background: #fff;
 }
 
@@ -128,7 +131,8 @@ textarea:placeholder {
 
 .onSale-text {
   color: #1392e3;
-  padding: 2% 4% 0 2%;
+  padding: 2% 4% 1% 0;
+  padding-left: 20rpx;
   background: #fff;
   font-size: 34rpx;
   font-weight: bold;
@@ -137,7 +141,8 @@ textarea:placeholder {
 .onSale-radio-group {
   display: flex;
   flex-direction: column;
-  padding: 2% 4% 2% 2%;
+  padding: 2% 4% 2% 0;
+  padding-left: 20rpx;
   background: #fff;
   margin-bottom: 100rpx;
 }

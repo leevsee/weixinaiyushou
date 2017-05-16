@@ -60,7 +60,7 @@ page {
 
 .commodity-name {
   padding-top: 2%;
-  padding-left: 2%;
+  padding-left: 20rpx;
   font-size: 36rpx;
 }
 
@@ -97,7 +97,7 @@ page {
   font-size: 30rpx;
   /*font-weight: bold;*/
   text-decoration: line-through;
-  color: #ebe7e7;
+  color: #ccc;
 }
 
 .commodity-detail-buy {
@@ -121,14 +121,15 @@ page {
 
 .commodity-introduce-head {
   color: #1392e3;
-  font-size: 36rpx;
+  font-size: 35rpx;
+  /*height: 70rpx;*/
   /*font-weight: bold;*/
   margin-bottom: 1%;
 }
 
 .commodity-introduce-divide {
   /*position: absolute;*/
-  height: 1rpx;
+  height: 2rpx;
   background-color: #1392e3;
   margin-bottom: 2%;
 }

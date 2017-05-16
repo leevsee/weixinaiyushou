@@ -52,7 +52,7 @@ page {
 .commodity-head {
   padding-top: 1%;
   padding-bottom: 1%;
-  padding-left: 3%;
+  padding-left: 20rpx;
   background: #fff;
   position: fixed;
   height: 110rpx;
@@ -97,7 +97,7 @@ page {
 }
 
 .postage {
-  padding: 3%;
+  padding: 20rpx;
   background: #fff;
 }
 
@@ -113,7 +113,7 @@ page {
   height: 150rpx;
   justify-content: space-between;
   align-items: flex-start;
-  margin-left: 2%;
+  margin-left: 20rpx;
   width: 80%;
 }
 
@@ -121,7 +121,7 @@ page {
   color: #1392e3;
   font-size: 36rpx;
   font-weight: bold;
-  margin-bottom: 1%;
+  margin-bottom: 20rpx;
 }
 
 .commodity-introduce-divide {
@@ -160,7 +160,8 @@ page {
 
 .logistics {
   justify-content: flex-start;
-  padding: 1% 0 0 2%;
+  padding: 1% 0 0 0;
+  padding-left: 20rpx;
   background: #fff;
 }
 
@@ -178,7 +179,7 @@ page {
 
 .commodity-name {
   padding-top: 2%;
-  padding-left: 2%;
+  padding-left: 20rpx;
   padding-bottom: 1%;
   font-size: 36rpx;
   background: #fff;

@@ -87,6 +87,7 @@ Page({
                   CommCount: that.data.num,
                   FK_TerminalID: that.data.stationId,
                   Body: '爱预售-购买' + that.data.commName,
+                  Sketch:'',
                   token: res.data,
                }
                api.confirmOrder.call(that, data);

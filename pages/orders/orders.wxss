@@ -8,7 +8,7 @@ page {
 }
 
 .order-item {
-  padding: 3% 3% 1% 3%;
+  padding: 3% 3% 1% 20rpx;
   margin-bottom: 2%;
   align-items: flex-start;
   background-color: #fff;
@@ -27,8 +27,8 @@ page {
 
 .order-item-detail {
   justify-content: space-between;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
   width: 100%;
 }
 
@@ -45,14 +45,14 @@ page {
 
 .order-item-price {
   width: 100%;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
   text-align: right;
 }
 
 .order-item-but {
   width: 100%;
-  margin-top: 2%;
+  margin-top: 20rpx;
   text-align: right;
 }
 

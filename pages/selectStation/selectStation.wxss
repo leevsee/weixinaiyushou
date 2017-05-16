@@ -13,7 +13,7 @@
 .commodity-head-text {
   display: flex;
   flex-direction: column;
-  margin-left: 2%;
+  margin-left: 20rpx;
   width: 83%;
 }
 

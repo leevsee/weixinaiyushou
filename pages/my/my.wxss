@@ -67,6 +67,7 @@ page {
   justify-content: space-around;
   background-color: #fff;
   font-size: 30rpx;
+  color: #333333;
 }
 
 .vertical-divide {
@@ -85,11 +86,20 @@ page {
 
 .userinfo-expenditure-name {
   margin-bottom: 7%;
+  font-size: 35rpx;
 }
 
-.userinfo-income-name {
+.userinfo-expenditure-name {
   margin-bottom: 7%;
+  font-size: 35rpx;
 }
+
+/*.userinfo-expenditure-price {
+  font-weight: bold;
+}
+.userinfo-income-price{
+   font-weight: bold;
+}*/
 
 .myOrders {
   padding: 3%;
@@ -100,6 +110,8 @@ page {
 
 .myOrders-name {
   padding-bottom: 3%;
+  font-size: 35rpx;
+  color: #333333;
 }
 
 .myOrders-wrap {
@@ -114,6 +126,7 @@ page {
 
 .myOrders-text {
   font-size: 30rpx;
+  color: #777777;
 }
 
 .myOrders-img {

@@ -1,9 +1,11 @@
 {
    "pages": [
-      
-      "pages/home/home",
       "pages/my/my",
       "pages/station/station",
+      
+      "pages/home/home",
+      
+      
       "pages/commodityList/commodityList",
       "pages/selectStation/selectStation",
       "pages/purchase/purchase",
@@ -18,8 +20,9 @@
       "enablePullDownRefresh": true
    },
    "tabBar": {
+      "color":"#777777",
       "selectedColor": "#1392e3",
-      "borderStyle": "white",
+      "borderStyle": "black",
       "list": [
          {
             "pagePath": "pages/station/station",

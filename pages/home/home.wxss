@@ -48,11 +48,12 @@
 }
 
 .headline-sale-image {
-  padding: 2%;
-  margin-left: 3%;
-  margin-right: 2%;
+  padding: 10rpx;
+  /*margin-left: 20rpx;
+  margin-right: 20rpx;*/
+  margin: 20rpx;
   text-align: center;
-  width: 12%;
+  width: 90rpx;
   font-size: 36rpx;
   border-radius: 15%;
   color: white;

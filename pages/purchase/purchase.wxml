@@ -9,7 +9,7 @@
 </view>-->
 
   <!-- 收货地址选择 -->
-  <view class="rowView addrSelc-content">
+  <view class="rowView addrSelc-content" wx:if="{{!address}}">
     <view class="addrSelc-content-text" bindtap="selectAddres">
       <text wx:if="{{address}}">重新选择收货地址</text>
       <text wx:else>添加收货地址</text>
@@ -18,21 +18,23 @@
   </view>
 
   <!-- 分割线 -->
-  <view class="divide" wx:if="{{address}}"></view>
+  <!--<view class="divide" wx:if="{{address}}"></view>-->
 
   <!-- 收货地址显示 -->
   <view class="addrView" wx:if="{{address}}">
     <view class="addr-title">
       <text>收货地址：</text>
     </view>
-    <view class="rowView addr-display">
+    <view class="rowView addr-display" bindtap="selectAddres">
       <view class="addrSelc-content-text">
         <text>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</text>
       </view>
 
-      <!--<image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>-->
+      <image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>
     </view>
   </view>
+
+
 
   <!-- 分割线 -->
   <view class="divide"></view>
