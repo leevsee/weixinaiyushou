@@ -87,7 +87,7 @@ Page({
                   CommCount: that.data.num,
                   FK_TerminalID: that.data.stationId,
                   Body: '爱预售-购买' + that.data.commName,
-                  Sketch:'',
+                  Sketch: '',
                   token: res.data,
                }
                api.confirmOrder.call(that, data);
@@ -138,7 +138,7 @@ Page({
       let that = this;
       wx.showLoading({
          title: '正在打开微信地址',
-         mask:true
+         mask: true
       });
       wx.chooseAddress({
          success: function (res) {
@@ -146,6 +146,8 @@ Page({
             that.setData({
                address: res
             });
+         },
+         complete: function () {
             wx.hideLoading();
          }
       })
