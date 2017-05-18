@@ -27,7 +27,7 @@ function fetchStation(cb, fail_cb) {
                //设置提货站名称
                that.setData({
                   stationInfo: res.data,
-                  stationName: res.data.Address,
+                  stationName: res.data.TName,
                   isOpenDoor: res.data.TType,
                   phone: res.data.RePhone
                });
@@ -167,6 +167,8 @@ function fetchSelectStation(cb, fail_cb) {
                   stationId: res.data[0].PK_ID,
                   selectStationName: res.data[0].TName,
                   stationList: res.data,
+                  isOpenDoor: res.data[0].TType,
+                  phone: res.data[0].RePhone,
                   showLoading: false
                });
                wx.hideLoading();
@@ -198,6 +200,9 @@ function openStationDoorByID(stationID, cb, fail_cb) {
       success: function (res) {
          if (res.confirm) {
             console.log('用户点击确定')
+            wx.showLoading({
+               title: '正在开门中',
+            });
             wx.getStorage({
                key: 'token',
                success: function (res) {
@@ -208,7 +213,26 @@ function openStationDoorByID(stationID, cb, fail_cb) {
                         token: res.data,
                      },
                      success: function (res) {
+                        wx.hideLoading();
                         console.log(res.data);
+                        if (res.data.Msg == 'OK') {
+                           wx.showToast({
+                              title: '开门成功',
+                              icon: 'success',
+                              duration: 2000
+                           })
+
+                        } else {
+
+                           wx.showToast({
+                              title: '开门失败，请重新再试',
+                              icon: 'success',
+                              duration: 2000
+                           })
+                        }
+                     },
+                     complete: function (res) {
+
                      }
                   })
 

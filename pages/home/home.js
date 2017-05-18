@@ -1,4 +1,4 @@
-var api = require('../../common/script/fetch.js')
+let api = require('../../common/script/fetch.js')
 // var token = require('../../common/script/common')
 
 Page({
