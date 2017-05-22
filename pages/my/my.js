@@ -5,6 +5,7 @@ Page({
     ordersNum: '',
     mySaleOrders: [],
     userName: '',
+    userImg:'',
     income: '0.00',
     expenditure: '0.00',
     percent: '0',
@@ -28,7 +29,8 @@ Page({
         // success
         console.log(res.data);
         that.setData({
-          userName: res.data.nickName
+          userName: res.data.nickName,
+          userImg: res.data.avatarUrl
         })
       }
     })

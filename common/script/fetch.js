@@ -125,7 +125,7 @@ function fetchCommodity(typeCode, cb, fail_cb) {
       },
       method: 'GET',
       success: function (res) {
-         // console.log(res)
+         console.log(res)
          if (res.data.length == 0) {
             hasMore.noContent.call(that);
          } else {

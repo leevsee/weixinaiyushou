@@ -15,6 +15,7 @@ Page({
     hasMore: false
   },
   onLoad: function (options) {
+     console.log(options);
     var that = this
     // wx.showNavigationBarLoading();
     wx.showLoading({
@@ -32,7 +33,6 @@ Page({
         })
       }
     })
-
     api.getCommodity.call(this, options.tcode);
   },
   onReachBottom: function () {
@@ -44,8 +44,10 @@ Page({
   },
   onPullDownRefresh: function () {
     this.setData({
-      commodityList: '',
-      showLoading: true
+      commodityList: [],
+      page: 0,
+      showLoading: true,
+      hasMore: false
     })
     this.onLoad(this.data.options);
     wx.stopPullDownRefresh();

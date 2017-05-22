@@ -2,7 +2,7 @@
 
   <!-- 我的头像 -->
   <view class="rowView userinfo">
-    <image src="/res/touxiang3.jpg" class="userinfo-img"></image>
+    <image src="{{userImg}}" class="userinfo-img"></image>
     <view class="columnView userinfo-content">
       <view class="userinfo-name">{{userName}}</view>
       <view class="userinfo-vip">还差{{100-percent}}%升级到华贵铂金会员</view>

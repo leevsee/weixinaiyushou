@@ -86,6 +86,7 @@ function confirmOrder(data, cb, fail_cb) {
          if (res.confirm) {
             wx.showLoading({
                title: '正在下单中。。。',
+               mask: true
             });
             //下单提交
             wx.request({
@@ -108,15 +109,29 @@ function confirmOrder(data, cb, fail_cb) {
                         success: function (res) {
                            // success
                            console.log(res);
-                           wx.redirectTo({
-                              url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
-                           })
+                           // wx.redirectTo({
+                           //    url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
+                           // })
+                           common.myToast('success', '付款成功，正在跳转中', function () {
+                              setTimeout(function () {
+                                 wx.redirectTo({
+                                    url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
+                                 })
+                              }, 1500);
+                           }) 
                         },
                         fail: function (res) {
                            // fail
-                           wx.redirectTo({
-                              url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
-                           })
+                           // wx.redirectTo({
+                           //    url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                           // })
+                           common.myToast('err', '付款失败，请重新再试', function () {
+                              setTimeout(function () {
+                                 wx.redirectTo({
+                                    url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                                 })
+                              }, 1000);
+                           })   
                         },
                         complete: function (res) {
                            // complete
@@ -202,6 +217,11 @@ function fetchOrders(buyOrSell, state, cb, fail_cb) {
 function fetchPay(payData, cb, fail_cb) {
    console.log('fetchPay');
    console.log(payData);
+   //小程序支付自带有loading
+   // wx.showLoading({
+   //    title: '正在付款中。。。',
+   //    mask:true
+   // });
    wx.request({
       url: config.apiList.orderPay,
       data: payData,
@@ -220,17 +240,30 @@ function fetchPay(payData, cb, fail_cb) {
             paySign: res.data.sign,
             success: function (res) {
                // success
+               console.log('requestPayment sucess:');
                console.log(res);
-               wx.redirectTo({
-                  url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
-               })
+
+               common.myToast('success', '付款成功，正在跳转中', function () {
+                  setTimeout(function () {
+                     wx.redirectTo({
+                        url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
+                     })
+                  }, 1500);
+               })   
+
             },
             fail: function (res) {
                // fail
+               console.log('requestPayment fail:');
                console.log(res);
-               wx.redirectTo({
-                  url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
-               })
+
+               common.myToast('err', '付款失败，请重新再试', function () {
+                  wx.redirectTo({
+                     url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                  });
+               })     
+               // common.myToast('err', '付款失败，请重新再试');              
+
                
             },
             complete: function (res) {
