@@ -1,5 +1,6 @@
 let api = require('../../common/script/fetch')
 let common = require('../../common/script/common')
+let config = require('../../common/script/config')
 // var token = require('../../common/script/common')
 
 Page({
@@ -16,8 +17,18 @@ Page({
       hiddenLoading: true
    },
    onLoad: function () {
+      let that = this;
       wx.showNavigationBarLoading();
-      api.getCategory.call(this);
+
+      common.checkVersion(function (res) {
+         if (res.data.SDKVersion > config.wxSDK && res.data.version >= config.wxVersion) {
+            api.getCategory.call(that);
+         } else {
+            common.updataErr(that);
+         }
+      });
+
+
       // api.getTopLine.call(this);
       // token.getToken.call(this);
    },
@@ -52,7 +63,10 @@ Page({
    },
    mytest: function () {
       console.log('mytest btn');
-      common.myToast('success','成功' , '')
+      wx.navigateTo({
+         url: '../orderInfo/orderInfo'
+      })
+      // common.myToast('success','成功' , '')
 
       // wx.showToast({
       //    title: '测试跳转',

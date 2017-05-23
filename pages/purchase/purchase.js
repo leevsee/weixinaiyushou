@@ -1,4 +1,4 @@
-var api = require('../../common/script/fetchOrder')
+let api = require('../../common/script/fetchOrder')
 
 Page({
    data: {
@@ -31,7 +31,7 @@ Page({
       api.getOrder.call(this, options.commcode);
    },
    onShow: function () {
-      var that = this;
+      let that = this;
       wx.getStorage({
          key: 'stationInfo',
          success: function (res) {
@@ -54,7 +54,7 @@ Page({
       console.log(e);
    },
    goToOrders: function () {
-      var that = this;
+      let that = this;
       if (this.data.address == '') {
          wx.showToast({
             title: '请选择收货地址',
@@ -68,7 +68,7 @@ Page({
             key: 'token',
             success: function (res) {
                // success
-               var data = {
+               let data = {
                   FK_SellerUserID: that.data.item.FK_UserId,
                   FK_AddressID: that.data.address.provinceName + that.data.address.cityName + that.data.address.countyName + that.data.address.detailInfo,
                   AMoney: that.data.totlePrice,

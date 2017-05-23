@@ -52,6 +52,29 @@ function netErr(that) {
    wx.hideNavigationBarLoading();
 }
 
+
+/**
+ * 需要提示信息
+ */
+function updataErr(that) {
+   message.show.call(that, {
+      content: '当前微信版本过低，请升级到最新微信版本后重试。',
+      icon: 'updata'
+   })
+   wx.hideLoading();
+   wx.hideNavigationBarLoading();
+}
+
+/**
+ * 检测版本
+ */
+function checkVersion(callback){
+   wx.getStorage({
+      key: 'systemInfo',
+      success: callback
+   })
+}
+
 /**
  * 
  */
@@ -101,6 +124,8 @@ function myToast(type,title,callback) {
 module.exports = {
    getToken: fetchToken,
    netErr: netErr,
+   updataErr: updataErr,
+   checkVersion: checkVersion,
    errShow: errShow,
    myToast: myToast
 }

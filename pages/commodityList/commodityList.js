@@ -1,4 +1,4 @@
-var api = require('../../common/script/fetch')
+let api = require('../../common/script/fetch')
 
 Page({
   data: {
@@ -16,7 +16,7 @@ Page({
   },
   onLoad: function (options) {
      console.log(options);
-    var that = this
+    let that = this
     // wx.showNavigationBarLoading();
     wx.showLoading({
       title: '玩命加载中',

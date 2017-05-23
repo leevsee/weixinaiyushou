@@ -1,12 +1,14 @@
 
-const url = 'http://192.168.0.33/AYSAPI/api/';
-// const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
+// const url = 'http://192.168.0.33/AYSAPI/api/';
+const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
 
 module.exports = {
     categoryTCode: '0',
     categoryNum: '20',
     commodityByStationSize: '5',
     pageNum: '3',
+    wxSDK: '1.1.0',
+    wxVersion: '6.5.6',
     apiList: {
         loginToken: url + 'Account/wxsm_Login',
         category: url + 'Home_Page/CommodityType_Lists',

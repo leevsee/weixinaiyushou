@@ -1,4 +1,4 @@
-var api = require('../../common/script/fetchOrder')
+let api = require('../../common/script/fetchOrder')
 
 Page({
    data: {
@@ -24,11 +24,11 @@ Page({
       showLoading: true
    },
    onLoad: function (options) {
-      wx.showLoading({
-         title: '加载中',
-      });
+      // wx.showLoading({
+      //    title: '加载中',
+      // });
       console.log(options.commcode)
-      api.getOrder.call(this, options.commcode);
+      // api.getOrder.call(this, options.commcode);
    },
    onShow: function () {
       var that = this;

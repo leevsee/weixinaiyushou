@@ -1,5 +1,5 @@
 //app.js
-var api = require('./common/script/common')
+let api = require('./common/script/common')
 
 App({
   onLaunch: function () {
@@ -7,7 +7,7 @@ App({
       title: '玩命加载中',
       mask: true
     });
-    console.log(wx.canIUse('chooseAddress'));
+   //  console.log(wx.canIUse('chooseAddress'));
     api.getToken.call(this);
     wx.getUserInfo({
       success: function (res) {
@@ -17,6 +17,16 @@ App({
           data: res.userInfo
         })
       }
+    })
+    
+    wx.getSystemInfo({
+       success: function (res) {
+          console.log(res)
+          wx.setStorage({
+             key: 'systemInfo',
+             data: res
+          })
+       }
     })
 
    // 登陆获取OPID测试

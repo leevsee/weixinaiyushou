@@ -1,4 +1,6 @@
-var api = require('../../common/script/fetchStation')
+let api = require('../../common/script/fetchStation')
+let common = require('../../common/script/common')
+let config = require('../../common/script/config')
 
 Page({
    data: {
@@ -25,24 +27,34 @@ Page({
    onLoad: function (options) {
       console.log('onLoad');
       console.log(options);
+      let that = this;
       // wx.showNavigationBarLoading();
       wx.showLoading({
          title: '玩命加载中',
+         mask: true
       });
-      console.log(options);
-      //判断是否首次加载
-      if (options.stationId == undefined) {
-         api.getStation.call(this);
-      } else {
-         //根据选择提货站ID显示
-         api.getCommByID.call(this, options.stationId);
-         this.setData({
-            stationInfo: options.stationInfo,
-            stationName: options.stationName,
-            isOpenDoor: options.isOpenDoor,
-            phone: options.phone,
-         });
-      }
+
+      common.checkVersion(function (res) {
+         if (res.data.SDKVersion > config.wxSDK && res.data.version >= config.wxVersion) {
+            console.log(options);
+            //判断是否首次加载
+            if (options.stationId == undefined) {
+               api.getStation.call(that);
+            } else {
+               //根据选择提货站ID显示
+               api.getCommByID.call(that, options.stationId);
+               that.setData({
+                  stationInfo: options.stationInfo,
+                  stationName: options.stationName,
+                  isOpenDoor: options.isOpenDoor,
+                  phone: options.phone,
+               });
+            }
+
+         } else {
+            common.updataErr(that);
+         }
+      });
    },
    onShow: function (options) {
       // Do something when show.

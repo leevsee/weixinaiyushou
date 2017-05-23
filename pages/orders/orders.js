@@ -1,4 +1,4 @@
-var api = require('../../common/script/fetchOrder')
+let api = require('../../common/script/fetchOrder')
 
 Page({
    data: {
@@ -39,8 +39,8 @@ Page({
       wx.stopPullDownRefresh();
    },
    goToPay: function (e) {
-      var that = this;
-      var selcOrder = this.data.ordersList[e.currentTarget.dataset.index];
+      let that = this;
+      let selcOrder = this.data.ordersList[e.currentTarget.dataset.index];
       console.log('====================')
       console.log(this.data.ordersList[e.currentTarget.dataset.index]);
       wx.getStorage({
