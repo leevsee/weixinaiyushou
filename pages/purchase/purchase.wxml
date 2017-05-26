@@ -41,7 +41,7 @@
   <!-- 商品名称 -->
   <view class="rowView onSale-name">
     <view class="onSale-name-pic">
-      <image src="/res/niurou.jpg" style="width: 220rpx; height: 150rpx;"></image>
+      <image src="{{item.Thumbnail}}" style="width: 220rpx; height: 150rpx;"></image>
     </view>
     <view class="columnView onSale-name-content">
       <view class="onSale-name-text">{{commName}}</view>

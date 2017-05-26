@@ -41,6 +41,8 @@ function fetchCategory(cb, fail_cb) {
             });
             //获取头条
             fetchTopLine.call(that);
+            //获取首页轮播图
+            fetchSlideShow.call(that);
             wx.hideLoading();
             wx.hideNavigationBarLoading();
          } else {
@@ -92,7 +94,42 @@ function fetchTopLine(cb, fail_cb) {
             //更新数据
             that.setData({
                showLoading: false,
-               topLine: topLine
+               topLine: topLine,
+               animation: 'swiperSlide'+topLine.length
+            });
+            loading.hide.call(that);
+            wx.hideNavigationBarLoading();
+            wx.hideLoading();
+         }
+         typeof cb == 'function' && cb(topLine);
+      },
+      fail: function (res) {
+         common.netErr(that);
+         wx.hideLoading();
+         typeof fail_cb == 'function' && fail_cb();
+      }
+   })
+}
+
+/**
+ * 获取首页轮播图
+ */
+function fetchSlideShow(cb, fail_cb) {
+   console.log('fetchSlideShow');
+   let that = this;
+   loading.show.call(that);
+   //轮播图请求
+   wx.request({
+      url: config.apiList.slideShow,
+      data: {
+      },
+      method: 'GET',
+      success: function (res) {
+         console.log(res);
+         if (res.statusCode == 200) {
+            //更新数据
+            that.setData({
+               imgUrls: res.data
             });
             loading.hide.call(that);
             wx.hideNavigationBarLoading();
@@ -144,6 +181,33 @@ function fetchCommodity(typeCode, cb, fail_cb) {
                showLoading: false
             });
          }
+         wx.hideNavigationBarLoading();
+         wx.hideLoading()
+      },
+      fail: function (res) {
+         // fail
+         common.netErr(that);
+      }
+   })
+}
+
+/**
+ * 转售信息
+ */
+function fetchResaleInfo(code, cb, fail_cb) {
+   console.log('fetchResaleInfo');
+   //商品列表请求
+   wx.request({
+      url: config.apiList.commodityResaleInfo,
+      data: {
+         ParentCode: code,
+         pageIndex: that.data.page,
+         pageSize: config.pageNum
+      },
+      method: 'GET',
+      success: function (res) {
+         console.log(res)
+
          wx.hideNavigationBarLoading();
          wx.hideLoading()
       },

@@ -258,9 +258,11 @@ function fetchPay(payData, cb, fail_cb) {
                console.log(res);
 
                common.myToast('err', '付款失败，请重新再试', function () {
-                  wx.redirectTo({
-                     url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
-                  });
+                  setTimeout(function () {
+                     wx.redirectTo({
+                        url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                     });
+                  }, 1500);
                })     
                // common.myToast('err', '付款失败，请重新再试');              
 

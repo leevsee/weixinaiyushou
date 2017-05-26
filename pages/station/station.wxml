@@ -32,7 +32,7 @@
     </view>
     <!--<view class="divide commodity-introduce-divide"></view>-->
     <view class="rowView postage-info">
-      <image src="/res/postage.jpg" class="postage-img"></image>
+      <image src="{{stationInfo.Thumbnail}}" class="postage-img"></image>
       <view class="columnView postage-info-content">
         <view class="postage-info-text">
           <text>{{stationName}}</text>

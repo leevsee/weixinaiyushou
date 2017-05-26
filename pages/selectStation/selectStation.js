@@ -1,4 +1,4 @@
-var api = require('../../common/script/fetchStation')
+let api = require('../../common/script/fetchStation')
 
 Page({
    data: {
@@ -6,6 +6,7 @@ Page({
       selcStationInfo:'',
       stationId: '',
       selectStationName: '',
+      selectStationPic:'',
       isOpenDoor: 0,
       phone: '',
       condition: false,
@@ -15,7 +16,7 @@ Page({
    onLoad: function (options) {
       wx.showNavigationBarLoading();
       wx.showLoading({
-         title: '玩命加载中',
+         title: '正在定位中',
          mask: true
       });
       // if (options.isFromOrder) {
@@ -55,8 +56,9 @@ Page({
       });
       this.setData({
          selcStationInfo: this.data.stationList[e.currentTarget.id],
-         stationId: this.data.stationList[e.currentTarget.id].PK_ID,
+         stationId: this.data.stationList[e.currentTarget.id].PK_ID, 
          selectStationName: this.data.stationList[e.currentTarget.id].TName,
+         selectStationPic: this.data.stationList[e.currentTarget.id].Thumbnail,
          isOpenDoor: this.data.stationList[e.currentTarget.id].TType,
          phone: this.data.stationList[e.currentTarget.id].RePhone,
          stationList: this.data.stationList

@@ -53,13 +53,13 @@ Page({
                token: res.data,
             };
             api.requestPay.call(that, payData);
-         },
-         fail: function (res) {
-            // fail
-         },
-         complete: function (res) {
-            // complete
          }
+      })
+   },
+   goToOrderInfo:function(e){
+      console.log(e.currentTarget.dataset.ordercode)
+      wx.navigateTo({
+         url: '../orderInfo/orderInfo?ordercode=' + e.currentTarget.dataset.ordercode
       })
    }
 })

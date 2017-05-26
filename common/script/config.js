@@ -1,6 +1,6 @@
 
-// const url = 'http://192.168.0.33/AYSAPI/api/';
-const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
+const url = 'http://192.168.0.33/AYSAPI/api/';
+// const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
 
 module.exports = {
     categoryTCode: '0',
@@ -12,8 +12,10 @@ module.exports = {
     apiList: {
         loginToken: url + 'Account/wxsm_Login',
         category: url + 'Home_Page/CommodityType_Lists',
+        slideShow: url + 'Home_Page/Page_Picture',              
         topLine: url + 'Home_Page/Get_NewsLists',
         commodity: url + 'Home_Page/Get_CommodityModel',
+        commodityResaleInfo: url + 'Home_Page/Get_Resale_Commoditys',  
         station: url + 'Supply_Station/Get_TerminalMdoel',
         commodityByStation: url + 'Supply_Station/Get_CommodityModelfromTerminal',
         selectStation: url + 'Supply_Station/Get_Termina_List',

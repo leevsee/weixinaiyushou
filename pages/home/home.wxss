@@ -9,6 +9,23 @@
   margin-bottom: 1%;
 }
 
+.custom{
+   margin-left:17%;
+   margin-top:27%;
+}
+
+.animation1{
+   animation: none;
+}
+
+.animation2{
+   animation: swiperSlide2 20s ease-out infinite;
+}
+
+.animation3{
+   animation: swiperSlide3 20s ease-out infinite;
+}
+
 .loader {
   margin-left: 33%;
   margin-top: 3%;
@@ -73,7 +90,7 @@
   text-align: center;
   color: #777777;
   margin-left: 0;
-  animation: swiperSlide 20s ease-out infinite;
+  animation: swiperSlide1 20s ease-out infinite;
 }
 
 .headline-sale-slider-text {

@@ -102,18 +102,18 @@ function myToast(type,title,callback) {
    let image = '';
    switch (type) {
       case "success":
-         icon: 'success';
+         icon = 'success';
          break;
       case "err":
-         image: '/res/err2.png';
+         image = '/res/err2.png';
          break;
       default:
          break;
    }
    wx.showToast({
       title: title,
-      icon: 'icon',
       image: image,
+      icon: 'success',
       mask: true,
       duration: 2000,
       success:callback

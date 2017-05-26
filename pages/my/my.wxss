@@ -22,7 +22,7 @@ page {
 }
 
 .userinfo-img {
-  margin-left: 3%;
+  margin-left: 5%;
   border-radius: 100rpx;
   width: 100rpx;
   height: 100rpx;
@@ -30,7 +30,7 @@ page {
 
 .userinfo-content {
   margin-top: 8%;
-  margin-left: 4%;
+  margin-left: 5%;
   margin-bottom: 2%;
   justify-content: space-around;
   align-items: flex-start;

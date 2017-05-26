@@ -29,7 +29,7 @@
     <button size="mini" bindtap="goBack" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 5%;">确定</button>
   </view>
   <view class="station-pic">
-    <image src="/res/postage.jpg" mode="scaleToFill" class="station-img"></image>
+    <image src="{{selectStationPic}}" mode="scaleToFill" class="station-img"></image>
   </view>
 
   <!-- 地点选择 -->

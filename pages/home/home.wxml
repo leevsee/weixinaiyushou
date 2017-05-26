@@ -9,9 +9,13 @@
 
   <!-- 轮播 -->
   <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiperView">
-    <block wx:for="{{imgUrls}}">
+    <view class="custom" wx:if="{{loading.visiable}}">
+      <import src="../../component/loading/loading.wxml" />
+      <template is="loading" data="{{loading: loading}}" />
+    </view>
+    <block wx:for="{{imgUrls}}" wx:if="{{!loading.visiable}}">
       <swiper-item class="swiperPic">
-        <image src="{{item}}" mode="scaleToFill" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" style="width:100%;height:100%;" />
+        <image src="{{item.PictureBody}}" mode="scaleToFill" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" style="width:100%;height:100%;" />
       </swiper-item>
     </block>
   </swiper>
@@ -65,13 +69,13 @@
       <import src="../../component/loading/loading.wxml" />
       <template is="loading" data="{{loading: loading}}" />
 
-      <view class="headline-sale-slider" wx:if="{{topLine}}">
+      <view class="headline-sale-slider" style=" animation: {{animation}} 20s ease-out infinite;" wx:if="{{topLine}}">
         <block wx:for="{{topLine}}">
           <view class="headline-sale-slider-text">
             <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{item[0].LinkUrl}}">{{item[0].Title}}</view>
             <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{item[0].LinkUrl}}">{{item[1].Title}}</view>
           </view>
-        </block>
+        </block>        
       </view>
     </view>
   </view>

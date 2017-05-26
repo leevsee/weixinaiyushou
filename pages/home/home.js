@@ -13,6 +13,7 @@ Page({
       classification: '',
       category: '',
       topLine: '',
+      animation:'',
       showLoading: true,
       hiddenLoading: true
    },

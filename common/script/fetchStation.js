@@ -166,6 +166,7 @@ function fetchSelectStation(cb, fail_cb) {
                   selcStationInfo: res.data[0],
                   stationId: res.data[0].PK_ID,
                   selectStationName: res.data[0].TName,
+                  selectStationPic: res.data[0].Thumbnail,
                   stationList: res.data,
                   isOpenDoor: res.data[0].TType,
                   phone: res.data[0].RePhone,

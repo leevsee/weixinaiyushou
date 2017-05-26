@@ -18,8 +18,8 @@
     <view class="thin-divide"></view>
 
     <!-- 订单详情 -->
-    <view class="rowView order-item-detail">
-      <image src="/res/niurou.jpg" class="order-item-detail-img"></image>
+    <view class="rowView order-item-detail" bindtap="goToOrderInfo" data-OrderCode="{{item.OrderCode}}">
+      <image src="{{item.path}}" class="order-item-detail-img"></image>
       <view class="order-item-detail-name">
         <text style="">{{item.CommName}}</text>
       </view>

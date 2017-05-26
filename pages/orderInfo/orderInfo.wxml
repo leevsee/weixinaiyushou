@@ -31,7 +31,7 @@
     <view class="express-info-wrap">
       <!-- itmes -->
       <view class="express-info-itme">
-        <view class="express-info-circle-wrap">
+        <view class="express-info-circle-wrap" style="height:{{express_height}}%">
           <view class="express-info-circle">
 
           </view>
@@ -50,7 +50,7 @@
 
 
       <!-- itmes -->
-      <view class="express-info-itme1">
+      <view class="express-info-itme">
         <view class="express-info-circle-wrap">
           <view class="express-info-circle">
 
@@ -69,6 +69,7 @@
           在广州深圳公司集包分部进行揽件扫描
         </view>
       </view>
+      
 
       <!-- itmes -->
       <view class="express-info-itme">
