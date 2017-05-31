@@ -1,7 +1,11 @@
+<block wx:if="{{! showLoading}}">
 <swiper indicator-dots="true"  interval="5000" duration="500" class="swiperView">
   <block wx:for="{{imgUrls}}">
     <swiper-item class="swiperPic">
-      <image src="{{item}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" class="swiper-img"/>
+      <image src="{{item.FilePath}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" class="swiper-img"/>
     </swiper-item>
   </block>
 </swiper>
+</block>
+<import src="../../component/message/message.wxml" />
+<template is="message" data="{{message: message}}" />

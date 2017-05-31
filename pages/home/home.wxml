@@ -15,7 +15,7 @@
     </view>
     <block wx:for="{{imgUrls}}" wx:if="{{!loading.visiable}}">
       <swiper-item class="swiperPic">
-        <image src="{{item.PictureBody}}" mode="scaleToFill" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" style="width:100%;height:100%;" />
+        <image src="{{item.PictureBody}}" mode="aspectFill" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" style="width:100%;height:100%;" />
       </swiper-item>
     </block>
   </swiper>

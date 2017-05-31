@@ -31,7 +31,7 @@
 
         <!-- 商品图片 -->
         <view class="commodity-pic">
-          <image src="{{item.PictureBody}}" mode="scaleToFill" style="width: 100%; height: 100%;"></image>
+          <image src="{{item.PictureBody}}" mode="aspectFill" style="width: 100%; height: 100%;"></image>
         </view>
 
         <!-- 商品图片轮播 -->
@@ -55,7 +55,7 @@
           </view>
           <view class="columnView commodity-detail-width">
             <view class="commodity-detail-discount">￥{{item.SalePrice}}</view>
-            <view class="commodity-detail-price">￥{{item.MarketPrice}}</view>
+            <!--<view class="commodity-detail-price">￥{{item.MarketPrice}}</view>-->
           </view>
           <view class="columnView commodity-detail-width commodity-detail-buy" bindtap="goToPurchase" data-commcode="{{item.CommCode}}">
             <view class="commodity-detail-buy-text">

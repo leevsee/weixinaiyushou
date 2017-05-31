@@ -2,34 +2,16 @@ let api = require('../../common/script/fetchOrder')
 
 Page({
    data: {
-      imgUrls: '',
-      commName: '',
-      price: '',
-      num: 1,
-      postage: 0,
-      totlePrice: '',
-      deliveryNum: 1,
-      deliveryPrice: '',
-      totleDeliveryPrice: '',
-      stock: '',
-      address: '',
-      message: '',
-      dispalyResale: true,
-      isDelivery: false,
-      isResale: false,
-      stationId: 0,
-      stationName: '',
-      item: '',
-      express_height:'100',
+      orderInfo:'',
       showPostage: false,
       showLoading: true
    },
    onLoad: function (options) {
-      // wx.showLoading({
-      //    title: '加载中',
-      // });
+      wx.showLoading({
+         title: '正在加载中',
+      });
       console.log(options)
-      // api.getOrder.call(this, options.commcode);
+      api.getOrderInfo.call(this, options.ordercode);
    },
    goToPay: function (e) {
       let that = this;

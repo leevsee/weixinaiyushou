@@ -1,4 +1,4 @@
-<block wx:if="{{ showLoading}}">
+<block wx:if="{{! showLoading}}">
 
 
   <!-- 收货地址显示 -->
@@ -6,17 +6,17 @@
     <view class="addr-title">
 
       <view class="addr-name">
-        <text>姓名</text>
+        <text>{{orderInfo.UserName}}</text>
       </view>
       <view class="addr-phone">
-        <text>18888888888</text>
+        <text>{{orderInfo.TelNumber}}</text>
       </view>
     </view>
     <view class="rowView addr-display">
       <view class="addrSelc-content-text1">
-        <text>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</text>
+        <text>{{orderInfo.DetailInfo}}</text>
       </view>
-      <image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>
+      <image src="" style="width: 60rpx; height: 60rpx;"></image>
     </view>
   </view>
 
@@ -108,12 +108,12 @@
       <image src="/res/niurou.jpg" style="width: 220rpx; height: 150rpx;"></image>
     </view>
     <view class="columnView onSale-name-content">
-      <view class="onSale-name-text">{{commName}}</view>
-      <view class="onSale-name-price">￥{{price}}</view>
+      <view class="onSale-name-text">{{orderInfo.CommName}}</view>
+      <view class="onSale-name-price">￥{{orderInfo.CommPrice}}</view>
       <view class="onSale-name-buy">
         <image src="/res/minusnum.png" class="onSale-name-but" bindtap="subNum"></image>
         <image src="/res/minusnum.png" class="onSale-name-but" wx:if="{{condition}}"></image>
-        <view class="onSale-name-num">{{num}}</view>
+        <view class="onSale-name-num">{{orderInfo.CommCount}}</view>
         <image src="/res/addnum.png" class="onSale-name-but" bindtap="addNum"></image>
       </view>
     </view>
@@ -132,12 +132,12 @@
   <!-- 总价 -->
   <view class="rowView total">
     <view class="total-text">合计</view>
-    <view class="total-price">￥{{totlePrice}}</view>
+    <view class="total-price">￥{{orderInfo.AMoney}}</view>
   </view>
 
   <!-- 买家留言 -->
   <view class="send-message">
-    <textarea class="send-message-input" disabled="true" placeholder="无" bindblur="bindTextAreaBlur" value="{{message}}" ></textarea>
+    <textarea class="send-message-input" disabled="true" placeholder="无" bindblur="bindTextAreaBlur" value="{{orderInfo.UserLeaving}}" ></textarea>
   </view>
 
   <!-- 买家留言 -->
@@ -159,7 +159,7 @@
         订单号
       </view>
       <view class="oderInfo-title">
-        2017052346871635
+        {{orderInfo.OrderCode}}
       </view>
     </view>
     <view class="divide thin-divide"></view>
@@ -171,7 +171,7 @@
         下单时间
       </view>
       <view class="oderInfo-title">
-        2017-05-23
+        {{orderInfo.AddDate}}
       </view>
     </view>
     <view class="divide thin-divide"></view>
@@ -184,7 +184,7 @@
         待售预售
       </view>
       <view class="oderInfo-title">
-        放入提货站待售
+         {{orderInfo.CodeType}}
       </view>
     </view>
     <view class="divide thin-divide"></view>
@@ -193,14 +193,10 @@
   <!-- 分割线 -->
   <view class="divide"></view>
 
-  <view class="order-btn">
-    <view class="order-cancalBtn">
-    
-    <!--<view class="order-myBtn">
-    取消订单
-    </view>-->
+  <view class="order-btn" wx:if="{{orderInfo.CodeStatus == '待付款'}}">
+    <!--<view class="order-cancalBtn">
       <button class="cancalBtn" hover-class="cancalBtn-hover">取消订单</button>
-    </view>
+    </view>-->
     <view class="order-payBtn">
       <!--立刻付款-->
       <button class="payBtn" hover-class="payBtn-hover">立刻付款</button>

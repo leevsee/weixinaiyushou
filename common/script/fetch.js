@@ -95,7 +95,7 @@ function fetchTopLine(cb, fail_cb) {
             that.setData({
                showLoading: false,
                topLine: topLine,
-               animation: 'swiperSlide'+topLine.length
+               animation: 'swiperSlide' + topLine.length
             });
             loading.hide.call(that);
             wx.hideNavigationBarLoading();
@@ -187,6 +187,47 @@ function fetchCommodity(typeCode, cb, fail_cb) {
       fail: function (res) {
          // fail
          common.netErr(that);
+      }
+   })
+}
+
+/**
+ * 获得某个商品所有图片
+ */
+function fetchCommodityFiles(codeID, cb, fail_cb) {
+   console.log('fetchCommodityFiles');
+   let that = this;
+   message.hide.call(that);
+   //商品列表请求
+   wx.request({
+      url: config.apiList.commodityImgList,
+      data: {
+         CommCode: codeID,
+         type: 'image',
+         pageIndex: 0,
+         pageSize: config.imgListNum
+      },
+      method: 'GET',
+      success: function (res) {
+         console.log(res)
+         if (res.statusCode == 200) {
+
+         }
+         if (that.data.showLoading) {
+            that.setData({
+               imgUrls: res.data,
+               showLoading: false
+            });
+         }
+         wx.hideLoading()
+         typeof cb == 'function' && cb(allCategory);
+
+      },
+      fail: function (res) {
+         // fail
+         common.netErr(that);
+         wx.hideLoading()
+         typeof cb == 'function' && cb(allCategory);
       }
    })
 }
@@ -439,6 +480,7 @@ module.exports = {
    getCategory: fetchCategory,
    getTopLine: fetchTopLine,
    getCommodity: fetchCommodity,
+   getCommodityFiles: fetchCommodityFiles,
    getMyOrder: fetchMyOrder,
    getMySaleOrder: fetchMySaleOrder,
    getDelSaleOrder: delMySaleOrder

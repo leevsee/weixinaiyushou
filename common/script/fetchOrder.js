@@ -25,7 +25,7 @@ function addOrder(commCode, cb, fail_cb) {
             }, '');
          } else {
             wx.request({
-               url: config.apiList.orderInfo,
+               url: config.apiList.commodityInfo,
                data: {
                   CommCode: commCode,
                   token: res.data
@@ -69,6 +69,66 @@ function addOrder(commCode, cb, fail_cb) {
       }
    })
 }
+
+/**
+ * 订单详细情况信息
+ */
+function fecthOrderInfo(orderCode, cb, fail_cb) {
+   console.log('fecthOrderInfo');
+   var that = this
+   wx.getStorage({
+      key: 'token',
+      success: function (res) {
+         console.log(res.data)
+         //若token为kong，则重新获取
+         if (res.data == null) {
+            common.getToken(function (token) {
+               if (token == null) {
+                  common.netErr(that);
+               } else {
+                  fecthOrderInfo.call(that, orderCode);
+               }
+            }, '');
+         } else {
+            wx.request({
+               url: config.apiList.orderInfo,
+               data: {
+                  CommCode: orderCode,
+                  token: res.data
+               },
+               method: 'GET',
+               success: function (res) {
+                  // success
+                  console.log(res)
+                  if (res.data.error_code == -1) {
+                     common.getToken(function (token) {
+                        if (token == null) {
+                           common.netErr(that);
+                        } else {
+                           fecthOrderInfo.call(that, orderCode);
+                        }
+                     }, '');
+                  } else {
+                     that.setData({
+                        orderInfo: res.data,
+                        showLoading: false
+                     });
+                     wx.hideLoading();
+                  }
+               },
+               fail: function (res) {
+                  // fail
+                  common.netErr(that);
+               },
+               complete: function (res) {
+                  // complete
+               }
+            })
+         }
+      }
+   })
+}
+
 
 /**
  * 提交订单
@@ -286,5 +346,6 @@ module.exports = {
    getOrder: addOrder,
    confirmOrder: confirmOrder,
    getOrders: fetchOrders,
+   getOrderInfo:fecthOrderInfo,
    requestPay: fetchPay
 }

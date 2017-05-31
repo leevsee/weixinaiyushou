@@ -20,7 +20,7 @@ Page({
    onLoad: function () {
       let that = this;
       wx.showNavigationBarLoading();
-
+      //版本检测
       common.checkVersion(function (res) {
          if (res.data.SDKVersion > config.wxSDK && res.data.version >= config.wxVersion) {
             api.getCategory.call(that);
