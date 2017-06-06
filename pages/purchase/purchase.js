@@ -14,6 +14,7 @@ Page({
       stock: '',
       address: '',
       message: '',
+      deliveryMessage:'',
       dispalyResale: true,
       isDelivery: false,
       isResale: false,
@@ -87,7 +88,7 @@ Page({
                   CommCount: that.data.num,
                   FK_TerminalID: that.data.stationId,
                   Body: '爱预售-购买' + that.data.commName,
-                  Sketch: '',
+                  Sketch: that.data.deliveryMessage,
                   token: res.data,
                }
                api.confirmOrder.call(that, data);
@@ -146,6 +147,18 @@ Page({
             that.setData({
                address: res
             });
+         }, fail: function (res){
+            console.log('chooseAddress fail========');
+            wx.openSetting({
+               success: (res) => {
+                  if (!res.authSetting['scope.address']) {
+                     wx.showToast({
+                        title: '可能会引起爱预售功能缺失',
+                        image: '/res/err2.png',
+                     })
+                  }
+               }
+            })
          },
          complete: function () {
             wx.hideLoading();
@@ -173,6 +186,11 @@ Page({
    bindTextAreaBlur: function (e) {
       this.setData({
          message: e.detail.value
+      })
+   }   ,
+   bindDeliveryMessage: function (e) {
+      this.setData({
+         deliveryMessage: e.detail.value
       })
    }
 })

@@ -52,14 +52,15 @@ Page({
       wx.stopPullDownRefresh();
    },
    swiperPicOnClick: function (e) {
-      console.log(e);
-      console.log(e.target);
-      console.log(e.target.dataset);
+      console.log(e.target.dataset.url);
+      wx.navigateTo({
+         url: '../commodityList/commodityList?tcode=' + e.target.dataset.url.CommCode + '&single=true'
+      })
    },
    goToCommodityList: function (e) {
-      // console.log(e.currentTarget.dataset.tcode)
+      console.log(e.currentTarget.dataset)
       wx.navigateTo({
-         url: '../commodityList/commodityList?tcode=' + e.currentTarget.dataset.tcode
+         url: '../commodityList/commodityList?tcode=' + e.currentTarget.dataset.tcode + '&tname=' + e.currentTarget.dataset.tname + '&remark=' + e.currentTarget.dataset.remark
       })
    },
    mytest: function () {

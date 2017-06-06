@@ -26,7 +26,7 @@
   <!-- 大商品分类 -->
   <view class="rowView category">
     <block wx:for="{{classification}}">
-      <view class="category-brand" bindtap="goToCommodityList" data-TCode="{{item.TCode}}">
+      <view class="category-brand" bindtap="goToCommodityList" data-TCode="{{item.TCode}}" data-TName="{{item.TName}}" data-Remark="{{item.Remark}}">
         <image src="/res/{{index}}.png" style="width: 80rpx; height: 80rpx;"></image>
         <view class="category-text">
           <text>{{item.TName}}({{item.CountNumber}})</text>
@@ -86,7 +86,7 @@
   <!-- 商品分类 -->
   <view class="rowView allcategory">
     <block wx:for="{{category}}">
-      <view class="allcategory-text" bindtap="goToCommodityList" data-TCode="{{item.TCode}}">
+      <view class="allcategory-text" bindtap="goToCommodityList" data-TCode="{{item.TCode}}" data-TName="{{item.TName}}" data-Remark="{{item.Remark}}">
         <text>{{item.TName}}({{item.CountNumber}})</text>
       </view>
     </block>

@@ -138,7 +138,22 @@
       <!--<view class="onSale-resale-price">建议售价：￥158</view>-->
     </view>
   </view>
+  
+  <block wx:if="{{isDelivery}}">
+    <!-- 分割线 -->
+  <view class="divide"></view>
 
+    <!-- 总价 -->
+  <view class="rowView total">
+    <view class="total-text">转预售推荐信息</view>
+    <view class="total-price"></view>
+  </view>
+
+  <!-- 买家留言 -->
+  <view class="send-message">
+    <textarea class="send-message-input" placeholder="字数建议不超过20个字" bindblur="bindDeliveryMessage" />
+  </view>
+  </block>
   <!--<view class="onSale-price">
   <view class="onSale-name">
     <view class="onSale-name-text">【邕宁特色馆】散养土鸡</view>

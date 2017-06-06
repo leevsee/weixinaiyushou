@@ -6,7 +6,7 @@ page {
   background: #f1f1f1;
 }
 
-.commodity-wrap{
+.commodity-wrap {
   background: #fff;
 }
 
@@ -45,13 +45,12 @@ page {
   background-color: #1392e3;
 }
 
-.scroll-view_y{
-  
+.scroll-view_y {
   margin-top: 132rpx;
   height: 1030rpx;
 }
 
-.commodity-pic{
+.commodity-pic {
   width: 100%;
   height: 500rpx;
   text-align: center;
@@ -68,7 +67,6 @@ page {
   padding-top: 1.4%;
 }
 
-
 .commodity-detail {
   justify-content: space-around;
   /*margin-top: 2%;*/
@@ -82,7 +80,7 @@ page {
 .commodity-detail-text {
   padding-top: 5%;
   font-size: 28rpx;
-  color: #777777;
+  color: #777;
 }
 
 .commodity-detail-discount {
@@ -122,8 +120,7 @@ page {
 .commodity-introduce-head {
   color: #1392e3;
   font-size: 35rpx;
-  /*height: 70rpx;*/
-  /*font-weight: bold;*/
+  /*height: 70rpx;*//*font-weight: bold;*/
   margin-bottom: 1%;
 }
 
@@ -136,7 +133,7 @@ page {
 
 .commodity-introduce-text {
   font-size: 36rpx;
-  color: #777777;
+  color: #777;
 }
 
 .commodity-introducer {
@@ -182,9 +179,10 @@ page {
 }
 
 .commodity-transfer-price {
-  margin-bottom: 1%;
   font-size: 36rpx;
   color: #1392e3;
+  margin-top: 0%;
+  margin-bottom: 2%;
 }
 
 .commodity-transfer-text {
@@ -192,4 +190,29 @@ page {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.scroll-more {
+  height: 100%;
+  top: 30%;
+  position: absolute;
+}
+
+.scroll-nocontent-text {
+  font-size: 36rpx;
+  color: #1392e3;
+}
+
+.scroll-nocontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-loadEffect{
+   margin-left:-9%;
+}
+
+.custom-loading-tip{
+   box-shadow:initial
 }

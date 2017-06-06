@@ -1,47 +1,48 @@
-
 <!-- item -->
-<block wx:if="{{! showLoading}}">
-  <view class="columnView order-item" wx:for="{{ordersList}}">
+<!--<block wx:if="{{! showLoading}}">-->
+<view class="columnView order-item" wx:for="{{ordersList}}">
 
-    <!-- 订单名 -->
-    <view class="rowView order-item-title">
-      <view class="order-item-name">
-        <text>{{item.CommName}}</text>
-      </view>
-      <view class="order-item-status">
-        <text wx:if="{{item.FK_CodeID_Status  == 0}}">待付款</text>
-        <text wx:else>已付款</text>
-      </view>
+  <!-- 订单名 -->
+  <view class="rowView order-item-title">
+    <view class="order-item-name">
+      <text>{{item.CommName}}</text>
     </view>
-
-    <!-- 分割线 -->
-    <view class="thin-divide"></view>
-
-    <!-- 订单详情 -->
-    <view class="rowView order-item-detail" bindtap="goToOrderInfo" data-OrderCode="{{item.OrderCode}}">
-      <image src="{{item.path}}" class="order-item-detail-img" mode="aspectFill"></image>
-      <view class="order-item-detail-name">
-        <text style="">{{item.CommName}}</text>
-      </view>
+    <view class="order-item-status">
+      <text wx:if="{{item.FK_CodeID_Status  == 0}}">待付款</text>
+      <text wx:else>已付款</text>
     </view>
-
-    <!-- 分割线 -->
-    <view class="thin-divide"></view>
-
-    <!-- 订单合计 -->
-    <view class="order-item-price">
-      <text wx:if="{{item.FK_CodeID_Status  == 0}}">共{{item.CommCount}}件商品 需付款：￥{{item.AMoney}}</text>
-      <text wx:else>共{{item.CommCount}}件商品 已付款：￥{{item.AMoney}}</text>
-    </view>
-    <block wx:if="{{item.FK_CodeID_Status  == 0}}">
-      <!-- 分割线 -->
-      <view class="thin-divide"></view>
-      <view class="order-item-but">
-        <button size="mini" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 4%;" bindtap="goToPay" data-index="{{index}}">去付款</button>
-      </view>
-    </block>
   </view>
 
-  <import src="../../component/hasMore/hasMore.wxml" />
-  <template is="hasMore" data="{{hasMore: hasMore}}" />
-</block>
+  <!-- 分割线 -->
+  <view class="thin-divide"></view>
+
+  <!-- 订单详情 -->
+  <view class="rowView order-item-detail" bindtap="goToOrderInfo" data-OrderCode="{{item.OrderCode}}">
+    <image src="{{item.path}}" class="order-item-detail-img" mode="aspectFill"></image>
+    <view class="order-item-detail-name">
+      <text style="">{{item.CommName}}</text>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="thin-divide"></view>
+
+  <!-- 订单合计 -->
+  <view class="order-item-price">
+    <text wx:if="{{item.FK_CodeID_Status  == 0}}">共{{item.CommCount}}件商品 需付款：￥{{item.AMoney}}</text>
+    <text wx:else>共{{item.CommCount}}件商品 已付款：￥{{item.AMoney}}</text>
+  </view>
+  <block wx:if="{{item.FK_CodeID_Status  == 0}}">
+    <!-- 分割线 -->
+    <view class="thin-divide"></view>
+    <view class="order-item-but">
+      <button size="mini" hover-class="postage-button-hover" class="del-button" style="font-size:24rpx;color:#fff;padding:0 4%;margin-right: 4%;" bindtap="goTodelOrder" data-index="{{index}}">删除订单</button>
+            <button size="mini" hover-class="postage-button-hover"  style="font-size:24rpx;color:#fff;padding:0 4%;background-color: #9a9797;" bindtap="" data-index="{{index}}" wx:if="{{item.IsBeOverdue === 1}}">已过期</button>
+      <button size="mini" hover-class="postage-button-hover" class="station-button" style="font-size:24rpx;color:#fff;padding:0 4%;" bindtap="goToPay" data-index="{{index}}" wx:else >去付款</button>
+    </view>
+  </block>
+</view>
+
+<import src="../../component/hasMore/hasMore.wxml" />
+<template is="hasMore" data="{{hasMore: hasMore}}" />
+<!--</block>-->

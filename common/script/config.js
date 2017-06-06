@@ -1,7 +1,7 @@
 
-const url = 'http://192.168.0.33/AYSAPI/api/';
+// const url = 'http://192.168.0.33/AYSAPI/api/';
 // const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
-// const url = 'http://ays.hk1.mofasuidao.cn/AYSAPI/api/';
+const url = 'http://ays.hk1.mofasuidao.cn/AYSAPI/api/';
 
 module.exports = {
     categoryTCode: '0',
@@ -26,6 +26,7 @@ module.exports = {
         orderInfo: url + 'User_Order_Information/Order_Details',
         ordering: url + 'User_Order_Information/Add_OrderInformation',
         orders: url + 'MyMessage/Get_OrdersFromUserMessage',
+        delOrder: url + 'MyMessage/Delete_OrderByOrderCode',
         myOrderNum: url + 'MyMessage/My_Order',
         orderPay: url + 'WeChatPayment/WeChatPaidByOrder',
         mySaleOrder: url + 'MyMessage/Get_OrderFromUser',

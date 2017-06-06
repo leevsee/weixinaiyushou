@@ -56,6 +56,10 @@ Page({
          }
       })
    },
+   goTodelOrder:function(e){
+      console.log(this.data.ordersList[e.currentTarget.dataset.index].OrderCode)
+      api.getDelOrder.call(this, this.data.ordersList[e.currentTarget.dataset.index].OrderCode)
+   },
    goToOrderInfo:function(e){
       console.log(e.currentTarget.dataset.ordercode)
       wx.navigateTo({

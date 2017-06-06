@@ -61,6 +61,12 @@ page {
   background-color: #1392e3;
 }
 
+.del-button {
+  /*color: red;*/
+  
+  background-color: #ff2f2f;
+}
+
 .postage-button-hover {
   background-color: #38b0fd;
 }

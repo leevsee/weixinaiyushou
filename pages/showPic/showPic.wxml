@@ -1,5 +1,5 @@
 <block wx:if="{{! showLoading}}">
-<swiper indicator-dots="true"  interval="5000" duration="500" class="swiperView">
+<swiper indicator-dots="true"  interval="5000" duration="500" class="swiperView" style="{{setHeight}}">
   <block wx:for="{{imgUrls}}">
     <swiper-item class="swiperPic">
       <image src="{{item.FilePath}}" mode="aspectFit" bindtap="swiperPicOnClick" data-url="{{item}}" id="{{index}}" class="swiper-img"/>

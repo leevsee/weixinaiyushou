@@ -23,6 +23,7 @@ Page({
       wx.showLoading({
          title: '玩命加载中',
       });
+      //微信版本判断
       common.checkVersion(function (res) {
          if (res.data.SDKVersion > config.wxSDK && res.data.version >= config.wxVersion) {
             api.getMyOrder.call(that);
@@ -35,6 +36,32 @@ Page({
                   that.setData({
                      userName: res.data.nickName,
                      userImg: res.data.avatarUrl
+                  })
+               },
+               //授权失败重新获取授权
+               fail: (res) => {
+                  console.log('getUserInfo fail=========');
+                  wx.openSetting({
+                     success: (res) => {
+                        console.log('openSetting success')
+                        if (!res.authSetting['scope.userInfo']) {
+                           wx.showToast({
+                              title: '可能会引起爱预售功能缺失',
+                              image: '/res/err2.png',
+                           })
+                        } else {
+                           wx.getUserInfo({
+                              success: function (res) {
+                                 console.log(res.userInfo.nickName);
+                                 wx.setStorage({
+                                    key: 'userInfo',
+                                    data: res.userInfo
+                                 })
+                                 that.onLoad();
+                              }
+                           })
+                        }
+                     }
                   })
                }
             })

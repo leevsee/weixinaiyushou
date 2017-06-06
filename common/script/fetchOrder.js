@@ -9,7 +9,7 @@ const hasMore = require('../../component/hasMore/hasMore')
  */
 function addOrder(commCode, cb, fail_cb) {
    console.log('addOrder');
-   var that = this
+   let that = this;
    wx.getStorage({
       key: 'token',
       success: function (res) {
@@ -71,6 +71,102 @@ function addOrder(commCode, cb, fail_cb) {
 }
 
 /**
+ * 删除订单
+ */
+function delOrder(orderCode, cb, fail_cb) {
+   console.log('delOrder');
+   let that = this;
+   //删除提示
+   wx.showModal({
+      title: '提示',
+      content: '是否删除该未付款的订单',
+      confirmColor: '#1392e3',
+      success: function (res) {
+         if (res.confirm) {
+            console.log('用户点击确定')
+            wx.showLoading({
+               title: '正在删除中',
+               mask: true
+            });
+            wx.getStorage({
+               key: 'token',
+               success: function (res) {
+                  console.log(res.data)
+                  //若token为kong，则重新获取
+                  if (res.data == null) {
+                     common.getToken(function (token) {
+                        if (token == null) {
+                           common.netErr(that);
+                        } else {
+                           delOrder.call(that, orderCode);
+                        }
+                     }, '');
+                  } else {
+                     wx.request({
+                        url: config.apiList.delOrder,
+                        data: {
+                           OrderCode: orderCode,
+                           token: res.data
+                        },
+                        method: 'POST',
+                        header: {
+                           'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success: function (res) {
+                           console.log(res);
+                           if (res.data.Msg == 'ok') {
+                              wx.hideLoading();
+                              wx.showToast({
+                                 title: '删除成功',
+                                 icon: 'success',
+                                 mask: true,
+                                 duration: 1000
+                              })
+                              let tmp = that.data.ordersList;
+                              //显示列表删除
+                              tmp.map(function (item, i) {
+                                 if (item.OrderCode == orderCode) {
+                                    tmp.splice(i, 1);
+                                 }
+                              });
+                              console.log(tmp);
+                              //更新删除后数据
+                              that.setData({
+                                 ordersList: tmp
+                              });
+                           } else {
+                              wx.hideLoading();
+                              wx.showModal({
+                                 title: '删除错误',
+                                 content: '删除失败,请刷新页面后再尝试',
+                                 showCancel: false,
+                                 confirmColor: '#1392e3',
+                                 success: function (res) {
+                                    if (res.confirm) {
+                                       console.log('用户点击确定')
+                                    } else if (res.cancel) {
+                                       console.log('用户点击取消')
+                                    }
+                                 }
+                              })
+                           }
+                        },
+                        fail: function (res) {
+                           // fail
+                        },
+                        complete: function (res) {
+                           // complete
+                        }
+                     })
+                  }
+               }
+            })
+         }
+      }
+   })
+}
+
+/**
  * 订单详细情况信息
  */
 function fecthOrderInfo(orderCode, cb, fail_cb) {
@@ -111,6 +207,7 @@ function fecthOrderInfo(orderCode, cb, fail_cb) {
                   } else {
                      that.setData({
                         orderInfo: res.data,
+                        orderTrace: res.data.ReturnTrace,
                         showLoading: false
                      });
                      wx.hideLoading();
@@ -178,7 +275,7 @@ function confirmOrder(data, cb, fail_cb) {
                                     url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
                                  })
                               }, 1500);
-                           }) 
+                           })
                         },
                         fail: function (res) {
                            // fail
@@ -191,7 +288,7 @@ function confirmOrder(data, cb, fail_cb) {
                                     url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
                                  })
                               }, 1000);
-                           })   
+                           })
                         },
                         complete: function (res) {
                            // complete
@@ -292,46 +389,54 @@ function fetchPay(payData, cb, fail_cb) {
       success: function (res) {
          // success
          console.log(res.data)
-         wx.requestPayment({
-            timeStamp: String(res.data.timeStamp),
-            nonceStr: res.data.nonce_str,
-            package: 'prepay_id=' + res.data.prepay_id,
-            signType: 'MD5',
-            paySign: res.data.sign,
-            success: function (res) {
-               // success
-               console.log('requestPayment sucess:');
-               console.log(res);
+         if (res.data.return_msg === '订单已过期！') {
+            common.myToast('err', '订单已过期，请重新刷新页面！', function () {
+               setTimeout(function () {
+                  wx.redirectTo({
+                     url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                  });
+               }, 1500);
+            })
+         } else {
+            wx.requestPayment({
+               timeStamp: String(res.data.timeStamp),
+               nonceStr: res.data.nonce_str,
+               package: 'prepay_id=' + res.data.prepay_id,
+               signType: 'MD5',
+               paySign: res.data.sign,
+               success: function (res) {
+                  // success
+                  console.log('requestPayment sucess:');
+                  console.log(res);
 
-               common.myToast('success', '付款成功，正在跳转中', function () {
-                  setTimeout(function () {
-                     wx.redirectTo({
-                        url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
-                     })
-                  }, 1500);
-               })   
+                  common.myToast('success', '付款成功，正在跳转中', function () {
+                     setTimeout(function () {
+                        wx.redirectTo({
+                           url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
+                        })
+                     }, 1500);
+                  })
 
-            },
-            fail: function (res) {
-               // fail
-               console.log('requestPayment fail:');
-               console.log(res);
+               },
+               fail: function (res) {
+                  // fail
+                  console.log('requestPayment fail:');
+                  console.log(res);
 
-               common.myToast('err', '付款失败，请重新再试', function () {
-                  setTimeout(function () {
-                     wx.redirectTo({
-                        url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
-                     });
-                  }, 1500);
-               })     
-               // common.myToast('err', '付款失败，请重新再试');              
-
-               
-            },
-            complete: function (res) {
-               // complete
-            }
-         })
+                  common.myToast('err', '付款失败，请重新再试', function () {
+                     setTimeout(function () {
+                        wx.redirectTo({
+                           url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                        });
+                     }, 1500);
+                  })
+                  // common.myToast('err', '付款失败，请重新再试');              
+               },
+               complete: function (res) {
+                  // complete
+               }
+            })
+         }
       },
       fail: function (res) {
          // fail
@@ -344,8 +449,9 @@ function fetchPay(payData, cb, fail_cb) {
 
 module.exports = {
    getOrder: addOrder,
+   getDelOrder: delOrder,
    confirmOrder: confirmOrder,
    getOrders: fetchOrders,
-   getOrderInfo:fecthOrderInfo,
+   getOrderInfo: fecthOrderInfo,
    requestPay: fetchPay
 }

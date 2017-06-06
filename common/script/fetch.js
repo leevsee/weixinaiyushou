@@ -166,6 +166,26 @@ function fetchCommodity(typeCode, cb, fail_cb) {
          if (res.data.length == 0) {
             hasMore.noContent.call(that);
          } else {
+            // 获取转预售信息
+            res.data.map(function (item) {
+               item.swingTransation = new Array();
+               //把数组变成两条为一组的数组
+               // for (let [i, temp] = [0, res.data.length]; i < temp; i = i + 2) {
+               for (let i = 0; i < item.List_Temp_Commoditys.length; i = i + 2) {
+                  item.swingTransation[i] = [];
+                  item.swingTransation[i][0] = item.List_Temp_Commoditys[i];
+                  item.swingTransation[i][1] = item.List_Temp_Commoditys[i + 1];
+               };
+               // for (let [i, temp] = [0, topLine.length]; i < temp; i++) {
+               for (let i = 0; i < item.swingTransation.length; i++) {
+                  if (item.swingTransation[i] == "" || typeof (item.swingTransation[i]) == "undefined") {
+                     item.swingTransation.splice(i, 1);
+                     i = i - 1;
+                  }
+               };
+            })
+            console.log('swingTransation');
+            console.log(res.data);
             that.setData({
                page: that.data.page + 1,
                commodityList: that.data.commodityList.concat(res.data)
@@ -190,6 +210,71 @@ function fetchCommodity(typeCode, cb, fail_cb) {
       }
    })
 }
+
+/**
+ * 获取首页单个商品信息
+ */
+function fetchOneCommodity(typeCode, cb, fail_cb) {
+   console.log('fetchOneCommodity');
+   let that = this;
+   hasMore.showLoading.call(that);
+   //商品列表请求
+   wx.request({
+      url: config.apiList.commodity,
+      data: {
+         CommCode: typeCode
+      },
+      method: 'GET',
+      success: function (res) {
+         console.log(res)
+         if (res.data.length == 0) {
+            hasMore.noContent.call(that);
+         } else {
+            // 获取转预售信息
+            res.data.map(function (item) {
+               item.swingTransation = new Array();
+               //把数组变成两条为一组的数组
+               // for (let [i, temp] = [0, res.data.length]; i < temp; i = i + 2) {
+               for (let i = 0; i < item.List_Temp_Commoditys.length; i = i + 2) {
+                  item.swingTransation[i] = [];
+                  item.swingTransation[i][0] = item.List_Temp_Commoditys[i];
+                  item.swingTransation[i][1] = item.List_Temp_Commoditys[i + 1];
+               };
+               // for (let [i, temp] = [0, topLine.length]; i < temp; i++) {
+               for (let i = 0; i < item.swingTransation.length; i++) {
+                  if (item.swingTransation[i] == "" || typeof (item.swingTransation[i]) == "undefined") {
+                     item.swingTransation.splice(i, 1);
+                     i = i - 1;
+                  }
+               };
+            })
+            console.log('swingTransation');
+            console.log(res.data);
+            that.setData({
+               page: that.data.page + 1,
+               commodityList: that.data.commodityList.concat(res.data)
+            });
+            if (res.data.length == config.pageNum) {
+               hasMore.showButton.call(that);
+            } else {
+               hasMore.noContent.call(that);
+            }
+         }
+         if (that.data.showLoading) {
+            that.setData({
+               showLoading: false
+            });
+         }
+         wx.hideNavigationBarLoading();
+         wx.hideLoading()
+      },
+      fail: function (res) {
+         // fail
+         common.netErr(that);
+      }
+   })
+}
+
 
 /**
  * 获得某个商品所有图片
@@ -235,22 +320,55 @@ function fetchCommodityFiles(codeID, cb, fail_cb) {
 /**
  * 转售信息
  */
-function fetchResaleInfo(code, cb, fail_cb) {
-   console.log('fetchResaleInfo');
+function fetchResaleList(index, cb, fail_cb) {
+   let that = this;
+   console.log('fetchResaleList');
+   //动画加载
+   hasMore.custom_showLoading.call(that, { scrollMore: { type: 1, loadingMessage: '正在加载中…', customCss: 'custom-loadEffect', customloadingCss: 'custom-loading-tip'}});
+   if (that.data.commodityList[index].pageNum == undefined) {
+      that.data.commodityList[index].pageNum = 0
+   }
    //商品列表请求
    wx.request({
       url: config.apiList.commodityResaleInfo,
       data: {
-         ParentCode: code,
-         pageIndex: that.data.page,
+         ParentCode: that.data.commodityList[index].CommCode,
+         pageIndex: that.data.commodityList[index].pageNum,
          pageSize: config.pageNum
       },
       method: 'GET',
       success: function (res) {
-         console.log(res)
-
-         wx.hideNavigationBarLoading();
-         wx.hideLoading()
+         console.log(res.data)
+         //是否有新数据
+         if (res.data.length) {
+            let _temp = that.data.commodityList;
+            _temp[index].List_Temp_Commoditys = _temp[index].List_Temp_Commoditys.concat(res.data);
+            // 获取转预售信息
+            _temp.map(function (item) {
+               item.swingTransation = new Array();
+               //把数组变成两条为一组的数组
+               // for (let [i, temp] = [0, res.data.length]; i < temp; i = i + 2) {
+               for (let i = 0; i < item.List_Temp_Commoditys.length; i = i + 2) {
+                  item.swingTransation[i] = [];
+                  item.swingTransation[i][0] = item.List_Temp_Commoditys[i];
+                  item.swingTransation[i][1] = item.List_Temp_Commoditys[i + 1];
+               };
+               // for (let [i, temp] = [0, topLine.length]; i < temp; i++) {
+               for (let i = 0; i < item.swingTransation.length; i++) {
+                  if (item.swingTransation[i] == "" || typeof (item.swingTransation[i]) == "undefined") {
+                     item.swingTransation.splice(i, 1);
+                     i = i - 1;
+                  }
+               };
+            })
+            that.setData({
+               commodityList: _temp
+            });
+            hasMore.custom_showLoading.call(that, { scrollMore: { type: 0, moreMessage: '滑动到左边，加载更多', customloadingCss: 'custom-loading-tip'}});
+            that.data.commodityList[index].pageNum++;
+         } else {
+            hasMore.custom_showLoading.call(that, { scrollMore: { type: 2, noMessage: '没有更多内容了', customloadingCss: 'custom-loading-tip'}});
+         }
       },
       fail: function (res) {
          // fail
@@ -480,7 +598,9 @@ module.exports = {
    getCategory: fetchCategory,
    getTopLine: fetchTopLine,
    getCommodity: fetchCommodity,
+   getOneCommodity: fetchOneCommodity,
    getCommodityFiles: fetchCommodityFiles,
+   getResaleList: fetchResaleList,
    getMyOrder: fetchMyOrder,
    getMySaleOrder: fetchMySaleOrder,
    getDelSaleOrder: delMySaleOrder

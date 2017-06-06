@@ -3,6 +3,7 @@ let api = require('../../common/script/fetchOrder')
 Page({
    data: {
       orderInfo:'',
+      orderTrace:[],
       showPostage: false,
       showLoading: true
    },

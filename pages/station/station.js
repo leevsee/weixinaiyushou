@@ -30,8 +30,7 @@ Page({
       let that = this;
       // wx.showNavigationBarLoading();
       wx.showLoading({
-         title: '玩命加载中',
-         mask: true
+         title: '玩命加载中'
       });
 
       common.checkVersion(function (res) {

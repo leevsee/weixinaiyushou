@@ -1,15 +1,15 @@
-<block wx:if="{{! showLoading}}">
+<!--<block wx:if="{{! showLoading}}">-->
 
   <!-- 头部信息 -->
   <view class="rowView commodity-head">
     <image src="/res/logo.png" style="width: 100rpx; height: 100rpx;"></image>
     <view class="commodity-head-text">
       <view class="commodity-head-textcontent1">
-        <text>土鸡选品标准：</text>
+        <text>{{options.tname}}选品标准：</text>
       </view>
       <view class="divide commodity-head-divide"></view>
       <view class="commodity-head-textcontent2">
-        <text>散养180天以上，喂养玉米、谷物</text>
+        <text>{{options.remark}}</text>
       </view>
     </view>
   </view>
@@ -27,7 +27,7 @@
         <view class="divide"></view>
 
         <!-- 商品标题 -->
-        <view class="commodity-name">{{item.CommName}}</view>
+        <view class="commodity-name">【{{item.FK_CodeID}}】{{item.CommName}}</view>
 
         <!-- 商品图片 -->
         <view class="commodity-pic">
@@ -88,45 +88,48 @@
         <view class="divide"></view>
 
         <!-- 商品转让信息 -->
-        <view class="commodity-introduce" wx:if="{{item.List_Temp_Commoditys.length}}">
+        <view class="commodity-introduce" wx:if="{{item.swingTransation.length}}">
           <!--<view class="commodity-introduce">-->
           <view class="commodity-introduce-head">
             <text>转让信息</text>
           </view>
           <view class="divide commodity-introduce-divide"></view>
-          <scroll-view class="scroll-view_H" scroll-x="true" bindscrolltolower="scrollTest">
-            <view class="scroll-view-warp">
+          <scroll-view class="scroll-view_H" scroll-x="true" bindscrolltolower="scrollTest" lower-threshold="30" data-commcode="{{item.CommCode}}" data-index="{{index}}">
+
+            <!-- item-->
+            <view class="scroll-view-warp" wx:for="{{item.swingTransation}}">
               <view class="commodity-transfer">
                 <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar" style=""></image>
                 <view class="commodity-transfer-content">
-                  <view class="commodity-transfer-price">转让1份，158元/份</view>
-                  <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+                  <view class="commodity-transfer-price">转让{{item[0].Stock}}份，{{item[0].SalePrice}}元/份</view>
+                  <view class="commodity-transfer-text">{{item[0].Sketch}}</view>
                 </view>
               </view>
               <view class="commodity-transfer">
-                <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
+                <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar" wx:if="{{item[1]}}"></image>
+                <image src="" class="commodity-transfer-Avatar" wx:else></image>
                 <view class="commodity-transfer-content">
-                  <view class="commodity-transfer-price">转让1份，158元/份</view>
-                  <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+                  <view class="commodity-transfer-price" wx:if="{{item[1]}}">转让{{item[1].Stock}}份，{{item[1].SalePrice}}元/份</view>
+                  <view class="commodity-transfer-price" wx:else></view>
+                  <view class="commodity-transfer-text">{{item[1].Sketch}}</view>
                 </view>
               </view>
             </view>
-            <view class="scroll-view-warp">
-              <view class="commodity-transfer">
-                <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
-                <view class="commodity-transfer-content">
-                  <view class="commodity-transfer-price">转让1份，158元/份</view>
-                  <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
+
+            <!-- item-->
+            <view class="scroll-view-warp scroll-more">
+
+
+              <view class="scroll-nocontent">
+                <view class="scroll-nocontent-text">
+
+                  <import src="../../component/hasMore/hasMore.wxml" />
+                  <template is="hasMore" data="{{hasMore: scrollMore}}" />
                 </view>
               </view>
-              <view class="commodity-transfer">
-                <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar"></image>
-                <view class="commodity-transfer-content">
-                  <view class="commodity-transfer-price">转让1份，158元/份</view>
-                  <view class="commodity-transfer-text">一口气订了5只，现在发现吃不完啦，吃不完啦吃不完啦,Q4728333333</view>
-                </view>
-              </view>
+
             </view>
+
           </scroll-view>
         </view>
       </view>
@@ -138,12 +141,12 @@
     <block wx:else>
       <view class="loading-tip">没有更多内容了</view>
     </block>-->
-    
+
     <import src="../../component/hasMore/hasMore.wxml" />
     <template is="hasMore" data="{{hasMore: hasMore}}" />
 
     <!--</scroll-view>-->
   </view>
-</block>
+<!--</block>-->
 <import src="../../component/message/message.wxml" />
 <template is="message" data="{{message: message}}" />

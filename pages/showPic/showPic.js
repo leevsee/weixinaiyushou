@@ -10,7 +10,16 @@ Page({
    showLoading: true,
   },
   onLoad: function (option) {
+     let that = this;
     console.log(option);
+    wx.getSystemInfo({
+       success: function (res) {
+          let nowH = 'height:' + res.windowHeight + 'px';
+          that.setData({
+             setHeight: nowH
+          })
+       }
+    })
     api.getCommodityFiles.call(this, option.commcode);
   }
 })

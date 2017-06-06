@@ -2,8 +2,8 @@
   <!--<block wx:if="{{hasMore.show}}">-->
   <!--<view hidden="{{hasMore.show}}">-->
     <block wx:if="{{hasMore.type == 1}}">
-      <view class="loading-tip">
-        <view class="loadEffect">
+      <view class="loading-tip {{hasMore.customloadingCss}}">
+        <view class="loadEffect {{hasMore.customCss}}">
           <span></span>
           <span></span>
           <span></span>
@@ -12,14 +12,15 @@
           <span></span>
           <span></span>
           <span></span>
-        </view>拼命加载中…
+        </view>
+        {{hasMore.loadingMessage}}
       </view>
     </block>
     <block wx:elif="{{hasMore.type == 0}}">
-      <view class="loading-tip">上拉到底部，加载更多</view>
+      <view class="loading-tip {{hasMore.customloadingCss}}">{{hasMore.moreMessage}}</view>
     </block>
     <block wx:else>
-      <view class="loading-tip">没有更多内容了</view>
+      <view class="loading-tip {{hasMore.customloadingCss}}">{{hasMore.noMessage}}</view>
     </block>
   <!--</block>-->
 </template>

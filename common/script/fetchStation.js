@@ -76,6 +76,22 @@ function fetchStation(cb, fail_cb) {
                typeof fail_cb == 'function' && fail_cb();
             }
          })
+      },
+      //授权失败
+      fail:(res) =>{
+         console.log('getLocation fail========')
+         wx.openSetting({
+            success: (res) => {
+               if (!res.authSetting['scope.userLocation']) {
+                  wx.showToast({
+                     title: '可能会引起爱预售功能缺失',
+                     image: '/res/err2.png',
+                  })
+               } else{
+                  fetchStation.call(that);
+               }
+            }
+         })
       }
    })
 }
