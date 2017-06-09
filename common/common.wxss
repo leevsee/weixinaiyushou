@@ -16,7 +16,7 @@ page{
 }
 
 .swiperView {
-  height: 500rpx;
+  height: 350rpx;
   background: #fff;
 }
 

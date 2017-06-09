@@ -205,11 +205,25 @@ function fecthOrderInfo(orderCode, cb, fail_cb) {
                         }
                      }, '');
                   } else {
+                     
+                     let _temp = res.data.ReturnTrace;
+                     if (res.data.ReturnTrace) {
+                        let l = res.data.ReturnTrace.length;
+                        _temp.map((item, i) => {
+                           if (i === (l - 1)) {
+                              item.express_height = 0;
+                              console.log(item);
+                           }
+                        })
+                        console.log(_temp);
+                     }
+
                      that.setData({
                         orderInfo: res.data,
-                        orderTrace: res.data.ReturnTrace,
+                        orderTrace: _temp,
                         showLoading: false
                      });
+
                      wx.hideLoading();
                   }
                },

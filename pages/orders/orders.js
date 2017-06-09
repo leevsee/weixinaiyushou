@@ -63,7 +63,7 @@ Page({
    goToOrderInfo:function(e){
       console.log(e.currentTarget.dataset.ordercode)
       wx.navigateTo({
-         url: '../orderInfo/orderInfo?ordercode=' + e.currentTarget.dataset.ordercode
+         url: '../orderInfo/orderInfo?ordercode=' + e.currentTarget.dataset.ordercode + '&isbeoverdue=' + e.currentTarget.dataset.isbeoverdue
       })
    }
 })

@@ -330,6 +330,16 @@ textarea:placeholder {
   background-color: #1392e3;
 }
 
+.pay-over-Btn {
+  font-size: 32rpx;
+  line-height: 2.55555556;
+  border-radius: 15rpx;
+  overflow: hidden;
+  color: #fff;
+  border: 1rpx solid;
+  background-color: #9a9797;
+}
+
 .payBtn::after {
   border: 1px solid #1392e3;
 }
@@ -341,6 +351,10 @@ textarea:placeholder {
 
 .payBtn-hover {
   background-color: #40abf0;
+}
+
+.payBtn-over-hover {
+  background-color: #9a9797;
 }
 
 .cancalBtn-hover {

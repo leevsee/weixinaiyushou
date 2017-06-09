@@ -62,13 +62,15 @@ page {
 }
 
 .del-button {
-  /*color: red;*/
-  
   background-color: #ff2f2f;
 }
 
 .postage-button-hover {
   background-color: #38b0fd;
+}
+
+.postage-del-hover {
+  background-color: #ff4d4d;
 }
 
 button::after {

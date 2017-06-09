@@ -33,10 +33,11 @@ page {
 .commodity-head-textcontent1 {
   color: #1392e3;
   font-size: 34rpx;
+  margin-bottom: 1.5%;
 }
 
 .commodity-head-textcontent2 {
-  margin-top: 1%;
+  margin-top: 2%;
   font-size: 32rpx;
 }
 

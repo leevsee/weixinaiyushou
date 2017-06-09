@@ -27,7 +27,7 @@
   <view class="rowView category">
     <block wx:for="{{classification}}">
       <view class="category-brand" bindtap="goToCommodityList" data-TCode="{{item.TCode}}" data-TName="{{item.TName}}" data-Remark="{{item.Remark}}">
-        <image src="/res/{{index}}.png" style="width: 80rpx; height: 80rpx;"></image>
+        <image src="{{item.PictureBody}}" style="width: 80rpx; height: 80rpx;"></image>
         <view class="category-text">
           <text>{{item.TName}}({{item.CountNumber}})</text>
         </view>
@@ -69,15 +69,21 @@
       <import src="../../component/loading/loading.wxml" />
       <template is="loading" data="{{loading: loading}}" />
 
-      <view class="headline-sale-slider" style=" animation: {{animation}} 20s ease-out infinite;" wx:if="{{topLine}}">
+      <view class="headline-sale-slider" style=" animation: {{animation}} 10s ease-out infinite;" wx:if="{{topLine}}" id="headline">
         <block wx:for="{{topLine}}">
           <view class="headline-sale-slider-text">
             <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{item[0].LinkUrl}}">{{item[0].Title}}</view>
             <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{item[0].LinkUrl}}">{{item[1].Title}}</view>
           </view>
-        </block>        
+        </block>
+        <view class="headline-sale-slider-text">
+          <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{topLine[0][0].LinkUrl}}">{{topLine[0][0].Title}}</view>
+          <view class="classname" bindtap="goTotopLine" id="{{index}}" data-topLineUrl="{{topLine[0][1].LinkUrl}}">{{topLine[0][1].Title}}</view>
+        </view>
       </view>
     </view>
+
+
   </view>
 
   <!-- 分割线 -->

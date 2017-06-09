@@ -389,8 +389,9 @@ function fetchMyOrder(cb, fail_cb) {
       key: 'token',
       success: function (res) {
          console.log(res.data);
+         let sToken = res.data;
          //若token为null，则重新获取
-         if (res.data == null) {
+         if (sToken == null) {
             common.getToken(function (token) {
                if (token == null) {
                   common.netErr(that);
@@ -407,7 +408,8 @@ function fetchMyOrder(cb, fail_cb) {
                },
                method: 'GET',
                success: function (res) {
-                  console.log(res);
+                  console.log('myOrderNum');
+                  console.log(res.data); 
                   if (res.data.error_code == -1) {
                      common.getToken(function (token) {
                         fetchMyOrder.call(that);
@@ -425,6 +427,8 @@ function fetchMyOrder(cb, fail_cb) {
                      loading.show.call(that);
                      //获取转、预售订单
                      fetchMySaleOrder.call(that);
+                     
+                     updataUserInfo(res.data.NickName,res.data.AvatarSm, sToken);
                      wx.hideNavigationBarLoading();
                      wx.hideLoading();
                   }
@@ -587,6 +591,44 @@ function delMySaleOrder(commCode, cb, fail_cb) {
                   // fail
                   console.log('getStorage fail');
                   common.netErr(that);
+               }
+            })
+         }
+      }
+   })
+}
+
+/**
+ * 像后台更新用户信息
+ */
+function updataUserInfo(userName, avatar, token, cb, fail_cb) {
+   console.log('updataUserInfo');
+   console.log(userName);
+   console.log(avatar);
+   console.log(token);
+   wx.getStorage({
+      key: 'userInfo',
+      success: function (res) {
+         console.log(res.data)
+         if (res.data.nickName != userName || res.data.avatarUrl != avatar) {
+            wx.request({
+               url: config.apiList.updataUserInfo,
+               data: {
+                  NickName: res.data.nickName,
+                  AvatarSm: res.data.avatarUrl,
+                  Sex: res.data.gender,
+                  province: res.data.province,
+                  City: res.data.city,
+                  Country: res.data.country,
+                  token: token
+               },
+               method: 'POST',
+               header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+               },
+               success: function (res) {
+                  console.log('======================');                  
+                  console.log(res.data);
                }
             })
          }

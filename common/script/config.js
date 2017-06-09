@@ -32,5 +32,6 @@ module.exports = {
         mySaleOrder: url + 'MyMessage/Get_OrderFromUser',
         delMySaleOrder: url + 'MyMessage/Delete_OrderByCommCode',
         openStationDoor: url + 'WMJ/WMJ_Message',
+        updataUserInfo: url + 'MyMessage/UpDataMyUserMessage',
     }
 }

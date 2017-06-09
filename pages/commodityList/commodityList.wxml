@@ -5,7 +5,7 @@
     <image src="/res/logo.png" style="width: 100rpx; height: 100rpx;"></image>
     <view class="commodity-head-text">
       <view class="commodity-head-textcontent1">
-        <text>{{options.tname}}选品标准：</text>
+        <text>{{options.tname}}选品标准</text>
       </view>
       <view class="divide commodity-head-divide"></view>
       <view class="commodity-head-textcontent2">
@@ -27,7 +27,8 @@
         <view class="divide"></view>
 
         <!-- 商品标题 -->
-        <view class="commodity-name">【{{item.FK_CodeID}}】{{item.CommName}}</view>
+        <view class="commodity-name" wx:if="{{item.FK_CodeID == '普通' }}">{{item.CommName}}</view>
+        <view class="commodity-name" wx:else>【{{item.FK_CodeID}}】{{item.CommName}}</view>
 
         <!-- 商品图片 -->
         <view class="commodity-pic">
@@ -78,10 +79,10 @@
           <view class="commodity-introduce-text">
             <text>{{item.Explain}}</text>
           </view>
-          <view class="commodity-introduce-text">
+          <view class="commodity-introduce-text" wx:if="{{item.FK_CodeID != '普通'}}">
             <text>预售截止日期：{{item.SaleDeadlineDate}}</text>
           </view>
-          <view class="commodity-introducer">——选品专员隔壁{{item.Author}}</view>
+          <view class="commodity-introducer">——选品专员{{item.Author}}</view>
         </view>
 
         <!-- 分割线 -->
@@ -99,14 +100,14 @@
             <!-- item-->
             <view class="scroll-view-warp" wx:for="{{item.swingTransation}}">
               <view class="commodity-transfer">
-                <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar" style=""></image>
+                <image src="{{item[0].PictureBody}}" class="commodity-transfer-Avatar" style=""></image>
                 <view class="commodity-transfer-content">
                   <view class="commodity-transfer-price">转让{{item[0].Stock}}份，{{item[0].SalePrice}}元/份</view>
                   <view class="commodity-transfer-text">{{item[0].Sketch}}</view>
                 </view>
               </view>
               <view class="commodity-transfer">
-                <image src="/res/touxiang1.jpg" class="commodity-transfer-Avatar" wx:if="{{item[1]}}"></image>
+                <image src="{{item[1].PictureBody}}" class="commodity-transfer-Avatar" wx:if="{{item[1]}}"></image>
                 <image src="" class="commodity-transfer-Avatar" wx:else></image>
                 <view class="commodity-transfer-content">
                   <view class="commodity-transfer-price" wx:if="{{item[1]}}">转让{{item[1].Stock}}份，{{item[1].SalePrice}}元/份</view>

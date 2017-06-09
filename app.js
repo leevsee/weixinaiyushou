@@ -12,7 +12,7 @@ App({
     api.getToken.call(this);
     wx.getUserInfo({
       success: function (res) {
-        console.log(res.userInfo.nickName);
+        console.log(res.userInfo);
         wx.setStorage({
           key: 'userInfo',
           data: res.userInfo
