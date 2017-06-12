@@ -95,7 +95,7 @@ page {
   padding-top: 5%;
   font-size: 30rpx;
   /*font-weight: bold;*/
-  text-decoration: line-through;
+  /*text-decoration: line-through;*/
   color: #ccc;
 }
 

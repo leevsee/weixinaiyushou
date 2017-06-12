@@ -58,17 +58,17 @@
         </view>
         <image src="/res/my_send.png" class="myOrders-img"></image>
       </view>
-      <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="1" data-state="2" data-title="已收货">
-        <view class="myOrders-text">
-          <text>已收货({{ordersNum.Already_delivery}})</text>
-        </view>
-        <image src="/res/my_sended.png" class="myOrders-img"></image>
-      </view>
       <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="1" data-state="3" data-title="已发货">
         <view class="myOrders-text">
           <text>已发货({{ordersNum.Received_goods}})</text>
         </view>
         <image src="/res/my_receive.png" class="myOrders-img"></image>
+      </view>
+      <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="1" data-state="2" data-title="已完成">
+        <view class="myOrders-text">
+          <text>已完成({{ordersNum.Already_delivery}})</text>
+        </view>
+        <image src="/res/my_sended.png" class="myOrders-img"></image>
       </view>
     </view>
   </view>
@@ -87,19 +87,29 @@
     <view class="rowView myOrders-wrap">
       <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="2" data-state="0" data-title="待出售">
         <view class="myOrders-text">
-          <text>待出售({{ordersNum.Pending_sale}})</text>
+          <!--<text>待出售({{ordersNum.Pending_sale}})</text>-->
+          <text>待付款({{ordersNum.Pending_sale}})</text>
         </view>
         <image src="/res/my_sale.png" class="myOrders-img"></image>
       </view>
       <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="2" data-state="1" data-title="已出售">
         <view class="myOrders-text">
-          <text>已出售({{ordersNum.Already_sold}})</text>
+          <!--<text>已出售({{ordersNum.Already_sold}})</text>-->
+          <text>带发货({{ordersNum.Already_sold}})</text>
         </view>
         <image src="/res/my_sended.png" class="myOrders-img"></image>
       </view>
       <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="2" data-state="2" data-title="待提货">
         <view class="myOrders-text">
-          <text>待提货({{ordersNum.Take_delivery}})</text>
+          <!--<text>待提货({{ordersNum.Take_delivery}})</text>-->
+          <text>已发货({{ordersNum.Take_delivery}})</text>
+        </view>
+        <image src="/res/my_take.png" class="myOrders-img"></image>
+      </view>
+      <view class="columnView myOrders-item" bindtap="goToOrders" data-bs="2" data-state="2" data-title="待提货">
+        <view class="myOrders-text">
+          <!--<text>待提货({{ordersNum.Take_delivery}})</text>-->
+          <text>已完成({{ordersNum.Take_delivery}})</text>
         </view>
         <image src="/res/my_take.png" class="myOrders-img"></image>
       </view>
@@ -118,7 +128,8 @@
   <!-- 我的转售预售 -->
   <view class="columnView myOrders mySaleOrder" wx:if="{{mySaleOrders.length != 0}}">
     <view class="myOrders-name myOrders-color">
-      <text>{{userName}}的转售预售宝贝</text>
+      <!--<text>{{userName}}的转售预售宝贝</text>-->
+      <text>我的转售</text>
     </view>
 
     <!-- 分割线 -->

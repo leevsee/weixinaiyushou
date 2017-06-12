@@ -56,7 +56,7 @@
           </view>
           <view class="columnView commodity-detail-width">
             <view class="commodity-detail-discount">￥{{item.SalePrice}}</view>
-            <!--<view class="commodity-detail-price">￥{{item.MarketPrice}}</view>-->
+            <view class="commodity-detail-price">库存：{{item.Stock}}</view>
           </view>
           <view class="columnView commodity-detail-width commodity-detail-buy" bindtap="goToPurchase" data-commcode="{{item.CommCode}}">
             <view class="commodity-detail-buy-text">

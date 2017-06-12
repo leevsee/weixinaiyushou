@@ -78,7 +78,7 @@ function fetchStation(cb, fail_cb) {
          })
       },
       //授权失败
-      fail:(res) =>{
+      fail: (res) => {
          console.log('getLocation fail========')
          wx.openSetting({
             success: (res) => {
@@ -87,7 +87,7 @@ function fetchStation(cb, fail_cb) {
                      title: '可能会引起爱预售功能缺失',
                      image: '/res/err2.png',
                   })
-               } else{
+               } else {
                   fetchStation.call(that);
                }
             }
@@ -230,17 +230,20 @@ function openStationDoorByID(stationID, cb, fail_cb) {
                         token: res.data,
                      },
                      success: function (res) {
-                        wx.hideLoading();
                         console.log(res.data);
                         if (res.data.Msg == 'OK') {
-                           wx.showToast({
-                              title: '开门成功',
-                              icon: 'success',
-                              duration: 2000
-                           })
+
+                           setTimeout(() => {
+                              wx.hideLoading();
+                              wx.showToast({
+                                 title: '开门成功',
+                                 icon: 'success',
+                                 duration: 2000
+                              })
+                           }, 5000)
 
                         } else {
-
+                           wx.hideLoading();
                            wx.showToast({
                               title: '开门失败，请重新再试',
                               icon: 'success',
