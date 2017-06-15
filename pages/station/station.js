@@ -103,7 +103,7 @@ Page({
    goToPurchase: function (e) {
       console.log(e.currentTarget.dataset.commcode)
       wx.navigateTo({
-         url: '../purchase/purchase?commcode=' + e.currentTarget.dataset.commcode
+         url: '../purchase/purchase?commcode=' + e.currentTarget.dataset.commcode + '&terminalID=' + e.currentTarget.dataset.terminalid
       })
    },
    //自助开门

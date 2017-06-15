@@ -1,9 +1,9 @@
 {
    "pages": [
-            "pages/my/my",
+       
       "pages/home/home",
       "pages/station/station",
-      
+         "pages/my/my",
       
        "pages/orderInfo/orderInfo",
       "pages/commodityList/commodityList",

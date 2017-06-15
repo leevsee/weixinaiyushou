@@ -14,7 +14,7 @@ Page({
       stock: '',
       address: '',
       message: '',
-      deliveryMessage:'',
+      deliveryMessage: '',
       dispalyResale: true,
       isDelivery: false,
       isResale: false,
@@ -28,8 +28,9 @@ Page({
       wx.showLoading({
          title: '加载中',
       });
-      console.log(options.commcode)
-      api.getOrder.call(this, options.commcode);
+      console.log('purchase')
+      console.log(options)
+      api.getOrder.call(this, options.commcode, options.terminalID);
    },
    onShow: function () {
       let that = this;
@@ -56,7 +57,8 @@ Page({
    },
    goToOrders: function () {
       let that = this;
-      if (this.data.address == '') {
+      console.log(that.data.item.IsFillInAddress != 0);
+      if (that.data.showPostage && (that.data.item.IsFillInAddress != 0)) {
          wx.showToast({
             title: '请选择收货地址',
             image: '/res/err2.png',
@@ -89,6 +91,8 @@ Page({
                   FK_TerminalID: that.data.stationId,
                   Body: '爱预售-购买' + that.data.commName,
                   Sketch: that.data.deliveryMessage,
+                  User_TerminalID: that.data.item.TerminalID,
+                  IsFillInAddress: that.data.item.IsFillInAddress,
                   token: res.data,
                }
                api.confirmOrder.call(that, data);
@@ -103,7 +107,8 @@ Page({
       }
    },
    subNum: function () {
-      if (this.data.num > 1) {
+      // console.log(this.data.isDelivery && this.data.num > this.data.deliveryNum)
+      if (this.data.num > 1 && this.data.num > this.data.deliveryNum) {
          this.setData({
             num: this.data.num - 1,
             totlePrice: Number(((this.data.num - 1) * this.data.price) + this.data.postage).toFixed(2)
@@ -127,7 +132,7 @@ Page({
       }
    },
    addDeliveryNum: function () {
-      if (this.data.deliveryNum < this.data.num) {
+      if (this.data.deliveryNum < this.data.num && this.data.isDelivery) {
          this.setData({
             deliveryNum: this.data.deliveryNum + 1,
             totleDeliveryPrice: Number((this.data.deliveryNum + 1) * this.data.deliveryPrice)
@@ -147,7 +152,7 @@ Page({
             that.setData({
                address: res
             });
-         }, fail: function (res){
+         }, fail: function (res) {
             console.log('chooseAddress fail========');
             wx.openSetting({
                success: (res) => {
@@ -173,7 +178,8 @@ Page({
          })
       } else {
          this.setData({
-            isDelivery: !this.data.isDelivery
+            isDelivery: !this.data.isDelivery,
+            deliveryNum: 1
          })
       }
    },
@@ -187,7 +193,7 @@ Page({
       this.setData({
          message: e.detail.value
       })
-   }   ,
+   },
    bindDeliveryMessage: function (e) {
       this.setData({
          deliveryMessage: e.detail.value

@@ -99,9 +99,9 @@ Page({
       wx.stopPullDownRefresh();
    },
    goToPurchase: function (e) {
-      console.log(e.currentTarget.dataset.commcode)
+      console.log(e.currentTarget.dataset)
       wx.navigateTo({
-         url: '../purchase/purchase?commcode=' + e.currentTarget.dataset.commcode
+         url: '../purchase/purchase?commcode=' + e.currentTarget.dataset.commcode + '&terminalID=' + e.currentTarget.dataset.terminalid
       })
    },
    goToPic: function (e) {

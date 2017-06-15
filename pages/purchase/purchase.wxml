@@ -8,8 +8,22 @@
   </view>
 </view>-->
 
+
+  <!-- 提货站地址显示 -->
+  <view class="addrView" wx:if="{{item.IsFillInAddress == 0}}">
+    <view class="addr-title">
+      <text>提货站地址：</text>
+    </view>
+    <view class="rowView addr-display" >
+      <view class="addrSelc-content-text1">
+        <text>{{item.TerminalAddress}}</text>
+      </view>
+      <!--<image src="/res/goto.png" style="width: 60rpx; height: 60rpx;"></image>-->
+    </view>
+  </view>
+
   <!-- 收货地址选择 -->
-  <view class="rowView addrSelc-content" wx:if="{{!address}}" bindtap="selectAddres">
+  <view class="rowView addrSelc-content" wx:elif="{{!address}}" bindtap="selectAddres">
     <view class="addrSelc-content-text" >
       <text wx:if="{{address}}">重新选择收货地址</text>
       <text wx:else>添加收货地址</text>
@@ -21,7 +35,7 @@
   <!--<view class="divide" wx:if="{{address}}"></view>-->
 
   <!-- 收货地址显示 -->
-  <view class="addrView" wx:if="{{address}}" bindtap="selectAddres">
+  <view class="addrView" wx:else="{{address}}" bindtap="selectAddres">
     <view class="addr-title">
       <text>收货地址：</text>
     </view>

@@ -7,8 +7,10 @@ const hasMore = require('../../component/hasMore/hasMore')
 /**
  * 订单页面信息
  */
-function addOrder(commCode, cb, fail_cb) {
+function addOrder(commCode, terminalID, cb, fail_cb) {
    console.log('addOrder');
+   console.log(commCode);
+   console.log(terminalID);
    let that = this;
    wx.getStorage({
       key: 'token',
@@ -28,6 +30,7 @@ function addOrder(commCode, cb, fail_cb) {
                url: config.apiList.commodityInfo,
                data: {
                   CommCode: commCode,
+                  TerminalID: terminalID,
                   token: res.data
                },
                method: 'GET',
