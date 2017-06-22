@@ -36,11 +36,9 @@ page {
 
 .addr-title {
   display: flex;
-  /*justify-content: center;*/
   align-items: center;
   font-size: 32rpx;
   margin-bottom: 2%;
-  /*color: #1392e3;*/
 }
 
 .addr-name {
@@ -52,6 +50,12 @@ page {
   font-size: 34rpx;
   color: #0a0a0a;
   font-weight: bolder;
+}
+
+.addr-tips {
+  font-size: 28rpx;
+  color: #a7a7a7;
+  font-weight: lighter;
 }
 
 .addr-display {

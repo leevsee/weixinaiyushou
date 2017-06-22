@@ -58,7 +58,7 @@ Page({
    goToOrders: function () {
       let that = this;
       console.log(that.data.item.IsFillInAddress != 0);
-      if (that.data.showPostage && (that.data.item.IsFillInAddress != 0)) {
+      if (!that.data.showPostage) {
          wx.showToast({
             title: '请选择收货地址',
             image: '/res/err2.png',
@@ -150,7 +150,8 @@ Page({
          success: function (res) {
             console.log(res);
             that.setData({
-               address: res
+               address: res,
+               showPostage:true
             });
          }, fail: function (res) {
             console.log('chooseAddress fail========');

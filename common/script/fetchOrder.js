@@ -14,7 +14,7 @@ function addOrder(commCode, terminalID, cb, fail_cb) {
    let that = this;
    wx.getStorage({
       key: 'token',
-      success: function (res) {
+      success: (res) => {
          console.log(res.data)
          //若token为kong，则重新获取
          if (res.data == null) {
@@ -34,7 +34,7 @@ function addOrder(commCode, terminalID, cb, fail_cb) {
                   token: res.data
                },
                method: 'GET',
-               success: function (res) {
+               success: (res) => {
                   // success
                   console.log(res)
                   if (res.data.error_code == -1) {
@@ -46,6 +46,11 @@ function addOrder(commCode, terminalID, cb, fail_cb) {
                         }
                      }, '');
                   } else {
+                     let addressShow = false;
+                     if (res.data.IsFillInAddress != 1) {
+                        addressShow = true;
+                     }
+
                      that.setData({
                         commCode: res.data.CommCode,
                         commName: res.data.CommName,
@@ -56,7 +61,8 @@ function addOrder(commCode, terminalID, cb, fail_cb) {
                         totleDeliveryPrice: res.data.ResalePrice,
                         dispalyResale: res.data.IsResale,
                         item: res.data,
-                        showLoading: false
+                        showLoading: false,
+                        showPostage: addressShow
                      });
                      wx.hideLoading();
                   }
@@ -208,7 +214,7 @@ function fecthOrderInfo(orderCode, cb, fail_cb) {
                         }
                      }, '');
                   } else {
-                     
+
                      let _temp = res.data.ReturnTrace;
                      if (res.data.ReturnTrace) {
                         let l = res.data.ReturnTrace.length;

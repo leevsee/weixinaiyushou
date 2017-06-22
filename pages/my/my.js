@@ -21,7 +21,7 @@ Page({
    onLoad: function () {
       let that = this;
       wx.showLoading({
-         title: '玩命加载中',
+         title: config.showLoadingText,
       });
       //微信版本判断
       common.checkVersion(function (res) {
@@ -46,7 +46,7 @@ Page({
                         console.log('openSetting success')
                         if (!res.authSetting['scope.userInfo']) {
                            wx.showToast({
-                              title: '可能会引起爱预售功能缺失',
+                              title: config.authFail,
                               image: '/res/err2.png',
                            })
                         } else {

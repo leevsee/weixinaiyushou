@@ -1,19 +1,14 @@
-let api = require('../../common/script/fetch')
-let common = require('../../common/script/common')
-let config = require('../../common/script/config')
-// var token = require('../../common/script/common')
+const api = require('../../common/script/fetch')
+const common = require('../../common/script/common')
+const config = require('../../common/script/config')
+// const token = require('../../common/script/common')
 
 Page({
    data: {
-      imgUrls: [
-         'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-         'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-         'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-      ],
-      classification: '',
-      category: '',
-      topLine: '',
-      animation:'',
+      classification: [],  //大分类信息
+      category: [],        //x细小分类
+      topLine: [],         //头条信息
+      animation: '',       //动画效果
       showLoading: true,
       hiddenLoading: true
    },
@@ -25,44 +20,49 @@ Page({
          if (res.data.SDKVersion > config.wxSDK && res.data.version >= config.wxVersion) {
             api.getCategory.call(that);
          } else {
+            //错误显示
             common.updataErr(that);
          }
       });
-
-
       // api.getTopLine.call(this);
       // token.getToken.call(this);
    },
-   goTotopLine: function (e) {
-      console.log(e.currentTarget.dataset);
-   },
    onPullDownRefresh: function () {
-      // var that = this
+      let that = this;
       wx.showLoading({
-         title: '玩命加载中',
+         title: config.showLoadingText,
          mask: true
       });
-      this.setData({
+      that.setData({
          classification: '',
          category: '',
          showLoading: true,
          hiddenLoading: true
       })
-      this.onLoad();
+      that.onLoad();
       wx.stopPullDownRefresh();
-   },
+   }, 
+   //轮播图片跳转
    swiperPicOnClick: function (e) {
       console.log(e.target.dataset.url);
       wx.navigateTo({
          url: '../commodityList/commodityList?tcode=' + e.target.dataset.url.CommCode + '&single=true'
       })
    },
+   //商品列表跳转
    goToCommodityList: function (e) {
-      console.log(e.currentTarget.dataset)
+      console.log(e.currentTarget.dataset);
       wx.navigateTo({
          url: '../commodityList/commodityList?tcode=' + e.currentTarget.dataset.tcode + '&tname=' + e.currentTarget.dataset.tname + '&remark=' + e.currentTarget.dataset.remark
       })
    },
+   //头条信息处理
+   goTotopLine: function (e) {
+      console.log(e.currentTarget.dataset);
+      //TODO
+
+   },
+   //test function
    mytest: function () {
       console.log('mytest btn');
       wx.navigateTo({

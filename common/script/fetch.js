@@ -78,7 +78,7 @@ function fetchTopLine(cb, fail_cb) {
          if (res.statusCode == 200) {
             let topLine = new Array();
             //把头条列表变成两条为一组的数组
-            // for (let [i, temp] = [0, res.data.length]; i < temp; i = i + 2) {
+            // for (let [i, temp] = [0, res.data.length]; i < temp; i = i + 2) { //不支持解构T.T
             for (let i = 0; i < res.data.length; i = i + 2) {
                topLine[i] = [];
                topLine[i][0] = res.data[i];
@@ -95,11 +95,13 @@ function fetchTopLine(cb, fail_cb) {
             that.setData({
                showLoading: false,
                topLine: topLine,
-               animation: 'swiperSlide' + topLine.length
+               animation: 'swiperSlide' + topLine.length    //动画效果自动选择
             });
             loading.hide.call(that);
             wx.hideNavigationBarLoading();
             wx.hideLoading();
+         } else {
+            common.netErr(that);
          }
          typeof cb == 'function' && cb(topLine);
       },

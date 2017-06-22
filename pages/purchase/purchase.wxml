@@ -12,8 +12,14 @@
   <!-- 提货站地址显示 -->
   <view class="addrView" wx:if="{{item.IsFillInAddress == 0}}">
     <view class="addr-title">
-      <text>提货站地址：</text>
+      <view class="addr-name">
+        <text>提货站地址：</text>
+      </view>
+      <view class="addr-tips">
+        <text>(请去提货站提取商品)</text>
+      </view>
     </view>
+
     <view class="rowView addr-display" >
       <view class="addrSelc-content-text1">
         <text>{{item.TerminalAddress}}</text>
@@ -70,11 +76,11 @@
   </view>
 
   <!-- 分割线 -->
-  <view class="thin-divide"></view>
+  <!--<view class="thin-divide"></view>
   <view class="rowView onSale-postage" wx:if="{{showPostage}}">
     <view class="onSale-postage-text">送货/提货费</view>
     <view class="onSale-postage-price">￥{{postage}}</view>
-  </view>
+  </view>-->
 
   <!-- 分割线 -->
   <view class="thin-divide"></view>

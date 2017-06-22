@@ -2,7 +2,7 @@
 
 
   <!-- 收货地址显示 -->
-  <view class="addrView" bindtap="selectAddres">
+  <view class="addrView" wx:if="{{orderInfo.User_TerminalID == 0}}">
     <view class="addr-title">
 
       <view class="addr-name">
@@ -10,6 +10,24 @@
       </view>
       <view class="addr-phone">
         <text>{{orderInfo.TelNumber}}</text>
+      </view>
+    </view>
+    <view class="rowView addr-display">
+      <view class="addrSelc-content-text1">
+        <text>{{orderInfo.DetailInfo}}</text>
+      </view>
+      <image src="" style="width: 60rpx; height: 60rpx;"></image>
+    </view>
+  </view>
+
+  <view class="addrView" wx:else>
+    <view class="addr-title">
+
+      <view class="addr-name">
+        <text>提货站地址：</text>
+      </view>
+      <view class="addr-tips">
+        <text>(请去提货站提取商品)</text>
       </view>
     </view>
     <view class="rowView addr-display">
@@ -121,11 +139,11 @@
   </view>
 
   <!-- 分割线 -->
-  <view class="thin-divide"></view>
+  <!--<view class="thin-divide"></view>
   <view class="rowView onSale-postage" wx:if="{{showPostage}}">
     <view class="onSale-postage-text">送货/提货费</view>
     <view class="onSale-postage-price">￥{{postage}}</view>
-  </view>
+  </view>-->
 
   <!-- 分割线 -->
   <view class="thin-divide"></view>
@@ -190,6 +208,86 @@
     </view>
     <view class="divide thin-divide"></view>
   </view>
+
+  <view class="orderInfo-wrap">
+    <view class="orderInfo">
+      <view class="oderInfo-title">
+        购买商品总数
+      </view>
+      <view class="oderInfo-title">
+        {{orderInfo.CommCount}}
+      </view>
+    </view>
+    <view class="divide thin-divide"></view>
+  </view>
+
+  <view class="orderInfo-wrap">
+    <view class="orderInfo">
+      <view class="oderInfo-title">
+        发货商品数量
+      </view>
+      <view class="oderInfo-title">
+        {{orderInfo.RemainingCount}}
+      </view>
+    </view>
+    <view class="divide thin-divide"></view>
+  </view>
+
+  <view class="orderInfo-wrap">
+    <view class="orderInfo">
+      <view class="oderInfo-title">
+        寄售商品数量
+      </view>
+      <view class="oderInfo-title">
+        {{orderInfo.ConsignmentCount}}
+      </view>
+    </view>
+    <view class="divide thin-divide"></view>
+  </view>
+
+  <view class="orderInfo-wrap">
+    <view class="orderInfo">
+      <view class="oderInfo-title">
+        出售商品数量
+      </view>
+      <view class="oderInfo-title">
+        {{orderInfo.AlreadySoldCount}}
+      </view>
+    </view>
+    <view class="divide thin-divide"></view>
+  </view>
+
+  <block wx:if="{{orderTrace}}">
+    <!-- 分割线 -->
+    <view class="divide"></view>
+
+    <view class="expressView">
+      <view class="express-title">
+        <text>物流信息2</text>
+      </view>
+
+      <view class="express-info-wrap">
+        <!-- itmes -->
+        <view class="express-info-itme" wx:for="{{orderTrace}}">
+          <view class="express-info-circle-wrap" style="height:{{item.express_height}}%">
+            <view class="express-info-circle">
+
+            </view>
+          </view>
+          <view class="express-info-date">
+            <view class="express-info-year">
+              <text>{{item.TraceTime_YND}}</text>
+            </view>
+            <view class="express-info-time">
+              <text>{{item.TraceTime_HMS}}</text>
+            </view>
+          </view>
+
+          <view class="express-info-text">测试在广州深圳公司集包分部进行揽件扫描{{item.TraceAddres}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
 
   <!-- 分割线 -->
   <view class="divide"></view>

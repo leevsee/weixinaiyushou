@@ -11,6 +11,9 @@ module.exports = {
     imgListNum: '10',
     wxSDK: '1.1.0',
     wxVersion: '6.5.6',
+    showLoadingText:'玩命加载中',
+    authFail:'可能会引起爱预售功能缺失',
+    networkErr:'网络开小差了',
     apiList: {
         loginToken: url + 'Account/wxsm_Login',
         category: url + 'Home_Page/CommodityType_Lists',

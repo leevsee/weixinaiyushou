@@ -18,19 +18,15 @@ page {
   font-size: 36rpx;
   /*color: #777777;*/
   overflow: auto;
-  /*white-space: nowrap;*/
-  /*text-overflow: ellipsis;*/
+  /*white-space: nowrap;*//*text-overflow: ellipsis;*/
 }
 
 .addrSelc-content-text1 {
   font-size: 30rpx;
-  color: #777777;
+  color: #777;
   overflow: auto;
-  /*white-space: nowrap;*/
-  /*text-overflow: ellipsis;*/
+  /*white-space: nowrap;*//*text-overflow: ellipsis;*/
 }
-
-
 
 .addrView {
   padding-top: 2%;
@@ -40,8 +36,22 @@ page {
 }
 
 .addr-title {
+  display: flex;
+  align-items: center;
   font-size: 36rpx;
+  
+}
+
+.addr-name {
+  /*font-size: 34rpx;*/
   color: #1392e3;
+}
+
+.addr-tips {
+  /*margin-left: 10%;*/
+  font-size: 28rpx;
+  color: #a7a7a7;
+  font-weight: lighter;
 }
 
 .addr-display {
@@ -138,8 +148,8 @@ page {
   color: #666;
 }
 
-textarea:placeholder { 
-   color:red;
+textarea:placeholder {
+  color: red;
 }
 
 .onSale-text {
