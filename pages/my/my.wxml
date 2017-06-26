@@ -138,7 +138,7 @@
 
       <!-- item -->
       <view class="rowView myOrders-sale-item" wx:for="{{mySaleOrders}}">
-        <text class="myOrders-sale-text text-overflow">{{userName}}推荐：{{item.CommName}}</text>
+        <text class="myOrders-sale-text text-overflow">[{{item.TName}}] {{item.CommName}} * {{item.TerminalStock}}</text>
         <text class="myOrders-del" data-CommCode="{{item.CommCode}}" bindtap="delMySaleComm">删除</text>
       </view>
 

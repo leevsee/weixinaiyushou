@@ -132,7 +132,7 @@ Page({
       }
    },
    addDeliveryNum: function () {
-      if (this.data.deliveryNum < this.data.num && this.data.isDelivery) {
+      if (this.data.deliveryNum < this.data.num && (this.data.isDelivery || this.data.isResale)) {
          this.setData({
             deliveryNum: this.data.deliveryNum + 1,
             totleDeliveryPrice: Number((this.data.deliveryNum + 1) * this.data.deliveryPrice)
@@ -151,7 +151,7 @@ Page({
             console.log(res);
             that.setData({
                address: res,
-               showPostage:true
+               showPostage: true
             });
          }, fail: function (res) {
             console.log('chooseAddress fail========');
@@ -173,11 +173,16 @@ Page({
    },
    isDelivery: function (e) {
       console.log(e.currentTarget.dataset);
-      if (this.data.isDelivery == false) {
+      if (this.data.isDelivery === false) {
          wx.navigateTo({
             url: '../selectStation/selectStation'
          })
-      } else {
+      } else if (this.data.isResale === true) {
+         this.setData({
+            isDelivery: !this.data.isDelivery
+         })
+      }
+      else {
          this.setData({
             isDelivery: !this.data.isDelivery,
             deliveryNum: 1
@@ -186,9 +191,16 @@ Page({
    },
    isResale: function (e) {
       console.log(e.currentTarget.dataset);
-      this.setData({
-         isResale: !this.data.isResale
-      })
+      if (this.data.isDelivery === true){
+         this.setData({
+            isResale: !this.data.isResale
+         })
+      }else{
+         this.setData({
+            isResale: !this.data.isResale,
+            deliveryNum: 1
+         })
+      }
    },
    bindTextAreaBlur: function (e) {
       this.setData({

@@ -71,7 +71,7 @@
       <view class="rowView logistics">
         <image src="/res/wuliu.png" class="logistics-img"></image>
         <view class="logistics-text text-overflow">
-          <text>2017-2-15 15:24 商品从邕宁集散中心发往厢竹提货站竹提货站竹提货站竹提货站</text>
+          <text> {{item.CommoditysMessage}}</text>
         </view>
       </view>
 

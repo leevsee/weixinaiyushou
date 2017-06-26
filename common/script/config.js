@@ -1,7 +1,7 @@
 
-const url = 'http://192.168.0.33/AYSAPI/api/';
+// const url = 'http://192.168.0.33/AYSAPI/api/';
 // const url = 'http://aiyushou.ngrok.cc/AYSAPI/api/';
-// const url = 'http://ays.hk1.mofasuidao.cn/AYSAPI/api/';
+const url = 'http://ays.hk1.mofasuidao.cn/AYSAPI/api/';
 
 module.exports = {
     categoryTCode: '0',
