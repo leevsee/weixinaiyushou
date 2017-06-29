@@ -281,7 +281,7 @@ function fetchOneCommodity(typeCode, cb, fail_cb) {
 /**
  * 获得某个商品所有图片
  */
-function fetchCommodityFiles(codeID, cb, fail_cb) {
+function fetchCommodityFiles(codeID, typeCode = 'image', cb, fail_cb) {
    console.log('fetchCommodityFiles');
    let that = this;
    message.hide.call(that);
@@ -290,7 +290,7 @@ function fetchCommodityFiles(codeID, cb, fail_cb) {
       url: config.apiList.commodityImgList,
       data: {
          CommCode: codeID,
-         type: 'image',
+         type: typeCode,
          pageIndex: 0,
          pageSize: config.imgListNum
       },

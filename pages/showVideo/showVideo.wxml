@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="page-head">
+    <view class="page-head-title">视频</view>
+    <view class="page-head-line"></view>
+  </view>
+  <view class="classname">
+    <video src="{{videoSrc}}" controls></video>
+  </view>
+</view>

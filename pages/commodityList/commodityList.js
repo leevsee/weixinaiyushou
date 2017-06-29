@@ -1,4 +1,5 @@
 let api = require('../../common/script/fetch')
+const config = require('../../common/script/config')
 
 Page({
    data: {
@@ -113,7 +114,9 @@ Page({
    goToVideo: function (e) {
       console.log(e.currentTarget.dataset.commcode);
       wx.navigateTo({
-         url: '../showPic/showPic?commcode=' + e.currentTarget.dataset.commcode
+         url: '../showVideo/showVideo?commcode=' + e.currentTarget.dataset.commcode
       })
+
+
    }
 })

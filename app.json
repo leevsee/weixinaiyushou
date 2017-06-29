@@ -10,7 +10,8 @@
       "pages/selectStation/selectStation",
       "pages/purchase/purchase",
       "pages/orders/orders",
-      "pages/showPic/showPic"
+      "pages/showPic/showPic",
+      "pages/showVideo/showVideo"
    ],
    "window": {
       "backgroundTextStyle": "light",

@@ -57,7 +57,7 @@ Page({
    },
    goToOrders: function () {
       let that = this;
-      console.log(that.data.item.IsFillInAddress != 0);
+      console.log(Number.parseInt(Math.random() * 10000));
       if (!that.data.showPostage) {
          wx.showToast({
             title: '请选择收货地址',
@@ -94,6 +94,7 @@ Page({
                   User_TerminalID: that.data.item.TerminalID,
                   IsFillInAddress: that.data.item.IsFillInAddress,
                   token: res.data,
+                  Onlyrequest: Number.parseInt(Math.random() * 10000)
                }
                api.confirmOrder.call(that, data);
             },
@@ -191,11 +192,11 @@ Page({
    },
    isResale: function (e) {
       console.log(e.currentTarget.dataset);
-      if (this.data.isDelivery === true){
+      if (this.data.isDelivery === true) {
          this.setData({
             isResale: !this.data.isResale
          })
-      }else{
+      } else {
          this.setData({
             isResale: !this.data.isResale,
             deliveryNum: 1
