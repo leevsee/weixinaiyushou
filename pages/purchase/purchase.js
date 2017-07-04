@@ -93,6 +93,7 @@ Page({
                   Sketch: that.data.deliveryMessage,
                   User_TerminalID: that.data.item.TerminalID,
                   IsFillInAddress: that.data.item.IsFillInAddress,
+                  CommodityFromTerminalID: that.data.item.CommodityFromTerminalID,
                   token: res.data,
                   Onlyrequest: Number.parseInt(Math.random() * 10000)
                }
