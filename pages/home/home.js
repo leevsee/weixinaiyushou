@@ -17,7 +17,10 @@ Page({
       wx.showNavigationBarLoading();
       //版本检测
       common.checkVersion(function (res) {
-         if (res.data.SDKVersion > config.wxSDK && res.data.version >= config.wxVersion) {
+         console.log(res.data.SDKVersion > config.wxSDK);
+         console.log(res.data.version >= config.wxVersion);
+
+         if (res.data.SDKVersion > config.wxSDK) {
             api.getCategory.call(that);
          } else {
             //错误显示

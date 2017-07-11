@@ -45,7 +45,18 @@ function addOrder(commCode, terminalID, cb, fail_cb) {
                            addOrder.call(that, commCode);
                         }
                      }, '');
-                  } else {
+                  } else if (res.data.MyCommodity == 1) {
+                     wx.showModal({
+                        title: '订单错误',
+                        content: '不能购买自己的商品',
+                        showCancel: false,
+                        confirmColor: '#1392e3',
+                        success: function (res) {
+                           wx.navigateBack({})
+                        }
+                     })
+                  }
+                  else {
                      let addressShow = false;
                      if (res.data.IsFillInAddress != 1) {
                         addressShow = true;

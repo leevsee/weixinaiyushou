@@ -5,7 +5,8 @@
     <image src="{{userImg}}" class="userinfo-img"></image>
     <view class="columnView userinfo-content">
       <view class="userinfo-name">{{userName}}</view>
-      <view class="userinfo-vip">还差{{100-percent}}%升级到华贵铂金会员</view>
+      <view class="userinfo-vip" wx:if="{{percent > 100 }}">华丽的铂金会员</view>
+      <view class="userinfo-vip" wx:else>还差{{100-percent}}%升级到华贵铂金会员</view>
       <view class="userinfo-progress">
         <view class="userinfo-orange" style="width:{{percentage}}%"></view>
       </view>

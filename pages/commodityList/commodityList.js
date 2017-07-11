@@ -51,7 +51,7 @@ Page({
       api.getCommodity.call(this, this.data.options.tcode);
    },
    scrollTest: function (e) {
-      // console.log(this.data.commodityList[e.currentTarget.dataset.index]);
+      // console.log(e.currentTarget.dataset.index);
       // console.log(this.data.commodityList[e.currentTarget.dataset.index].pageNum = 1);
       // console.log(this.data.commodityList[e.currentTarget.dataset.index].pageNum);
       console.log('get===========');

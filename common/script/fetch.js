@@ -326,9 +326,9 @@ function fetchResaleList(index, cb, fail_cb) {
    let that = this;
    console.log('fetchResaleList');
    //动画加载
-   hasMore.custom_showLoading.call(that, { scrollMore: { type: 1, loadingMessage: '正在加载中…', customCss: 'custom-loadEffect', customloadingCss: 'custom-loading-tip'}});
+   hasMore.custom_showLoading.call(that, { scrollMore: { type: 1, loadingMessage: '正在加载中…', customCss: 'custom-loadEffect', customloadingCss: 'custom-loading-tip' } });
    if (that.data.commodityList[index].pageNum == undefined) {
-      that.data.commodityList[index].pageNum = 0
+      that.data.commodityList[index].pageNum = 1
    }
    //商品列表请求
    wx.request({
@@ -366,10 +366,10 @@ function fetchResaleList(index, cb, fail_cb) {
             that.setData({
                commodityList: _temp
             });
-            hasMore.custom_showLoading.call(that, { scrollMore: { type: 0, moreMessage: '滑动到左边，加载更多', customloadingCss: 'custom-loading-tip'}});
+            hasMore.custom_showLoading.call(that, { scrollMore: { type: 0, moreMessage: '滑动到左边，加载更多', customloadingCss: 'custom-loading-tip' } });
             that.data.commodityList[index].pageNum++;
          } else {
-            hasMore.custom_showLoading.call(that, { scrollMore: { type: 2, noMessage: '没有更多内容了', customloadingCss: 'custom-loading-tip'}});
+            hasMore.custom_showLoading.call(that, { scrollMore: { type: 2, noMessage: '没有更多内容了', customloadingCss: 'custom-loading-tip' } });
          }
       },
       fail: function (res) {
@@ -411,7 +411,7 @@ function fetchMyOrder(cb, fail_cb) {
                method: 'GET',
                success: function (res) {
                   console.log('myOrderNum');
-                  console.log(res.data); 
+                  console.log(res.data);
                   if (res.data.error_code == -1) {
                      common.getToken(function (token) {
                         fetchMyOrder.call(that);
@@ -429,8 +429,8 @@ function fetchMyOrder(cb, fail_cb) {
                      loading.show.call(that);
                      //获取转、预售订单
                      fetchMySaleOrder.call(that);
-                     
-                     updataUserInfo(res.data.NickName,res.data.AvatarSm, sToken);
+
+                     updataUserInfo(res.data.NickName, res.data.AvatarSm, sToken);
                      wx.hideNavigationBarLoading();
                      wx.hideLoading();
                   }
@@ -629,7 +629,7 @@ function updataUserInfo(userName, avatar, token, cb, fail_cb) {
                   'content-type': 'application/x-www-form-urlencoded'
                },
                success: function (res) {
-                  console.log('======================');                  
+                  console.log('======================');
                   console.log(res.data);
                }
             })

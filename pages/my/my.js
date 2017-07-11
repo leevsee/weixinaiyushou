@@ -25,7 +25,8 @@ Page({
       });
       //微信版本判断
       common.checkVersion(function (res) {
-         if (res.data.SDKVersion > config.wxSDK && res.data.version >= config.wxVersion) {
+         // && res.data.version >= config.wxVersion
+         if (res.data.SDKVersion > config.wxSDK) {
             api.getMyOrder.call(that);
 
             wx.getStorage({

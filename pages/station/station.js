@@ -32,9 +32,9 @@ Page({
       wx.showLoading({
          title: '玩命加载中'
       });
-
+      //&& res.data.version >= config.wxVersion
       common.checkVersion(function (res) {
-         if (res.data.SDKVersion > config.wxSDK && res.data.version >= config.wxVersion) {
+         if (res.data.SDKVersion > config.wxSDK ) {
             console.log(options);
             //判断是否首次加载
             if (options.stationId == undefined) {
