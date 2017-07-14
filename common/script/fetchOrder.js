@@ -16,7 +16,7 @@ function addOrder(commCode, terminalID, cb, fail_cb) {
       key: 'token',
       success: (res) => {
          console.log(res.data)
-         //若token为kong，则重新获取
+         //若token为空，则重新获取
          if (res.data == null) {
             common.getToken(function (token) {
                if (token == null) {
@@ -42,7 +42,7 @@ function addOrder(commCode, terminalID, cb, fail_cb) {
                         if (token == null) {
                            common.netErr(that);
                         } else {
-                           addOrder.call(that, commCode);
+                           addOrder.call(that, commCode, terminalID);
                         }
                      }, '');
                   } else if (res.data.MyCommodity == 1) {
@@ -300,9 +300,6 @@ function confirmOrder(data, cb, fail_cb) {
                         success: function (res) {
                            // success
                            console.log(res);
-                           // wx.redirectTo({
-                           //    url: '../orders/orders?bs=1&state=1&title=订单 - 待发货'
-                           // })
                            common.myToast('success', '付款成功，正在跳转中', function () {
                               setTimeout(function () {
                                  wx.redirectTo({
@@ -313,14 +310,8 @@ function confirmOrder(data, cb, fail_cb) {
                         },
                         fail: function (res) {
                            // fail
-                           // wx.redirectTo({
-                           //    url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
-                           // })
                            common.myToast('err', '付款失败，请重新再试', function () {
                               setTimeout(function () {
-                                 // wx.redirectTo({
-                                 //    url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
-                                 // })
                                  wx.switchTab({
                                     url: '../my/my'
                                  })
@@ -417,6 +408,7 @@ function fetchPay(payData, cb, fail_cb) {
    //    title: '正在付款中。。。',
    //    mask:true
    // });
+   let that = this;   
    wx.request({
       url: config.apiList.orderPay,
       data: payData,
@@ -463,9 +455,12 @@ function fetchPay(payData, cb, fail_cb) {
 
                   common.myToast('err', '付款失败，请重新再试', function () {
                      setTimeout(function () {
-                        wx.redirectTo({
-                           url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
-                        });
+                        that.setData({
+                           page: 0,
+                           ordersList: [],
+                           showLoading: true
+                        })
+                        that.onLoad(that.data.options);
                      }, 1500);
                   })
                   // common.myToast('err', '付款失败，请重新再试');              
