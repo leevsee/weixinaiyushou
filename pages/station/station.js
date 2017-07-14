@@ -117,18 +117,35 @@ Page({
          phoneNumber: e.currentTarget.dataset.phone //仅为示例，并非真实的电话号码
       })
    },
-   
    goToPic: function (e) {
       console.log(e.currentTarget.dataset.commcode);
-      wx.navigateTo({
-         url: '../showPic/showPic?commcode=' + e.currentTarget.dataset.commcode
-      })
+      console.log(e.currentTarget.dataset.imagecount);
+      if (e.currentTarget.dataset.imagecount != 0) {
+         wx.navigateTo({
+            url: '../showPic/showPic?commcode=' + e.currentTarget.dataset.commcode
+         })
+      } else {
+         wx.showToast({
+            title: '此商品暂无图片',
+            // icon: 'success',
+            duration: 2000
+         })
+      }
 
    },
    goToVideo: function (e) {
       console.log(e.currentTarget.dataset.commcode);
-      wx.navigateTo({
-         url: '../showPic/showPic?commcode=' + e.currentTarget.dataset.commcode
-      })
+      console.log(e.currentTarget.dataset.videocount);
+      if (e.currentTarget.dataset.videocount != 0) {
+         wx.navigateTo({
+            url: '../showVideo/showVideo?commcode=' + e.currentTarget.dataset.commcode
+         })
+      } else {
+         wx.showToast({
+            title: '此商品暂无视频',
+            // icon: 'success',
+            duration: 2000
+         })
+      }
    }
 })

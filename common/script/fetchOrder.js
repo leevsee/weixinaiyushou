@@ -22,7 +22,7 @@ function addOrder(commCode, terminalID, cb, fail_cb) {
                if (token == null) {
                   common.netErr(that);
                } else {
-                  addOrder.call(that, commCode);
+                  addOrder.call(that, commCode, terminalID);
                }
             }, '');
          } else {
@@ -318,10 +318,14 @@ function confirmOrder(data, cb, fail_cb) {
                            // })
                            common.myToast('err', '付款失败，请重新再试', function () {
                               setTimeout(function () {
-                                 wx.redirectTo({
-                                    url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                                 // wx.redirectTo({
+                                 //    url: '../orders/orders?bs=1&state=0&title=订单 - 待付款'
+                                 // })
+                                 wx.switchTab({
+                                    url: '../my/my'
                                  })
-                              }, 1000);
+
+                              }, 500);
                            })
                         },
                         complete: function (res) {

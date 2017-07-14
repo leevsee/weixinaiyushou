@@ -16,7 +16,7 @@ Page({
       scrollMore: {
          type: 0,
          moreMessage: '滑动到左边，加载更多',
-         customloadingCss:'custom-loading-tip'
+         customloadingCss: 'custom-loading-tip'
       },
       showInfo: true
    },
@@ -38,10 +38,10 @@ Page({
             })
          }
       })
-      if (options.single){
+      if (options.single) {
          console.log('single')
          api.getOneCommodity.call(this, options.tcode);
-      }else{
+      } else {
          console.log('nosingle')
          api.getCommodity.call(this, options.tcode);
       }
@@ -107,16 +107,32 @@ Page({
    },
    goToPic: function (e) {
       console.log(e.currentTarget.dataset.commcode);
-      wx.navigateTo({
-         url: '../showPic/showPic?commcode=' + e.currentTarget.dataset.commcode
-      })
+      console.log(e.currentTarget.dataset.imagecount);
+      if (e.currentTarget.dataset.imagecount != 0) {
+         wx.navigateTo({
+            url: '../showPic/showPic?commcode=' + e.currentTarget.dataset.commcode
+         })
+      }else{
+         wx.showToast({
+            title: '此商品暂无图片',
+            // icon: 'success',
+            duration: 2000
+         })
+      }
    },
    goToVideo: function (e) {
       console.log(e.currentTarget.dataset.commcode);
-      wx.navigateTo({
-         url: '../showVideo/showVideo?commcode=' + e.currentTarget.dataset.commcode
-      })
-
-
+      console.log(e.currentTarget.dataset.videocount);
+      if (e.currentTarget.dataset.videocount != 0) {
+         wx.navigateTo({
+            url: '../showVideo/showVideo?commcode=' + e.currentTarget.dataset.commcode
+         })
+      } else {
+         wx.showToast({
+            title: '此商品暂无视频',
+            // icon: 'success',
+            duration: 2000
+         })
+      }
    }
 })

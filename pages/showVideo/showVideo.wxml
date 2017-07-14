@@ -3,7 +3,7 @@
     <view class="page-head-title">视频</view>
     <view class="page-head-line"></view>
   </view>
-  <view class="classname">
-    <video src="{{videoSrc}}" controls></video>
+  <view class="classname" wx:for="{{videoList}}">
+    <video src="{{item.FilePath}}" controls></video>
   </view>
 </view>

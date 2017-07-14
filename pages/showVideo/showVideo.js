@@ -3,6 +3,7 @@ const config = require('../../common/script/config')
 
 Page({
    data: {
+      videoList:[],
       videoSrc: '',
       showLoading: true,
    },
@@ -18,12 +19,14 @@ Page({
             CommCode: option.commcode,
             type: 'video',
             pageIndex: 0,
-            pageSize: 1
+            pageSize: 10
          },
          method: 'GET',
          success: function (res) {
             console.log(res.data[0].FilePath)
+            console.log(res.data)
             that.setData({
+               videoList: res.data,
                videoSrc: res.data[0].FilePath
             })
 

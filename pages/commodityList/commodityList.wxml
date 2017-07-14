@@ -42,13 +42,13 @@
 
         <!-- 商品图片视频信息 -->
         <view class="rowView commodity-detail">
-          <view class="columnView commodity-detail-width topPadding" data-CommCode="{{item.CommCode}}" bindtap="goToPic">
+          <view class="columnView commodity-detail-width topPadding" data-CommCode="{{item.CommCode}}" data-ImageCount="{{item.ImageCount}}" bindtap="goToPic">
             <image src="/res/commodity_pic.png" style="width: 45rpx; height: 45rpx;"></image>
             <view class="commodity-detail-text">
               <text>图片</text>
             </view>
           </view>
-          <view class="columnView commodity-detail-width topPadding" data-CommCode="{{item.CommCode}}" bindtap="goToVideo">
+          <view class="columnView commodity-detail-width topPadding" data-CommCode="{{item.CommCode}}" data-VideoCount="{{item.VideoCount}}" bindtap="goToVideo">
             <image src="/res/commodity_vedio.png" style="width: 45rpx; height: 45rpx;"></image>
             <view class="commodity-detail-text">
               <text>视频</text>

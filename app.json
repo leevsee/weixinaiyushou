@@ -3,9 +3,9 @@
        
       "pages/home/home",
       "pages/station/station",
-         "pages/my/my",
+      "pages/my/my",
       
-       "pages/orderInfo/orderInfo",
+      "pages/orderInfo/orderInfo",
       "pages/commodityList/commodityList",
       "pages/selectStation/selectStation",
       "pages/purchase/purchase",
